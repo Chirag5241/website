@@ -334,7 +334,7 @@
 
 /* About Section */
 .main {
-    background-color: #131313;
+    background: linear-gradient(to top, #131313 10%, #020531);
     padding: 10rem 0;
 }
 
