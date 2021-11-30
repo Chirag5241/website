@@ -328,7 +328,7 @@
     }
 
     .hero__description {
-        font-size: 35px;
+        font-size: 30px;
     }
 
     #midground {
@@ -624,6 +624,22 @@
     font-size: 2rem;
 }
 
+.experiences h3 {
+  /* font-family: 'grifterbold'; */
+  /* background-color: #383838; */
+  color: rgb(255, 0, 0);
+  /* background: linear-gradient(to right, #ffffff, #b2e6f3,#ffffff);  */
+  /* background-size: 100%; */
+  /* -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent; */
+  /* -webkit-text-stroke-width: 1px; */
+  /* -webkit-text-stroke-color: #fff; */
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
 .experiences__wrapper {
     /* font-family: 'grifterbold'; */
     display: grid;
@@ -730,6 +746,10 @@
 text-align: center;
 }
 
+.experiences__card h3 {
+  text-align: center;
+  }
+
 .experiences__card p {
 text-align: center;
 margin-top: 24px;
@@ -802,6 +822,25 @@ margin-top: 16px;
     .experiences__wrapper {
         grid-template-columns: 1fr;
     }
+
+    .experiences__card {
+      margin: 10px;
+      height: 375px;
+      width: 300px;
+  }
+
+  .experiences__card h2 {
+    font-size: 1.5rem;
+    }
+
+  .experiences__card h3 {
+      font-size: 1.25rem;
+    }
+    
+  .experiences__card p {
+    font-size: 1rem;
+    }
+
 }
 
 
@@ -1050,7 +1089,7 @@ margin-top: 16px;
     /* height: 500px; */
     /* width: auto; */
     background-image: url("./images/jupiter.png");
-    background-size: 400px;
+    background-size: 350px;
     background-repeat: no-repeat;
     /* transition: 0.3s ease-in; */
   }
@@ -1059,7 +1098,7 @@ margin-top: 16px;
     display: flex;
     justify-content: center;
     background-image: url("./images/ceres.png");
-    background-size: 400px;
+    background-size: 350px;
     background-repeat: no-repeat;
     /* transition: 0.3s ease-in; */
   }
