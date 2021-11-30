@@ -256,7 +256,7 @@
     font-family: 'Kumbh Sans', sans-serif;
     background: #000000;
     /* background: linear-gradient(to right, #161616, #000000); */
-    background: black url(/images/stars.jpg) repeat 10% 10%;
+    background: black url(./images/stars.jpg) repeat 10% 10%;
     background-size: 1800px;
     padding: 200px 0;
     
@@ -268,7 +268,7 @@
 }
 
 #midground {
-	background: url(/images/midground.png) repeat 20% 20%;
+	background: url(./images/midground.png) repeat 20% 20%;
 	position: absolute;
 	top: 0; left: 0; right: 0; bottom: 130px;
 	z-index: 200;
@@ -313,14 +313,6 @@
     font-size: 60px;
     margin-bottom: 24px;
     color: #9114ff;
-    /* background: #da22ff;  
-    background: -webkit-linear-gradient(to right, #ff6a00 0%, #ee0979 99%, #131313 100%); 
-    background: linear-gradient(to right, #9114ff, #da22ff ); 
-    background-size: 100%;
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -moz-text-fill-color: transparent; */
 }
 
 .highlight {
@@ -332,15 +324,15 @@
 
 @media screen and (max-width: 768px) {
     .hero__heading  {
-        font-size: 60px;
+        font-size: 55px;
     }
 
     .hero__description {
-        font-size: 40px;
+        font-size: 35px;
     }
 
     #midground {
-      background: url(/images/midground.png) repeat 20% 20%;
+      background: url(./images/midground.png) repeat 20% 20%;
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 200px;
       z-index: 200;
@@ -538,6 +530,23 @@
         font-size: 1.5rem;
         margin-top: 1.5rem;
     }
+    
+    .main__btn {
+      font-size: 1.5rem;
+      background: #ee0979;  /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, #ff6a00 0%, #ee0979 99%, #131313 100%);  /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, #ff6a00, #ee0979 );
+      padding: 15px 45px;
+      border: none;
+      border-radius: 4px;
+      color: #fff;
+      margin-top: 2rem;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.4s;
+      outline: none;
+      z-index: 300;
+  }
 }
 
 @media screen and (max-width: 480px) {
@@ -658,7 +667,7 @@
 .experiences__card:nth-child(1) {
     /* auvsl_logo.png */
     /* animation: background-fade 2s; */
-    background-image: url("/images/auvsl_logo.png"), linear-gradient(to right, #092b86, #1e45f3, #092b86);
+    background-image: url("./images/auvsl_logo.png"), linear-gradient(to right, #092b86, #1e45f3, #092b86);
     background-repeat: no-repeat;
     /* background: #ffd89b;  
     background: -webkit-linear-gradient(to right, #19547b, #ffd89b);  
@@ -677,7 +686,7 @@
 
 /* Caterpillar */
 .experiences__card:nth-child(2) {
-    background-image: url("/images/caterpillar_logo.png"), linear-gradient(to right,#ffe000, #12d8fa);
+    background-image: url("./images/caterpillar_logo.png"), linear-gradient(to right,#ffe000, #12d8fa);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -685,14 +694,14 @@
 }
 
 .experiences__card:nth-child(4) {
-  background-image: url("/images/caterpillar_logo.png"), linear-gradient(to right,#ffe000, #12d8fa);
+  background-image: url("./images/caterpillar_logo.png"), linear-gradient(to right,#ffe000, #12d8fa);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
   background-color: #931fff;
 }
 .experiences__card:nth-child(6) {
-  background-image: url("/images/caterpillar_logo.png"), linear-gradient(to right,#ffe000, #12d8fa);
+  background-image: url("./images/caterpillar_logo.png"), linear-gradient(to right,#ffe000, #12d8fa);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -700,7 +709,7 @@
 }
 
 .experiences__card:nth-child(3) {
-    background-image: url("/images/c3sr_logo.png"), linear-gradient(to right,#83fa7f,#058d23);
+    background-image: url("./images/c3sr_logo.png"), linear-gradient(to right,#83fa7f,#058d23);
     /* linear-gradient(to right,#a6ffcb,#12d8fa,#1fa2ff); */
     background-repeat: no-repeat;
     background-size: contain;
@@ -709,7 +718,7 @@
 }
 
 .experiences__card:nth-child(5) {
-  background-image: url("/images/sgsits_logo.png"), linear-gradient(to right,#181838, #4b43a1, #241f55);
+  background-image: url("./images/sgsits_logo.png"), linear-gradient(to right,#181838, #4b43a1, #241f55);
   /* linear-gradient(to right,#a6ffcb,#12d8fa,#1fa2ff); */
   background-repeat: no-repeat;
   background-size: contain;
@@ -939,7 +948,7 @@ margin-top: 16px;
   /* margin-right: 100px; */
   /* height: 500px; */
   /* width: auto; */
-  background-image: url("images/jupiter.png");
+  background-image: url("./images/jupiter.png");
   background-size: 500px;
   background-repeat: no-repeat;
   /* transition: 0.3s ease-in; */
@@ -951,7 +960,7 @@ margin-top: 16px;
   /* margin-right: 100px; */
   /* height: 500px; */
   /* width: auto; */
-  background-image: url("images/ceres.png");
+  background-image: url("./images/ceres.png");
   background-size: 500px;
   background-repeat: no-repeat;
   /* transition: 0.3s ease-in; */
@@ -1015,6 +1024,62 @@ margin-top: 16px;
     width: auto;
     /* transition: 0.3s ease-in; */
   }
+  .cats h2 {
+    font-size: 2.5rem;
+  }
+  
+  .cats p {
+    font-size: 1.5rem;
+  }
+
+  .cat__planet {
+    margin: 40px;
+    height: 400px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* animation: FadeIn 1s; */
+    transition: 0.3s ease-in;
+  }
+
+  .cat__planet:nth-child(1)  {
+    display: flex;
+    justify-content: center;
+    /* margin-right: 100px; */
+    /* height: 500px; */
+    /* width: auto; */
+    background-image: url("./images/jupiter.png");
+    background-size: 400px;
+    background-repeat: no-repeat;
+    /* transition: 0.3s ease-in; */
+  }
+  
+  .cat__planet:nth-child(2)  {
+    display: flex;
+    justify-content: center;
+    background-image: url("./images/ceres.png");
+    background-size: 400px;
+    background-repeat: no-repeat;
+    /* transition: 0.3s ease-in; */
+  }
+
+  .cat__planet:nth-child(1):hover .image2{
+    height: auto;
+    width: 200px;
+    position: relative;
+    left: 100px;
+    border-radius: 10px;
+  }
+  
+  .cat__planet:nth-child(2):hover .image3{
+    height: auto;
+    width: 200px;
+    position: relative;
+    left: 100px;
+    border-radius: 10px;
+  }
+
 }
 /* 
 .jupiter__wrapper img{
