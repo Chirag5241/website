@@ -1056,8 +1056,8 @@ margin-top: 16px;
       grid-template-columns: 1fr;
   }
   .cat__planet img {
-    display: flex;
-    justify-content: center;
+    /* display: flex; */
+    /* justify-content: center; */
     /* margin-right: 100px; */
     height: 400px;
     width: auto;
@@ -1074,17 +1074,84 @@ margin-top: 16px;
   .cat__planet {
     margin: 40px;
     height: 400px;
-    width: 400px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    width: auto;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* justify-content: center; */
     /* animation: FadeIn 1s; */
-    transition: 0.3s ease-in;
+    /* transition: 0.3s ease-in; */
   }
 
   .cat__planet:nth-child(1)  {
     display: flex;
     justify-content: center;
+    /* margin-right: 100px; */
+    /* height: 500px; */
+    /* width: auto; */
+    /* background-image: url("./images/jupiter.png"); */
+    background-size: 350px;
+    /* background-repeat: no-repeat; */
+    /* transition: 0.3s ease-in; */
+  }
+  
+  .cat__planet:nth-child(2)  {
+    display: flex;
+    justify-content: center;
+    /* background-image: url("./images/ceres.png"); */
+    background-size: 350px;
+    /* background-repeat: no-repeat; */
+    /* transition: 0.3s ease-in; */
+  }
+
+  .cat__planet:nth-child(1):hover .image2{
+    height: auto;
+    width: 200px;
+    /* position: relative; */
+    /* left: 100px; */
+    /* border-radius: 10px; */
+  }
+  
+  .cat__planet:nth-child(2):hover .image3{
+    height: auto;
+    width: 200px;
+    /* position: relative; */
+    /* left: 100px; */
+    /* border-radius: 10px; */
+  }
+
+}
+
+@media screen and (max-width: 480px) {
+  .cat__wrapper {
+      grid-template-columns: 1fr;
+  }
+  .cat__planet img {
+    height: 375px;
+    width: auto;
+    /* transition: 0.3s ease-in; */
+  }
+  .cats h2 {
+    font-size: 2.5rem;
+  }
+  
+  .cats p {
+    font-size: 1.5rem;
+  }
+
+  .cat__planet {
+    margin: 40px;
+    height: 375px;
+    width: 375px;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* justify-content: center; */
+    /* animation: FadeIn 1s; */
+    /* transition: 0.3s ease-in; */
+  }
+
+  .cat__planet:nth-child(1)  {
+    /* display: flex; */
+    /* justify-content: center; */
     /* margin-right: 100px; */
     /* height: 500px; */
     /* width: auto; */
@@ -1095,8 +1162,8 @@ margin-top: 16px;
   }
   
   .cat__planet:nth-child(2)  {
-    display: flex;
-    justify-content: center;
+    /* display: flex; */
+    /* justify-content: center; */
     background-image: url("./images/ceres.png");
     background-size: 350px;
     background-repeat: no-repeat;
@@ -1106,48 +1173,20 @@ margin-top: 16px;
   .cat__planet:nth-child(1):hover .image2{
     height: auto;
     width: 200px;
-    position: relative;
-    left: 100px;
-    border-radius: 10px;
+    /* position: relative; */
+    /* left: 100px; */
+    /* border-radius: 10px; */
   }
   
   .cat__planet:nth-child(2):hover .image3{
     height: auto;
     width: 200px;
-    position: relative;
-    left: 100px;
-    border-radius: 10px;
+    /* position: relative; */
+    /* left: 100px; */
+    /* border-radius: 10px; */
   }
 
 }
-/* 
-.jupiter__wrapper img{
-  position: absolute;
-  height: 60%;
-}
-
-.jupiter__wrapper img:hover{
-  transform: scale(1.075);
-  transition: 0.3s ease-in;
-  cursor: pointer;
-  position: absolute;
-  height: 60%;
-}
-
-.ceres__wrapper img{
-  position: absolute;
-  height: 60%;
-  right: 200px;
-}
-
-.ceres__wrapper img:hover{
-  transform: scale(1.075);
-  transition: 0.3s ease-in;
-  cursor: pointer;
-  position: absolute;
-  height: 60%;
-  right: 200px;
-} */
 
 
 
