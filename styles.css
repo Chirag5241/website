@@ -43,7 +43,9 @@
 }
 
 #navbar__logo {
-    font-family: 'grifterbold';
+    /* font-family: 'grifterbold'; */
+    font-family: 'Kumbh Sans', sans-serif;
+    font-weight: 600;
     background-color: #383838;
     /* background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%); */
     /*background: #fffbd5; */ 
@@ -376,7 +378,7 @@
 }
 
 .main__content h1{
-    font-size: 2rem;
+    font-size: 3rem;
     background: #fe3b6f;
     background-image: linear-gradient(to top, #ff087b, #ed1a52); 
     background-size: 100%;
@@ -405,7 +407,7 @@
 
 .main__content p {
     margin-top: 1rem;
-    font-size: 2rem;
+    font-size: 1.6rem;
     font-weight: 500;
 }
 
@@ -694,10 +696,6 @@
 
 .experiences__card:nth-child(1):hover {
   background: linear-gradient(to right, #092b86, #1e45f3, #092b86);
-  opacity: 1;
-  transform: scale(1.075);
-  transition: 0.3s ease-in;
-  cursor: pointer;
 }
 
 /* Caterpillar */
@@ -709,6 +707,11 @@
     background-color: #931fff;
 }
 
+.experiences__card:nth-child(2):hover {
+  background: linear-gradient(to right,#ffe000, #12d8fa);
+  color: #000;
+}
+
 .experiences__card:nth-child(4) {
   background-image: url("./images/caterpillar_logo.png"), linear-gradient(to right,#ffe000, #12d8fa);
   background-repeat: no-repeat;
@@ -716,12 +719,23 @@
   background-position: center;
   background-color: #931fff;
 }
+
+.experiences__card:nth-child(4):hover {
+  background: linear-gradient(to right,#ffe000, #12d8fa);
+  color: #000;
+}
+
 .experiences__card:nth-child(6) {
   background-image: url("./images/caterpillar_logo.png"), linear-gradient(to right,#ffe000, #12d8fa);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
   background-color: #931fff;
+}
+
+.experiences__card:nth-child(6):hover {
+  background: linear-gradient(to right,#ffe000, #12d8fa);
+  color: #000;
 }
 
 .experiences__card:nth-child(3) {
@@ -733,6 +747,11 @@
     /* background-image: linear-gradient(-225deg, #231557 0%,#44107a 29%,#ff1361 67%,#fff800 100%); */
 }
 
+.experiences__card:nth-child(3):hover {
+  background: linear-gradient(to right,#83fa7f,#058d23);
+  /* color: #000; */
+}
+
 .experiences__card:nth-child(5) {
   background-image: url("./images/sgsits_logo.png"), linear-gradient(to right,#181838, #4b43a1, #241f55);
   /* linear-gradient(to right,#a6ffcb,#12d8fa,#1fa2ff); */
@@ -740,6 +759,11 @@
   background-size: contain;
   background-position: center;
   /* background-image: linear-gradient(-225deg, #231557 0%,#44107a 29%,#ff1361 67%,#fff800 100%); */
+}
+
+.experiences__card:nth-child(5):hover {
+  background: linear-gradient(to right,#181838, #4b43a1, #241f55);
+  /* color: #000; */
 }
   
 .experiences__card h2 {
@@ -780,7 +804,7 @@ margin-top: 16px;
     opacity: 1;
     transform: scale(1.075);
     transition: 0.3s ease-in;
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 
 .experiences__card .card__details {
