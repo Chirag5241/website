@@ -276,7 +276,7 @@ papertitle {
   background: #000000;
   /* background: linear-gradient(to right, #161616, #000000); */
   background: black url(./images/stars.jpg) repeat 10% 10%;
-  background-size: 1800px;
+  background-size: 1600px;
   padding: 40px 0;
 
   -webkit-animation-name: STAR-MOVE;
@@ -291,7 +291,7 @@ papertitle {
   top: 0;
   left: 0;
   right: 0;
-  bottom: 600px;
+  bottom: 550px;
   z-index: 200;
   background-size: 100px;
 
@@ -367,7 +367,7 @@ papertitle {
     top: 0;
     left: 0;
     right: 0;
-    bottom: 600px;
+    bottom: 550px;
     z-index: 200;
     background-size: 100px;
 
