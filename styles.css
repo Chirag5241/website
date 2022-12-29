@@ -387,7 +387,7 @@ papertitle {
 
 .main__container {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* 2 boxes equal in dim */
+  grid-template-columns: 1fr 1.8fr; /* 2 boxes equal in dim */
   align-items: center;
   justify-content: center;
   margin: 0 auto;
@@ -446,8 +446,8 @@ papertitle {
 }
 
 .main__content p {
-  margin-top: 1rem;
-  font-size: 1rem;
+  margin-top: 1.5rem;
+  font-size: 1.5rem;
   font-weight: 500;
 }
 
