@@ -15,6 +15,7 @@ const highlightMenu = () => {
   const elem = document.querySelector(".highlight");
   const homeMenu = document.querySelector("#home-page");
   const aboutMenu = document.querySelector("#about-page");
+  const researchMenu = document.querySelector("#research-page");
   const skillsMenu = document.querySelector("#skills-page");
   const experienceMenu = document.querySelector("#experiences-page");
   const catMenu = document.querySelector("#cat-page");
@@ -23,18 +24,23 @@ const highlightMenu = () => {
   // console.log(scrollPos);
 
   // adds 'highlight' class to my menu items
-  if (window.innerWidth > 960 && scrollPos < 600) {
+  if (window.innerWidth > 960 && scrollPos < 140) {
     homeMenu.classList.add("highlight");
     aboutMenu.classList.remove("highlight");
     return;
-  } else if (window.innerWidth > 960 && scrollPos < 1400) {
+  } else if (window.innerWidth > 960 && scrollPos < 600) {
     aboutMenu.classList.add("highlight");
     homeMenu.classList.remove("highlight");
+    researchMenu.classList.remove("highlight");
+    return;
+  } else if (window.innerWidth > 960 && scrollPos < 1500) {
+    aboutMenu.classList.remove("highlight");
+    researchMenu.classList.add("highlight");
     skillsMenu.classList.remove("highlight");
     return;
   } else if (window.innerWidth > 960 && scrollPos < 2500) {
     skillsMenu.classList.add("highlight");
-    aboutMenu.classList.remove("highlight");
+    researchMenu.classList.remove("highlight");
     experienceMenu.classList.remove("highlight");
     return;
   } else if (window.innerWidth > 960 && scrollPos < 3600) {
