@@ -635,6 +635,132 @@ papertitle {
   }
 }
 
+/* Research Section */
+.research {
+  font-family: "Kumbh Sans", sans-serif;
+  background: linear-gradient(to top, #020531, #131313 20%);
+  padding: 3rem 0;
+}
+
+.research__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2 boxes equal in dim */
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  height: 90%;
+  z-index: 1;
+  width: 100%;
+  max-width: 1300px;
+  padding: 0 50px;
+}
+
+.research__container {
+  color: #fff;
+  width: 100%;
+}
+
+.research__content {
+  color: #fff;
+  width: 100%;
+  text-align: center;
+}
+
+.research__content h1 {
+  font-size: 2rem;
+  background: #fe3b6f;
+  background-image: linear-gradient(to top, #ff087b, #ed1a52);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+  font-weight: 700;
+}
+
+.research__content h2 {
+  font-size: 1.2rem;
+  /* margin-bottom: 24px; */
+  text-align: left;
+  color: #fff;
+  background: #da22ff; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #ff6a00 0%,
+    #ee0979 99%,
+    #131313 100%
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #9114ff,
+    #da22ff
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+
+.research__content p {
+  margin-top: 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: left;
+}
+
+.research__btn a {
+  /* font-family: 'grifterbold'; */
+  text-decoration: none;
+  position: relative;
+  z-index: 2;
+  color: #fff;
+}
+
+.research__btn:after {
+  /* effect for hover */
+  position: absolute;
+  content: "";
+  top: 0;
+  width: 0;
+  left: 0;
+  height: 100%;
+  background: linear-gradient(to right, #1d31e9, #e72872);
+  transition: all 0.4s;
+  border-radius: 4px;
+}
+
+.research__btn:hover {
+  cursor: pointer;
+  color: #fff;
+}
+
+.research__btn:hover::after {
+  width: 100%;
+}
+
+.research__img--container {
+  text-align: center;
+}
+
+.research__img--card {
+  margin: 50px;
+  height: 100px;
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff;
+}
+
+.research__img--card:hover {
+  transform: scale(1.075);
+  transition: 0.3s ease-in;
+  cursor: pointer;
+}
+
 /* experiences Section */
 
 .experiences {
