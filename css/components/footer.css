@@ -1,0 +1,64 @@
+/* Footer Component Styles */
+
+footer {
+  background: var(--color-background);
+  padding: var(--spacing-md) var(--spacing-sm);
+  color: var(--color-text);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-sm);
+}
+
+.footer__content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-md);
+}
+
+.footer__section {
+  flex: 1;
+  min-width: 200px;
+  margin-bottom: var(--spacing-sm);
+}
+
+.footer__section h3 {
+  font-size: 1.2rem;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-primary);
+}
+
+.footer__section p {
+  margin-bottom: var(--spacing-xs);
+}
+
+.footer__section a {
+  color: var(--color-text);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer__section a:hover {
+  color: var(--color-primary);
+}
+
+.footer__bottom {
+  text-align: center;
+  padding-top: var(--spacing-sm);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Mobile Responsive */
+@media screen and (max-width: 768px) {
+  .footer__content {
+    flex-direction: column;
+  }
+  
+  .footer__section {
+    margin-bottom: var(--spacing-md);
+  }
+}

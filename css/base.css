@@ -1,0 +1,150 @@
+/* Base CSS - General styling and variables */
+
+:root {
+  /* Color variables */
+  --color-background: #131313;
+  --color-text: #ffffff;
+  --color-primary: #f7971e;
+  --color-secondary: #000000;
+  --color-accent: #ff0000;
+  --color-gradient-start: #f7771e;
+  --color-gradient-end: #ff4361;
+  
+  /* Typography variables */
+  --font-primary: 'Kumbh Sans', sans-serif;
+  --font-secondary: 'ONEDAY', sans-serif;
+  --font-heading: 'grifterbold', serif;
+  --font-serif: Georgia, serif;
+  
+  /* Spacing variables */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 4rem;
+  --spacing-xl: 8rem;
+}
+
+@font-face {
+  font-family: "ONEDAY";
+  src: url("../OnedayFF/ONEDAY.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "grifterbold";
+  src: url("../grifterbold.otf") format("opentype");
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-primary);
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  overscroll-behavior: auto;
+  background: var(--color-background);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  margin-bottom: var(--spacing-sm);
+  line-height: 1.2;
+}
+
+p {
+  margin-bottom: var(--spacing-sm);
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-sm);
+}
+
+.text-gradient {
+  background: linear-gradient(to right, var(--color-gradient-start), var(--color-gradient-end));
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+
+/* Utility classes */
+.text-center {
+  text-align: center;
+}
+
+.mb-1 {
+  margin-bottom: var(--spacing-xs);
+}
+
+.mb-2 {
+  margin-bottom: var(--spacing-sm);
+}
+
+.mb-3 {
+  margin-bottom: var(--spacing-md);
+}
+
+.mb-4 {
+  margin-bottom: var(--spacing-lg);
+}
+
+.mt-1 {
+  margin-top: var(--spacing-xs);
+}
+
+.mt-2 {
+  margin-top: var(--spacing-sm);
+}
+
+.mt-3 {
+  margin-top: var(--spacing-md);
+}
+
+.mt-4 {
+  margin-top: var(--spacing-lg);
+}
+
+/* Responsive utilities */
+@media screen and (max-width: 960px) {
+  :root {
+    --spacing-lg: 3rem;
+    --spacing-xl: 6rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  :root {
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2.5rem;
+    --spacing-xl: 5rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  :root {
+    --spacing-sm: 0.75rem;
+    --spacing-md: 1.25rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 4rem;
+  }
+}

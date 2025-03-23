@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Chirag Rastogi - Computer Engineer and Undergraduate Researcher at the University of Illinois at Urbana Champaign">
+    <meta name="keywords" content="Chirag Rastogi, Computer Engineer, Researcher, University of Illinois">
+    <meta name="author" content="Chirag Rastogi">
+    <title>Chirag's Blog</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <script src="../js/modernizr.js"></script>
+</head>
+<body>
+    <!-- Navbar Section -->
+    <nav class="navbar">
+        <div class="navbar__container"> 
+            <div class="navbar__toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar__menu">
+                <li class="navbar__item">
+                    <a href="../index.html" class="navbar__links" id="home-page">Home</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="#about" class="navbar__links" id="about-page">About</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="#research" class="navbar__links" id="research-page">Research</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="index.html" class="navbar__links highlight" id="blog-page">Blog</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    
+
+    <!-- Blog Section -->
+    <section class="blog">
+        <div class="blog__container">
+            <div id="ai-orange-background"></div>
+            <div class="blog__header">
+                <h1>My Blog</h1>
+                <p class="serif-text">Thoughts, ideas, and research insights</p>
+            </div>
+            
+            <div class="blog__grid">
+                <!-- Blog Post 1 -->
+                <article class="blog__card card">
+                    <div class="blog__card-content">
+                        <h2 class="blog__card-title">Probing Linguistic Properties of Sparse Autoencoder Features via Causal Interventions</h2>
+                        <p class="blog__card-excerpt serif-text">
+                            Experimenting with Mechanistic Interpretability
+                        </p>
+                        <div class="blog__card-meta">
+                            <span class="blog__card-date"><i class="far fa-calendar-alt"></i> March 15, 2025</span>
+                            <span class="tag">Machine Learning</span>
+                        </div>
+                        <a href="post1.html" class="blog__card-readmore btn-hover-effect">Read More</a>
+                    </div>
+                </article>
+                
+                <!-- Blog Post 2 -->
+                <article class="blog__card card">
+                    <div class="blog__card-content">
+                        <h2 class="blog__card-title">Robotics Research: Current Challenges</h2>
+                        <p class="blog__card-excerpt serif-text">
+                            Exploring the current challenges in robotics research and how we're addressing them in our lab at the University of Illinois.
+                        </p>
+                        <div class="blog__card-meta">
+                            <span class="blog__card-date"><i class="far fa-calendar-alt"></i> February 28, 2025</span>
+                            <span class="tag">Robotics</span>
+                        </div>
+                        <a href="post2.html" class="blog__card-readmore btn-hover-effect">Read More</a>
+                    </div>
+                </article>
+                
+                <!-- Blog Post 3 -->
+                <article class="blog__card card">
+                    <div class="blog__card-content">
+                        <h2 class="blog__card-title">The Future of Autonomous Navigation</h2>
+                        <p class="blog__card-excerpt serif-text">
+                            Discussing the latest advancements in autonomous navigation systems and what the future holds for this exciting technology.
+                        </p>
+                        <div class="blog__card-meta">
+                            <span class="blog__card-date"><i class="far fa-calendar-alt"></i> January 20, 2025</span>
+                            <span class="tag">Autonomous Systems</span>
+                        </div>
+                        <a href="post3.html" class="blog__card-readmore btn-hover-effect">Read More</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer__container">
+            <div class="footer__content">
+                <div class="footer__section">
+                    <h3>Contact Me</h3>
+                    <p><a href="mailto:contact@example.com"><i class="fas fa-envelope"></i> Email</a></p>
+                    <p><a href="https://www.linkedin.com/in/chirag-rastogi-0baa72178/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></p>
+                </div>
+                <div class="footer__section">
+                    <h3>Social Media</h3>
+                    <p><a href="https://scholar.google.com/citations?user=svPLe9EAAAAJ&hl=en" target="_blank"><i class="fas fa-graduation-cap"></i> Google Scholar</a></p>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2025 Chirag Rastogi. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/jquery-2.1.1.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        if (sessionStorage.getItem("triggerCollapse") === "true") {
+            const aboutItem = document.getElementById("about-page")?.parentElement;
+            const researchItem = document.getElementById("research-page")?.parentElement;
+
+            if (aboutItem && researchItem) {
+            // Force reflow to ensure transition runs even on fast load
+            aboutItem.offsetHeight; 
+            researchItem.offsetHeight;
+
+            aboutItem.classList.add("collapsed");
+            researchItem.classList.add("collapsed");
+            }
+
+            sessionStorage.removeItem("triggerCollapse");
+        }
+        });
+        </script>
+</body>
+</html>

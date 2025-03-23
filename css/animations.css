@@ -1,0 +1,152 @@
+/* Animations CSS */
+
+/* Star Animation */
+#stars-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: url(../images/watercolor_orange_space.jpg);
+  z-index: 0;
+  opacity: 0.7;
+  /* animation: animateStarsBackground 10s linear infinite; */
+}
+
+
+#ai-orange-background {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 200%;
+  transform: translate(-50%, -50%); /* center it exactly */
+  background: url(../images/ai-plasma.jpg) no-repeat center center;
+  background-size: contain; /* preserves aspect ratio */
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.01; /* Optional: to fade it softly into the background */
+}
+
+/* Star Animation */
+#midground {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: url(../images/midground.png) repeat 20% 20%;
+  z-index: 0;
+  animation: animateStars 60s linear infinite;
+}
+
+@keyframes animateStars {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 100% 100%;
+  }
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 1s;
+}
+
+/* Slide In Animation */
+@keyframes slideIn {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.slide-in {
+  animation: slideIn 0.8s ease-out;
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+/* Text Gradient Animation */
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-text {
+  background: linear-gradient(270deg, var(--color-gradient-start), var(--color-accent), var(--color-gradient-end));
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  animation: gradientFlow 3s ease infinite;
+}
+
+/* Button Hover Animation */
+.btn-hover-effect {
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+  display: inline-block;
+  color: var(--color-text); /* ensure color stays consistent */
+}
+
+.btn-hover-effect::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(to right, #1d31e9, var(--color-gradient-end));
+  transition: all 0.35s ease;
+  z-index: -1; /* Push the hover effect behind the text */
+}
+
+.btn-hover-effect:hover::after {
+  width: 100%;
+}
+
+/* Responsive Animations */
+@media screen and (max-width: 768px) {
+  #midground {
+    animation: animateStars 40s linear infinite;
+  }
+}

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Robotics Research: Current Challenges - A blog post by Chirag Rastogi">
+    <meta name="keywords" content="Robotics, Research, Challenges, Chirag Rastogi">
+    <meta name="author" content="Chirag Rastogi">
+    <title>Robotics Research: Current Challenges | Chirag's Blog</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <script src="../js/modernizr.js"></script>
+</head>
+<body>
+    <!-- Navbar Section -->
+    <nav class="navbar">
+        <div class="navbar__container"> 
+            <div class="navbar__toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar__menu">
+                <li class="navbar__item">
+                    <a href="../index.html" class="navbar__links">Home</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="../index.html#about" class="navbar__links">About</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="../index.html#research" class="navbar__links">Research</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="index.html" class="navbar__links highlight">Blog</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Blog Post Section -->
+    <section class="blog">
+        <div class="content-container">
+            <div class="blog-post">
+                <div class="blog-post__header">
+                    <h1 class="blog-post__title">Robotics Research: Current Challenges</h1>
+                    <div class="blog-post__meta">
+                        <span class="blog-post__date"><i class="far fa-calendar-alt"></i> February 28, 2025</span>
+                        <span class="blog-post__author"><i class="far fa-user"></i> Chirag Rastogi</span>
+                        <span class="blog-post__reading-time"><i class="far fa-clock"></i> 10 min read</span>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">Robotics</span>
+                        <span class="tag">Research</span>
+                        <span class="tag">Autonomous Systems</span>
+                    </div>
+                </div>
+                
+                <div class="blog-post__content serif-text">
+                    <p>Robotics research has advanced significantly in recent years, but numerous challenges remain before we achieve truly autonomous, adaptable, and reliable robotic systems. In this post, I'll explore some of the current challenges we're tackling in our lab at the University of Illinois and the broader research community.</p>
+                    
+                    <h2>The Current State of Robotics Research</h2>
+                    
+                    <p>Modern robotics sits at the intersection of mechanical engineering, computer science, electrical engineering, and increasingly, artificial intelligence. While we've made remarkable progress in areas like industrial automation, surgical robots, and even household robots like vacuum cleaners, we're still far from the general-purpose robots depicted in science fiction.</p>
+                    
+                    <p>The field is evolving rapidly, with breakthroughs in:</p>
+                    <ul>
+                        <li>Computer vision and perception</li>
+                        <li>Motion planning and control</li>
+                        <li>Human-robot interaction</li>
+                        <li>Soft robotics and novel materials</li>
+                        <li>Learning-based approaches to robotics</li>
+                    </ul>
+                    
+                    <p>Despite these advances, significant challenges persist that limit the widespread adoption and capability of robotic systems.</p>
+                    
+                    <h2>Challenge 1: Robust Perception in Unstructured Environments</h2>
+                    
+                    <p>One of the most fundamental challenges in robotics is enabling machines to perceive and understand their environment reliably, especially in unstructured settings.</p>
+                    
+                    <h3>The Problem</h3>
+                    
+                    <p>While robots can operate effectively in controlled environments (like factory floors), they struggle with the complexity and unpredictability of real-world settings. Variations in lighting, weather conditions, unexpected obstacles, and dynamic elements pose significant challenges for robotic perception systems.</p>
+                    
+                    <h3>Current Research</h3>
+                    
+                    <p>In our lab, we're working on texture-oriented, self-supervised approaches to drivable area segmentation for indoor robot navigation. This research aims to enable robots to identify navigable areas without extensive labeled training data, making them more adaptable to new environments.</p>
+                    
+                    <blockquote>
+                        The key insight from our work is that by leveraging self-supervision and focusing on texture patterns, robots can better generalize their understanding of traversable surfaces across different environments.
+                    </blockquote>
+                    
+                    <p>Other promising approaches include:</p>
+                    <ul>
+                        <li>Multi-modal sensing (combining vision, lidar, radar, etc.)</li>
+                        <li>Uncertainty-aware perception systems</li>
+                        <li>Few-shot and zero-shot learning for new environments</li>
+                        <li>Continuous learning approaches that adapt over time</li>
+                    </ul>
+                    
+                    <h2>Challenge 2: Reliable Manipulation and Dexterity</h2>
+                    
+                    <h3>The Problem</h3>
+                    
+                    <p>Human hands are remarkably versatile tools, capable of everything from delicate watch repair to powerful gripping. Replicating this dexterity in robotic systems remains challenging, particularly when dealing with:</p>
+                    <ul>
+                        <li>Objects with unknown physical properties</li>
+                        <li>Deformable materials (clothing, food, etc.)</li>
+                        <li>Tasks requiring fine motor control</li>
+                        <li>Dynamic manipulation (catching, throwing)</li>
+                    </ul>
+                    
+                    <h3>Current Research</h3>
+                    
+                    <p>Research in this area is exploring several promising directions:</p>
+                    <ul>
+                        <li>Novel gripper designs inspired by nature (gecko adhesion, octopus tentacles)</li>
+                        <li>Tactile sensing to provide feedback during manipulation</li>
+                        <li>Learning-based approaches that can adapt to different objects</li>
+                        <li>Sim-to-real transfer to train manipulation skills in simulation</li>
+                    </ul>
+                    
+                    <p>The integration of better sensing with more sophisticated control algorithms is gradually improving robotic manipulation capabilities, though we're still far from human-level dexterity.</p>
+                    
+                    <h2>Challenge 3: Energy Efficiency and Power Constraints</h2>
+                    
+                    <h3>The Problem</h3>
+                    
+                    <p>Mobile robots face significant energy constraints. Unlike factory robots that can be permanently connected to power sources, autonomous mobile robots must carry their energy supply with them, limiting their operational time and capabilities.</p>
+                    
+                    <h3>Current Research</h3>
+                    
+                    <p>Addressing this challenge requires innovations at multiple levels:</p>
+                    <ul>
+                        <li>More efficient actuators and motors</li>
+                        <li>Better battery technology</li>
+                        <li>Energy-aware motion planning</li>
+                        <li>Passive dynamics that reduce power requirements</li>
+                        <li>Harvesting energy from the environment</li>
+                    </ul>
+                    
+                    <p>Our research on terrain classification for unmanned ground vehicles (UGVs) contributes to this area by enabling robots to adapt their locomotion strategies based on the terrain, potentially saving significant energy.</p>
+                    
+                    <h2>Challenge 4: Learning and Adaptation</h2>
+                    
+                    <h3>The Problem</h3>
+                    
+                    <p>Traditional robotics relied heavily on explicit programming and modeling. While effective for specific tasks, this approach doesn't scale well to complex, changing environments. Modern robotics increasingly incorporates machine learning, but challenges remain:</p>
+                    <ul>
+                        <li>Data efficiency (robots can't collect millions of examples easily)</li>
+                        <li>Safety during learning</li>
+                        <li>Transferring skills between different robots or tasks</li>
+                        <li>Explainability of learned behaviors</li>
+                    </ul>
+                    
+                    <h3>Current Research</h3>
+                    
+                    <p>Research in this area is exploring:</p>
+                    <ul>
+                        <li>Reinforcement learning with safety constraints</li>
+                        <li>Few-shot learning approaches</li>
+                        <li>Meta-learning to enable rapid adaptation</li>
+                        <li>Combining model-based and learning-based approaches</li>
+                    </ul>
+                    
+                    <p>Our work on vision-proprioception fusion for terrain classification demonstrates how combining different sensing modalities can improve learning efficiency and robustness.</p>
+                    
+                    <h2>Challenge 5: Human-Robot Collaboration</h2>
+                    
+                    <h3>The Problem</h3>
+                    
+                    <p>As robots move from isolated industrial settings to environments shared with humans, effective collaboration becomes crucial. This introduces challenges in:</p>
+                    <ul>
+                        <li>Safety and predictability</li>
+                        <li>Natural communication</li>
+                        <li>Understanding human intentions</li>
+                        <li>Adapting to human preferences</li>
+                        <li>Building appropriate trust</li>
+                    </ul>
+                    
+                    <h3>Current Research</h3>
+                    
+                    <p>Research in human-robot interaction is addressing these challenges through:</p>
+                    <ul>
+                        <li>Intuitive interfaces for robot programming</li>
+                        <li>Predictive models of human behavior</li>
+                        <li>Legible motion planning that communicates robot intentions</li>
+                        <li>Multimodal communication (speech, gesture, haptics)</li>
+                        <li>Personalization to individual users</li>
+                    </ul>
+                    
+                    <h2>The Path Forward</h2>
+                    
+                    <p>Despite these challenges, the field of robotics is advancing rapidly. Interdisciplinary collaboration between mechanical engineers, computer scientists, AI researchers, and even cognitive scientists and ethicists is driving innovation.</p>
+                    
+                    <p>Several trends are particularly promising:</p>
+                    <ul>
+                        <li><strong>Integration of learning and traditional robotics</strong>: Combining the best of model-based and data-driven approaches</li>
+                        <li><strong>Embodied intelligence</strong>: Recognizing that intelligence emerges from the interaction between brain, body, and environment</li>
+                        <li><strong>Cloud robotics</strong>: Leveraging shared knowledge and computation across robot fleets</li>
+                        <li><strong>Open-source hardware and software</strong>: Accelerating innovation through shared platforms</li>
+                    </ul>
+                    
+                    <h2>Conclusion</h2>
+                    
+                    <p>Robotics research faces significant challenges, but each challenge represents an opportunity for innovation. The field is evolving from isolated industrial applications toward more general-purpose, adaptable systems that can work alongside humans in complex environments.</p>
+                    
+                    <p>Our work at the University of Illinois contributes to addressing these challenges, particularly in perception, terrain understanding, and navigation. As we continue to make progress on these fundamental problems, we move closer to a future where robots can reliably assist humans in a wide range of tasks and environments.</p>
+                    
+                    <p>What aspects of robotics research do you find most interesting or promising? Share your thoughts in the comments below!</p>
+                </div>
+            </div>
+            
+            <!-- Comments Section -->
+            <div class="comments">
+                <h2 class="comments__header">Comments</h2>
+                
+                <div class="comments__form">
+                    <h3>Leave a Comment</h3>
+                    <form id="comment-form">
+                        <div class="comments__form-group">
+                            <label for="name" class="comments__form-label">Name</label>
+                            <input type="text" id="name" class="comments__form-input" required>
+                        </div>
+                        <div class="comments__form-group">
+                            <label for="email" class="comments__form-label">Email (will not be published)</label>
+                            <input type="email" id="email" class="comments__form-input" required>
+                        </div>
+                        <div class="comments__form-group">
+                            <label for="comment" class="comments__form-label">Comment</label>
+                            <textarea id="comment" class="comments__form-textarea" required></textarea>
+                        </div>
+                        <button type="submit" class="comments__form-button">Submit Comment</button>
+                    </form>
+                </div>
+                
+                <ul class="comments__list">
+                    <li class="comments__item">
+                        <div class="comments__item-header">
+                            <span class="comments__item-author">Michael Chen</span>
+                            <span class="comments__item-date">March 1, 2025</span>
+                        </div>
+                        <div class="comments__item-content">
+                            <p>Great overview of the current challenges in robotics! I'm particularly interested in the energy efficiency aspect. Have you looked into biomimetic approaches that might help with this? Many animals have evolved incredibly efficient locomotion strategies.</p>
+                        </div>
+                    </li>
+                    <li class="comments__item">
+                        <div class="comments__item-header">
+                            <span class="comments__item-author">Sarah Williams</span>
+                            <span class="comments__item-date">March 3, 2025</span>
+                        </div>
+                        <div class="comments__item-content">
+                            <p>I work in healthcare, and I'm curious about how these challenges translate to medical robotics. The perception and manipulation challenges seem particularly relevant for surgical applications. Are there specific considerations for medical robots that differ from general robotics research?</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer__container">
+            <div class="footer__content">
+                <div class="footer__section">
+                    <h3>Contact Me</h3>
+                    <p><a href="mailto:contact@example.com"><i class="fas fa-envelope"></i> Email</a></p>
+                    <p><a href="https://www.linkedin.com/in/chirag-rastogi-0baa72178/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></p>
+                </div>
+                <div class="footer__section">
+                    <h3>Social Media</h3>
+                    <p><a href="https://scholar.google.com/citations?user=svPLe9EAAAAJ&hl=en" target="_blank"><i class="fas fa-graduation-cap"></i> Google Scholar</a></p>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2025 Chirag Rastogi. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/jquery-2.1.1.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/comments.js"></script>
+</body>
+</html>

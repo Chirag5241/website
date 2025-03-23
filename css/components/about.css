@@ -1,0 +1,101 @@
+/* About Section Styles */
+.main {
+  background: var(--color-background);
+  padding: var(--spacing-lg) var(--spacing-sm);
+}
+
+.main__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 90%;
+  padding: var(--spacing-md);
+  gap: var(--spacing-md);
+}
+
+.main__content {
+  color: var(--color-text);
+  width: 100%;
+}
+
+.main__content h1 {
+  font-size: 2.5rem;
+  background: linear-gradient(to right, var(--color-gradient-start), var(--color-accent));
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  margin-bottom: var(--spacing-md);
+}
+
+.main__content p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: var(--spacing-md);
+}
+
+.main__img--container {
+  text-align: center;
+}
+
+.main__img--card {
+  margin: 10px;
+  height: 500px;
+  width: 500px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-text);
+  transition: all 0.3s ease;
+}
+
+.main__img--card img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+/* Mobile Responsive */
+@media screen and (max-width: 960px) {
+  .main__container {
+    grid-template-columns: 1fr;
+    padding: var(--spacing-sm);
+  }
+
+  .main__img--container {
+    order: 2;
+  }
+
+  .main__content {
+    order: 1;
+    text-align: center;
+  }
+
+  .main__img--card {
+    height: 350px;
+    width: 350px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .main__content h1 {
+    font-size: 2rem;
+  }
+
+  .main__content p {
+    font-size: 1rem;
+  }
+
+  .main__img--card {
+    height: 250px;
+    width: 250px;
+  }
+}

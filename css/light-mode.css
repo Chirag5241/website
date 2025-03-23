@@ -1,0 +1,84 @@
+/* Light Mode Theme Variables */
+:root {
+  /* Dark mode (default) */
+  --color-background: #131313;
+  --color-text: #ffffff;
+  --color-primary: #f7971e;
+  --color-secondary: #000000;
+  --color-accent: #ff0000;
+  --color-gradient-start: #f7771e;
+  --color-gradient-end: #ff4361;
+  
+  /* Typography variables */
+  --font-primary: 'Kumbh Sans', sans-serif;
+  --font-secondary: 'ONEDAY', sans-serif;
+  --font-heading: 'grifterbold', serif;
+  --font-serif: Georgia, serif;
+  
+  /* Spacing variables */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 4rem;
+  --spacing-xl: 8rem;
+}
+
+/* Light mode theme */
+:root.light-mode {
+  --color-background: #fefefe;
+  --color-text: #2e2828;
+  --color-primary: #00b4d8;
+  --color-secondary: #f8f9fa;
+  --color-accent: #0077b6;
+  --color-gradient-start: #00b4d8;
+  --color-gradient-end: #90e0ef;
+}
+
+/* Transition for smooth theme switching */
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Additional light mode adjustments */
+.light-mode .navbar {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.light-mode .hero__heading,
+.light-mode .main__content h1 {
+  color: var(--color-text);
+}
+
+.light-mode #stars-background {
+  /* position: absolute; */
+  top: 50%;
+  left: 50%;
+  width: 150%;
+  height: 350%;
+  transform: translate(-50%, -50%);
+  background: url(../images/teal-watercolour-design_small.jpg);
+  z-index: 0;
+  opacity: 1;
+}
+
+.light-mode .footer {
+  background-color: #f8f9fa;
+  border-top: 1px solid #e9ecef;
+}
+
+.light-mode .navbar__toggle .bar {
+  background: var(--color-text);
+}
+
+.light-mode .main__img--card {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.light-mode .research__content h1,
+.light-mode .research__content h2 {
+  color: #131313;
+}
+
+.light-mode .footer__container {
+  background-color: #f8f9fa;
+}

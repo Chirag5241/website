@@ -1,0 +1,113 @@
+/* Research Section Styles */
+
+.research {
+  background: var(--color-background);
+  padding: var(--spacing-lg) var(--spacing-sm);
+}
+
+.research__content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-md);
+}
+
+.research__content h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  background: linear-gradient(to right, var(--color-gradient-start), var(--color-accent));
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  margin-bottom: var(--spacing-md);
+}
+
+.research__content h2 {
+  font-size: 1.8rem;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.research__content p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: var(--spacing-sm);
+}
+
+.research__content a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.research__content a:hover {
+  color: var(--color-secondary);
+  text-decoration: underline;
+}
+
+.research__content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.research__content img:hover {
+  transform: scale(1.05);
+}
+
+.research__content table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.research__content td {
+  padding: var(--spacing-sm);
+  vertical-align: middle;
+}
+
+/* Mobile Responsive */
+@media screen and (max-width: 960px) {
+  .research__content {
+    padding: var(--spacing-sm);
+  }
+  
+  .research__content h1 {
+    font-size: 2rem;
+  }
+  
+  .research__content h2 {
+    font-size: 1.5rem;
+  }
+  
+  .research__content table {
+    display: block;
+  }
+  
+  .research__content tr {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .research__content td {
+    width: 100% !important;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .research__content h1 {
+    font-size: 1.8rem;
+  }
+  
+  .research__content h2 {
+    font-size: 1.3rem;
+  }
+  
+  .research__content p {
+    font-size: 1rem;
+  }
+}
