@@ -125,7 +125,7 @@
   max-width: 1500px;
   margin: 0 auto;
   padding: var(--spacing-md);
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--color-read-section);
   border-radius: 8px;
 }
 
@@ -201,17 +201,18 @@
   padding-left: var(--spacing-sm);
   margin: var(--spacing-md) 0;
   font-style: italic;
+  color: var(--color-text);
 }
 
 .blog-post__content code {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--color-read-section);
   padding: 2px 5px;
   border-radius: 3px;
   font-family: monospace;
 }
 
 .blog-post__content pre {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--color-read-section);
   padding: var(--spacing-sm);
   border-radius: 5px;
   overflow-x: auto;
@@ -241,6 +242,7 @@
 /* Comments Section */
 .comments {
   margin-top: var(--spacing-lg);
+  background-color: var(--color-background);
 }
 
 .comments__header {
@@ -266,9 +268,9 @@
 .comments__form-textarea {
   width: 100%;
   padding: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--color-border);
   border-radius: 4px;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--color-read-section);
   color: var(--color-text);
 }
 
@@ -299,7 +301,7 @@
 .comments__item {
   margin-bottom: var(--spacing-md);
   padding: var(--spacing-sm);
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--color-read-section);
   border-radius: 5px;
 }
 
@@ -316,7 +318,7 @@
 
 .comments__item-date {
   font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--color-text);
 }
 
 .comments__item-content {

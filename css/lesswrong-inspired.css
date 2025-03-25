@@ -1,9 +1,10 @@
 /* LessWrong-inspired design enhancements */
 
-:root {
+/* :root {
   --color-card-bg: rgba(255, 255, 255, 0.05);
   --color-border: rgba(255, 255, 255, 0.1);
-}
+  --color-read-section: rgba(255, 255, 255, 0.03);
+} */
 
 /* LessWrong-inspired card design */
 .card {
@@ -35,6 +36,8 @@ h1, h2, h3 {
 .content-container {
   max-width: 1100px;
   margin: 0 auto;
+  border-radius: 8px;
+  border-color: var(--color-border);
   /* padding: var(--spacing-md); */
 }
 
@@ -121,6 +124,7 @@ blockquote {
   display: inline-block;
   padding: 4px 10px;
   background: var(--color-card-bg);
+
   border-radius: 4px;
   margin-right: 8px;
   margin-bottom: 8px;

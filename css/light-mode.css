@@ -8,6 +8,10 @@
   --color-accent: #ff0000;
   --color-gradient-start: #f7771e;
   --color-gradient-end: #ff4361;
+
+  --color-card-bg: rgba(255, 255, 255, 0.05);
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-read-section: rgba(255, 255, 255, 0.03);
   
   /* Typography variables */
   --font-primary: 'Kumbh Sans', sans-serif;
@@ -32,8 +36,9 @@
   --color-accent: #0077b6;
   --color-gradient-start: #00b4d8;
   --color-gradient-end: #90e0ef;
-  --color-card-bg: rgba(0, 0, 0, 0.4);
+  --color-card-bg: rgba(0, 0, 0, 0.2);
   --color-border: rgba(0, 0, 0, 0.1);
+  --color-read-section: rgba(255,255,255, 1);
 }
 
 /* Transition for smooth theme switching */
@@ -77,14 +82,10 @@ body {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 }
 
-.light-mode .research__content h1,
+/* .light-mode .research__content h1,
 .light-mode .research__content h2 {
   color: #131313;
-}
-
-.light-mode .footer__container {
-  background-color: #f8f9fa;
-}
+} */
 
 .light-mode .blog__card {
   background: rgba(255, 255, 255, 1);
