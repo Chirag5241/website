@@ -12,6 +12,7 @@
   top: 0;
   z-index: 999;
   transition: transform 0.5s ease-in-out;
+  width: 100%;
 }
 
 .navbar__container {
@@ -120,6 +121,8 @@
 @media screen and (max-width: 960px) {
   .navbar__container {
     padding: 0 15px;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .navbar__menu {
@@ -133,6 +136,7 @@
     transition: all 0.5s ease;
     height: 50vh;
     z-index: -1;
+    box-sizing: border-box;
   }
 
   .navbar__menu.active {
@@ -143,6 +147,8 @@
     z-index: 99;
     height: 50vh;
     font-size: 1.6rem;
+    width: 100%;
+    left: 0;
   }
 
   .navbar__toggle {
@@ -164,6 +170,16 @@
 
   .navbar__item {
     width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Fix for mobile menu blogs gap */
+  .navbar__menu.active .navbar__item.collapsed {
+    width: 100% !important;
+    opacity: 1;
+    pointer-events: auto;
+    margin-right: 1rem;
+    display: none; /* Hide instead of collapsing in mobile view */
   }
 
   .navbar__links {
@@ -171,6 +187,7 @@
     padding: 2rem;
     width: 100%;
     display: table;
+    box-sizing: border-box;
   }
 
   .navbar__btn {

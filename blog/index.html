@@ -35,6 +35,15 @@
                     <a href="index.html" class="navbar__links highlight" id="blog-page">Blog</a>
                 </li>
             </ul>
+            <div class="theme-toggle">
+                <label class="theme-toggle__label">
+                    <input type="checkbox" class="theme-toggle__input" id="theme-toggle">
+                    <span class="theme-toggle__slider">
+                        <i class="fas fa-sun theme-toggle__icon theme-toggle__icon--sun"></i>
+                        <i class="fas fa-moon theme-toggle__icon theme-toggle__icon--moon"></i>
+                    </span>
+                </label>
+            </div>
         </div>
     </nav>
 
@@ -121,6 +130,9 @@
     <!-- Scripts -->
     <script src="../js/jquery-2.1.1.js"></script>
     <script src="../js/main.js"></script>
+    <script src="../js/navbar-scroll.js"></script>
+    <script src="../js/navbar-side-collapse.js"></script>
+    <script src="../js/theme-toggle.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
         if (sessionStorage.getItem("triggerCollapse") === "true") {

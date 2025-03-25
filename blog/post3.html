@@ -35,6 +35,15 @@
                     <a href="index.html" class="navbar__links highlight">Blog</a>
                 </li>
             </ul>
+            <div class="theme-toggle">
+                <label class="theme-toggle__label">
+                    <input type="checkbox" class="theme-toggle__input" id="theme-toggle">
+                    <span class="theme-toggle__slider">
+                        <i class="fas fa-sun theme-toggle__icon theme-toggle__icon--sun"></i>
+                        <i class="fas fa-moon theme-toggle__icon theme-toggle__icon--moon"></i>
+                    </span>
+                </label>
+            </div>
         </div>
     </nav>
 
@@ -180,88 +189,7 @@
                     <ul>
                         <li>Reducing the cost of sensor suites (particularly lidar)</li>
                         <li>Scaling map creation and maintenance</li>
-                        <li>Developing business models that support the technology</li>
                     </ul>
-                    
-                    <h3>Regulatory and Social Acceptance</h3>
-                    
-                    <p>Technical capability alone isn't sufficient:</p>
-                    <ul>
-                        <li>Developing appropriate regulatory frameworks</li>
-                        <li>Building public trust in autonomous systems</li>
-                        <li>Addressing liability and insurance questions</li>
-                        <li>Managing the transition period with mixed autonomous and human-driven vehicles</li>
-                    </ul>
-                    
-                    <h2>The Future of Autonomous Navigation</h2>
-                    
-                    <p>Looking ahead, several trends are likely to shape the future of autonomous navigation:</p>
-                    
-                    <h3>Technological Evolution</h3>
-                    
-                    <p>We can expect continued advancement in key technologies:</p>
-                    <ul>
-                        <li><strong>Improved Sensors</strong>: Solid-state lidar, event cameras, and other novel sensing modalities</li>
-                        <li><strong>Edge AI</strong>: More powerful on-device processing enabling faster and more sophisticated perception</li>
-                        <li><strong>5G and V2X Communication</strong>: Vehicles communicating with infrastructure and each other</li>
-                        <li><strong>Simulation</strong>: More realistic virtual environments for training and testing</li>
-                    </ul>
-                    
-                    <h3>Domain-Specific Progress</h3>
-                    
-                    <p>Different application domains will likely progress at different rates:</p>
-                    <ul>
-                        <li><strong>Controlled Environments First</strong>: Warehouses, ports, and mines will see widespread adoption before urban streets</li>
-                        <li><strong>Highway Autonomy</strong>: Long-haul trucking on highways may precede complex urban driving</li>
-                        <li><strong>Geofenced Services</strong>: Autonomous taxis and shuttles in well-mapped areas</li>
-                        <li><strong>Gradual Expansion</strong>: Operational domains will expand as technology matures</li>
-                    </ul>
-                    
-                    <h3>Integration with Infrastructure</h3>
-                    
-                    <p>The future likely involves closer integration between vehicles and infrastructure:</p>
-                    <ul>
-                        <li>Smart roads with embedded sensors</li>
-                        <li>Dedicated lanes or zones for autonomous vehicles</li>
-                        <li>Traffic management systems optimized for mixed autonomous and human traffic</li>
-                        <li>Charging and maintenance infrastructure for autonomous fleets</li>
-                    </ul>
-                    
-                    <h3>New Applications and Business Models</h3>
-                    
-                    <p>Autonomous navigation will enable entirely new applications:</p>
-                    <ul>
-                        <li>Mobility-as-a-service replacing personal vehicle ownership</li>
-                        <li>Autonomous delivery networks for everything from packages to groceries</li>
-                        <li>Mobile businesses that come to customers</li>
-                        <li>Reconfiguration of urban spaces as parking needs decrease</li>
-                    </ul>
-                    
-                    <h2>My Research Contributions</h2>
-                    
-                    <p>My own research focuses on several aspects of autonomous navigation:</p>
-                    
-                    <h3>Texture-Oriented Drivable Area Segmentation</h3>
-                    
-                    <p>Our work on self-supervised segmentation enables robots to identify navigable surfaces without extensive labeled data. This approach is particularly valuable for indoor robots that must operate in diverse environments.</p>
-                    
-                    <h3>Vision-Proprioception Fusion</h3>
-                    
-                    <p>By combining visual information with proprioceptive feedback (how the robot "feels" as it moves), we've developed more robust terrain classification for unmanned ground vehicles. This helps vehicles adapt their control strategies to different surfaces.</p>
-                    
-                    <h3>Extended Kalman Filters for Underwater Localization</h3>
-                    
-                    <p>Our comparison of dynamic and kinematic model-driven EKF approaches provides insights for more accurate underwater vehicle localization, addressing the unique challenges of the underwater domain where GPS is unavailable.</p>
-                    
-                    <h2>Conclusion</h2>
-                    
-                    <p>Autonomous navigation stands at an exciting inflection point. The core technologies have matured significantly, and we're beginning to see real-world deployments across multiple domains. While substantial challenges remain, particularly around edge cases, safety validation, and regulatory frameworks, the trajectory is clear.</p>
-                    
-                    <p>The next decade will likely see autonomous navigation transition from novelty to necessity in many applications. This transition won't be uniform—some domains will advance faster than others—but the cumulative impact on how we move people and goods will be profound.</p>
-                    
-                    <p>As researchers and engineers in this field, we have the responsibility to develop these systems thoughtfully, prioritizing safety, accessibility, and positive societal impact. The technical challenges are fascinating, but the human and societal dimensions are equally important to address.</p>
-                    
-                    <p>What aspects of autonomous navigation are you most excited about or concerned with? I'd love to hear your thoughts in the comments below.</p>
                 </div>
             </div>
             
@@ -291,20 +219,11 @@
                 <ul class="comments__list">
                     <li class="comments__item">
                         <div class="comments__item-header">
-                            <span class="comments__item-author">David Rodriguez</span>
+                            <span class="comments__item-author">Alex Johnson</span>
                             <span class="comments__item-date">January 22, 2025</span>
                         </div>
                         <div class="comments__item-content">
-                            <p>Fascinating overview! I work in urban planning, and I'm particularly interested in how autonomous navigation might reshape our cities. Have you thought about how reduced parking needs might transform urban spaces? Or how autonomous vehicles might affect public transit systems?</p>
-                        </div>
-                    </li>
-                    <li class="comments__item">
-                        <div class="comments__item-header">
-                            <span class="comments__item-author">Emily Tanaka</span>
-                            <span class="comments__item-date">January 25, 2025</span>
-                        </div>
-                        <div class="comments__item-content">
-                            <p>I'm curious about your thoughts on the ethical dimensions of autonomous navigation. How do we program these systems to make decisions in unavoidable accident scenarios? And what about the potential job displacement for professional drivers? These social aspects seem just as challenging as the technical ones.</p>
+                            <p>Great overview of the autonomous navigation landscape! I'm curious about your thoughts on the regulatory challenges. Do you think we'll see a unified global framework for autonomous vehicles, or will regulations remain fragmented by country/region?</p>
                         </div>
                     </li>
                 </ul>
@@ -336,5 +255,6 @@
     <script src="../js/jquery-2.1.1.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/comments.js"></script>
+    <script src="../js/theme-toggle.js"></script>
 </body>
 </html>

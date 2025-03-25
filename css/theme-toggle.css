@@ -31,6 +31,7 @@
   background: linear-gradient(to right, var(--color-gradient-start), var(--color-gradient-end));
   border-radius: 24px;
   transition: 0.4s;
+  overflow: hidden; /* Add overflow hidden to hide icons when they go behind the slider */
 }
 
 .theme-toggle__slider:before {
@@ -43,6 +44,7 @@
   background-color: white;
   border-radius: 50%;
   transition: 0.4s;
+  z-index: 2; /* Ensure the slider button is above the icons */
 }
 
 .theme-toggle__input:checked + .theme-toggle__slider {
@@ -60,14 +62,28 @@
   font-size: 12px;
   color: var(--color-text);
   z-index: 1;
+  transition: opacity 0.3s ease;
 }
 
 .theme-toggle__icon--sun {
   left: 6px;
+  opacity: 0; /* Hide sun icon by default (dark mode) */
 }
 
 .theme-toggle__icon--moon {
   right: 6px;
+  opacity: 1; /* Show moon icon by default (dark mode) */
+}
+
+/* Show sun icon and hide moon icon when in light mode */
+.theme-toggle__input:checked ~ .theme-toggle__slider .theme-toggle__icon--sun,
+.light-mode .theme-toggle__icon--sun {
+  opacity: 1;
+}
+
+.theme-toggle__input:checked ~ .theme-toggle__slider .theme-toggle__icon--moon,
+.light-mode .theme-toggle__icon--moon {
+  opacity: 0;
 }
 
 /* Mobile Responsive */

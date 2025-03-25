@@ -341,4 +341,39 @@
   .blog-post__meta > * {
     margin-bottom: 5px;
   }
+  
+  /* Adjust blog card title size for mobile */
+  .blog__card-title {
+    font-size: 1.3rem;
+    line-height: 1.3;
+    white-space: normal;
+    word-wrap: break-word;
+    hyphens: auto;
+  }
+  
+  .blog__header h1 {
+    font-size: 2rem;
+  }
+  
+  .blog-post__content h2 {
+    font-size: 1.5rem;
+  }
+  
+  .blog-post__content h3 {
+    font-size: 1.3rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .blog__card-title {
+    font-size: 1.2rem;
+  }
+  
+  .blog__header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .blog-post__title {
+    font-size: 1.7rem;
+  }
 }
