@@ -1,0 +1,92 @@
+/* Skills Section Styles */
+.skills {
+    background: var(--color-background);
+    padding: var(--spacing-lg) var(--spacing-sm);
+  }
+  
+  .skills__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-md);
+  }
+  
+  .skills__heading {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    background: linear-gradient(to right, var(--color-gradient-start), var(--color-accent));
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+  }
+  
+  .skills__categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+  }
+  
+  .skills__category {
+    background-color: var(--color-card-bg);
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .skills__category:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .skills__category-title {
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .skills__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+  
+  .skills__item {
+    background-color: var(--color-primary-light);
+    color: var(--color-text);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+  
+  .skills__item:hover {
+    background-color: var(--color-primary);
+    transform: scale(1.05);
+  }
+  
+  /* Mobile Responsive */
+  @media screen and (max-width: 768px) {
+    .skills__categories {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .skills__heading {
+      font-size: 2rem;
+    }
+    
+    .skills__category-title {
+      font-size: 1.3rem;
+    }
+    
+    .skills__item {
+      font-size: 0.9rem;
+    }
+  }
+  

@@ -8,6 +8,7 @@
   --color-accent: #ff0000;
   --color-gradient-start: #f7771e;
   --color-gradient-end: #ff4361;
+  --color-text-muted: #aaa;
 
   --color-card-bg: rgba(255, 255, 255, 0.05);
   --color-border: rgba(255, 255, 255, 0.1);
@@ -36,6 +37,8 @@
   --color-accent: #0077b6;
   --color-gradient-start: #00b4d8;
   --color-gradient-end: #90e0ef;
+  --color-text-muted: #777
+  
   --color-card-bg: rgba(0, 0, 0, 0.2);
   --color-border: rgba(0, 0, 0, 0.1);
   --color-read-section: rgba(255,255,255, 1);

@@ -1,0 +1,118 @@
+/* Education Section Styles */
+.education {
+    background: var(--color-background);
+    padding: var(--spacing-lg) var(--spacing-sm);
+  }
+  
+  .education__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-md);
+  }
+  
+  .education__heading {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    background: linear-gradient(to right, var(--color-gradient-start), var(--color-accent));
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+  }
+  
+  .education__card {
+    background-color: var(--color-card-bg);
+    border-radius: 8px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .education__card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .education__school {
+    font-size: 1.8rem;
+    color: var(--color-text);
+    margin-bottom: 10px;
+  }
+  
+  .education__degree {
+    font-size: 1.3rem;
+    color: var(--color-primary);
+    margin-bottom: 10px;
+  }
+  
+  .education__period {
+    font-size: 1rem;
+    color: var(--color-text-muted);
+    margin-bottom: 15px;
+  }
+  
+  .education__gpa {
+    font-size: 1rem;
+    color: var(--color-text);
+    margin-bottom: 15px;
+  }
+  
+  .education__honors {
+    font-size: 1rem;
+    color: var(--color-text);
+    margin-bottom: 15px;
+  }
+  
+  .education__courses {
+    margin-top: 15px;
+  }
+  
+  .education__courses-title {
+    font-size: 1.1rem;
+    color: var(--color-text);
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  .education__courses-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .education__course {
+    background-color: var(--color-primary-light);
+    color: var(--color-text);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+  }
+  
+  /* Mobile Responsive */
+  @media screen and (max-width: 768px) {
+    .education__school {
+      font-size: 1.5rem;
+    }
+    
+    .education__degree {
+      font-size: 1.2rem;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .education__heading {
+      font-size: 2rem;
+    }
+    
+    .education__school {
+      font-size: 1.3rem;
+    }
+    
+    .education__degree {
+      font-size: 1.1rem;
+    }
+  }
+  

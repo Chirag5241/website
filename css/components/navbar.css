@@ -39,15 +39,12 @@
 .navbar__item {
   white-space: nowrap;
   transition:
-    width 0.4s ease,
     opacity 0.4s ease,
     margin-right 0.4s ease;
-  width: 100px;
-  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 1rem;
+  margin-right: 1.5rem;
   height: 80px;
 }
 

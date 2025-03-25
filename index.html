@@ -4,11 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Chirag Rastogi - Computer Engineer and Undergraduate Researcher at the University of Illinois at Urbana Champaign">
-    <meta name="keywords" content="Chirag Rastogi, Computer Engineer, Researcher, University of Illinois">
+    <meta name="description" content="Chirag Rastogi - Software Engineer at Qualcomm and Computer Engineering graduate from the University of Illinois at Urbana Champaign">
+    <meta name="keywords" content="Chirag Rastogi, Software Engineer, Qualcomm, Computer Engineer, Researcher, University of Illinois">
     <meta name="author" content="Chirag Rastogi">
     <title>Chirag's Website</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components/navbar.css">
+    <link rel="stylesheet" href="css/components/hero.css">
+    <link rel="stylesheet" href="css/components/about.css">
+    <link rel="stylesheet" href="css/components/research.css">
+    <link rel="stylesheet" href="css/components/experience.css">
+    <link rel="stylesheet" href="css/components/education.css">
+    <link rel="stylesheet" href="css/components/skills.css">
+    <link rel="stylesheet" href="css/components/projects.css">
+    <link rel="stylesheet" href="css/components/footer.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <script src="js/modernizr.js"></script>
 </head>
@@ -25,12 +35,24 @@
                 <li class="navbar__item">
                     <a href="#home" class="navbar__links" id="home-page">Home</a>
                 </li>
-                <li class="navbar__item">
+                <!-- <li class="navbar__item">
                     <a href="#about" class="navbar__links" id="about-page">About</a>
-                </li>
+                </li> -->
                 <li class="navbar__item">
                     <a href="#research" class="navbar__links" id="research-page">Research</a>
                 </li>
+                <li class="navbar__item">
+                    <a href="#experience" class="navbar__links" id="experience-page">Experience</a>
+                </li>
+                <!-- <li class="navbar__item">
+                    <a href="#education" class="navbar__links" id="education-page">Education</a>
+                </li> -->
+                <li class="navbar__item">
+                    <a href="#projects" class="navbar__links" id="projects-page">Projects</a>
+                </li>
+                <!-- <li class="navbar__item">
+                    <a href="#skills" class="navbar__links" id="skills-page">Skills</a>
+                </li> -->
                 <li class="navbar__item">
                     <a href="blog/index.html" class="navbar__links" id="blog-page">Blog</a>
                 </li>
@@ -54,6 +76,14 @@
         <div class="hero__container">
             <h1 class="hero__heading fade-in">Can collective human systems exhibit emergent "dreams"</h1>
             <p class="hero__description fade-in">I aim to formalize societal intelligence by exploring how collective human systems might exhibit emergent "dreams" that transcend individuals. I'm particularly intrigued by the question, If regions, with their diverse populations, had a mind, how would that mind dream?</p>
+            <!-- <div class="hero__buttons">
+                <a href="https://www.linkedin.com/in/chiragrastogi01" target="_blank" class="main__btn btn-hover-effect">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+                <a href="https://scholar.google.com/citations?user=svPLe9EAAAAJ&hl=en" target="_blank" class="main__btn btn-hover-effect">
+                    <i class="fas fa-graduation-cap"></i> Google Scholar
+                </a>
+            </div> -->
         </div>
     </section>
 
@@ -61,14 +91,20 @@
     <section class="main" id="about">
         <div class="main__container">
             <div class="main__img--container">
-                <a href="https://www.linkedin.com/in/chirag-rastogi-0baa72178/" target="_blank">
+                <a href="https://www.linkedin.com/in/chiragrastogi01" target="_blank">
                     <div class="main__img--card fade-in"><img src="./images/headshot_happy.png" alt="Chirag Rastogi"></div>
                 </a>
             </div>
             <div class="main__content">
-                <h1 class="hero__heading fade-in">Who am I?</h1>
-                <p class="hero__description fade-in">I am a Computer Engineer and an Undergraduate Researcher at the University of Illinois at Urbana Champaign.
-                    TODO
+                <h1 class="hero__heading fade-in">Hey, I am Chirag!</h1>
+                <p class="hero__description fade-in">
+                    I am a Software Engineer at Qualcomm working on the Linux Datapath Team, where I lead the development of IP Accelerator driver features and implement Modem data offloading pipelines. Previously, I completed my Bachelor of Science in Computer Engineering at the University of Illinois at Urbana-Champaign.
+                </p>
+                <p class="hero__description fade-in">
+                    TODO (AI GEN): My research interests include machine learning, computer vision, and autonomous systems. I've published papers in IEEE Robotics and Automation Letters and IEEE Transactions on Intelligent Transportation Systems, focusing on robust semantic segmentation and terrain classification for autonomous vehicles.
+                </p>
+                <p class="hero__description fade-in">
+                    My experience spans from embedded systems and driver development to cloud computing and machine learning.
                 </p>
                 <button class="main__btn btn-hover-effect"><a href="https://scholar.google.com/citations?user=svPLe9EAAAAJ&hl=en" target="_blank">Google Scholar</a></button>     
             </div>
@@ -78,9 +114,25 @@
     <!-- Research Section -->
     <section class="research" id="research">
         <div class="research__content">
-            <h1>Research</h1>
+            <h1>Research & Publications</h1>
             <table>
                 <tbody>
+                    <tr class="animate-on-scroll">
+                        <td style="width:25%;vertical-align:middle;">
+                            <img src="./images/ai-plasma.jpg" alt="Causal Probing Methods" width="200">
+                        </td>
+                        <td style="width:75%;vertical-align:middle;">
+                            <h2>Measuring the Reliability of Causal Probing Methods: Tradeoffs, Limitations, and the Plight of Nullifying Interventions</h2>
+                            <p>
+                                Chirag Rastogi et al.
+                                <br>
+                                <em>NeurIPS 2024 Workshop (IAI)</em>, under review at ICML
+                                <br>
+                                <a href="#" target="_blank">[coming soon]</a>
+                            </p>
+                        </td>
+                    </tr>
+                    
                     <tr class="animate-on-scroll">
                         <td style="width:25%;vertical-align:middle;">
                             <img src="./images/SelfSupervised_texture.png" alt="Self-Supervised Texture Oriented Segmentation" width="200">
@@ -131,14 +183,233 @@
         </div>
     </section>
 
+    <!-- Experience Section -->
+    <section class="experience" id="experience">
+        <div class="experience__container">
+            <h1 class="experience__heading">Professional Experience</h1>
+            <div class="experience__timeline">
+                <!-- Qualcomm -->
+                <div class="experience__item left animate-on-scroll">
+                    <div class="experience__content">
+                        <h2 class="experience__title">Software Engineer</h2>
+                        <h3 class="experience__company">Qualcomm, Linux Datapath Team</h3>
+                        <p class="experience__period">July 2023 - Present</p>
+                        <p class="experience__location">California, USA</p>
+                        <div class="experience__description">
+                            <ul>
+                                <li>Led development of IP Accelerator driver features across teams, implementing Modem data offloading pipelines</li>
+                                <li>Architected and developing crypto offloading solution for a tunnelling protocol, improving TCP throughput by ~10%</li>
+                                <li>Reduced storage cost by >80%, improved on-chip data rates for 5G, and optimized stack runtimes for the IP Acceleration team using Socket buffer recycling</li>
+                                <li>Led pre-silicon upgrade and verification using FPGA emulators to ensure code compatibility and system stability</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- IBM-Illinois -->
+                <div class="experience__item right animate-on-scroll">
+                    <div class="experience__content">
+                        <h2 class="experience__title">Undergraduate Researcher</h2>
+                        <h3 class="experience__company">IBM-Illinois Centre for Cognitive Computing Systems Research</h3>
+                        <p class="experience__period">August 2021 - May 2023</p>
+                        <p class="experience__location">Illinois, USA</p>
+                        <div class="experience__description">
+                            <ul>
+                                <li>Constructed models for Multimodal Contrastive Learning on Video, Caption, and Sound using Adaptive masking</li>
+                                <li>Developed Information Forests using Graph Transformers to connect discussion threads across the internet for discussion-level search; now used to teach Text and Information Networks</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Caterpillar -->
+                <div class="experience__item left animate-on-scroll">
+                    <div class="experience__content">
+                        <h2 class="experience__title">Corporate Software Engineering Intern</h2>
+                        <h3 class="experience__company">Caterpillar, Data Innovation Lab</h3>
+                        <p class="experience__period">June 2020 - December 2021</p>
+                        <p class="experience__location">Illinois, USA</p>
+                        <div class="experience__description">
+                            <ul>
+                                <li>Reduced runtime by >99% for weekly analyses and improved statistical processes by building pipelines to obtain data requested by different business partners and product groups</li>
+                                <li>Minimized costs by ~66% while increasing scalability by migrating scripts onto the AWS data pipeline, building tables on the cloud data warehouse Snowflake, and using Azure DevOps for version control, testing, and deployment</li>
+                                <li>Published financial and global machine data forecasts on the production database and website, won 2020 CIO award</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- AUVSL -->
+                <div class="experience__item right animate-on-scroll">
+                    <div class="experience__content">
+                        <h2 class="experience__title">Undergraduate Researcher</h2>
+                        <h3 class="experience__company">Autonomous and Unmanned Vehicle Systems Laboratory, UIUC</h3>
+                        <p class="experience__period">October 2019 - May 2023</p>
+                        <p class="experience__location">Illinois, USA</p>
+                        <div class="experience__description">
+                            <ul>
+                                <li>Assisted Dr. Norris in developing generative networks using diffusion models for robust semantic segmentation</li>
+                                <li>Built a system to create a local map on OCTOMAP for real-time obstacle detection, terrain masking, and segmentation</li>
+                                <li>Implemented One-shot texture retrieval with Superpixel segmentation for a much higher accuracy in real-time systems</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="education" id="education">
+        <div class="education__container">
+            <h1 class="education__heading">Education</h1>
+            <div class="education__card animate-on-scroll">
+                <h2 class="education__school">University of Illinois at Urbana-Champaign</h2>
+                <h3 class="education__degree">Bachelor of Science in Computer Engineering</h3>
+                <p class="education__period">Graduated: May 2023</p>
+                <p class="education__gpa">GPA: 3.74/4.0</p>
+                <p class="education__honors">James Scholar and Dean's List</p>
+                <div class="education__courses">
+                    <h4 class="education__courses-title">Relevant Coursework:</h4>
+                    <div class="education__courses-list">
+                        <span class="education__course">CS 512: Data Mining Principles</span>
+                        <span class="education__course">Social and Information Networks</span>
+                        <span class="education__course">Text Information Systems</span>
+                        <span class="education__course">Antisocial Computing</span>
+                        <span class="education__course">Reinforcement Learning</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="projects__container">
+            <h1 class="projects__heading">Projects</h1>
+            <div class="projects__grid">
+                <!-- Project 1 -->
+                <div class="project__card animate-on-scroll">
+                    <div class="project__content">
+                        <h2 class="project__title">MOMENT</h2>
+                        <h3 class="project__organization">with ROKMETRO (under Dr. Sanjay Patel)</h3>
+                        <p class="project__description">
+                            Created an event database and app for multiple universities, serving 1200+ users and integrated it with the official UIUC app.
+                        </p>
+                        <div class="project__tags">
+                            <span class="project__tag">Mobile App</span>
+                            <span class="project__tag">Database</span>
+                            <span class="project__tag">User Experience</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project__card animate-on-scroll">
+                    <div class="project__content">
+                        <h2 class="project__title">Early Wildfire Detection using 5G Massive IoT</h2>
+                        <h3 class="project__organization">QHACK, Qualcomm</h3>
+                        <p class="project__description">
+                            Led a team of 7 that came 3rd and created a 2-tiered Edge Server Architecture using AWS and Random Forest Classifier that allowed high frequency data collection from millions of sensors while minimizing storage costs.
+                        </p>
+                        <div class="project__tags">
+                            <span class="project__tag">IoT</span>
+                            <span class="project__tag">5G</span>
+                            <span class="project__tag">AWS</span>
+                            <span class="project__tag">Machine Learning</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project__card animate-on-scroll">
+                    <div class="project__content">
+                        <h2 class="project__title">AIR</h2>
+                        <h3 class="project__organization">HackIllinois, University of Illinois</h3>
+                        <p class="project__description">
+                            Won best financial hack, presented by Capital One, for designing and developing a program that tracks fingers to create and sign usable checks in the air, using Google Cloud Vision and Checkbook.io APIs.
+                        </p>
+                        <div class="project__tags">
+                            <span class="project__tag">Computer Vision</span>
+                            <span class="project__tag">Google Cloud</span>
+                            <span class="project__tag">Financial Tech</span>
+                            <span class="project__tag">API Integration</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <div class="skills__container">
+            <h1 class="skills__heading">Skills</h1>
+            <div class="skills__categories">
+                <!-- Programming Languages -->
+                <div class="skills__category animate-on-scroll">
+                    <h2 class="skills__category-title">Programming Languages</h2>
+                    <div class="skills__list">
+                        <span class="skills__item">Python</span>
+                        <span class="skills__item">C</span>
+                        <span class="skills__item">C++</span>
+                        <span class="skills__item">SQL</span>
+                        <span class="skills__item">x86</span>
+                        <span class="skills__item">R</span>
+                        <span class="skills__item">LC3</span>
+                        <span class="skills__item">Cypher</span>
+                        <span class="skills__item">HTML</span>
+                        <span class="skills__item">CSS</span>
+                        <span class="skills__item">JavaScript</span>
+                        <span class="skills__item">React Native</span>
+                        <span class="skills__item">System Verilog</span>
+                    </div>
+                </div>
+                
+                <!-- Technologies & Frameworks -->
+                <div class="skills__category animate-on-scroll">
+                    <h2 class="skills__category-title">Technologies & Frameworks</h2>
+                    <div class="skills__list">
+                        <span class="skills__item">CUDA</span>
+                        <span class="skills__item">TensorFlow</span>
+                        <span class="skills__item">PyTorch</span>
+                        <span class="skills__item">Keras</span>
+                        <span class="skills__item">OpenCV</span>
+                        <span class="skills__item">MetaPy</span>
+                        <span class="skills__item">Scikit-learn</span>
+                        <span class="skills__item">ROS</span>
+                        <span class="skills__item">Jenkins</span>
+                        <span class="skills__item">WebGPU</span>
+                    </div>
+                </div>
+                
+                <!-- Cloud & Databases -->
+                <div class="skills__category animate-on-scroll">
+                    <h2 class="skills__category-title">Cloud & Databases</h2>
+                    <div class="skills__list">
+                        <span class="skills__item">AWS EC2</span>
+                        <span class="skills__item">AWS S3</span>
+                        <span class="skills__item">AWS Lambda</span>
+                        <span class="skills__item">AWS API Gateway</span>
+                        <span class="skills__item">AWS ECS</span>
+                        <span class="skills__item">AWS Glue</span>
+                        <span class="skills__item">Neo4j</span>
+                        <span class="skills__item">MySQL</span>
+                        <span class="skills__item">Snowflake</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer Section -->
     <footer>
         <div class="footer__container">
             <div class="footer__content">
                 <div class="footer__section">
                     <h3>Contact Me</h3>
-                    <p><a href="mailto:contact@example.com"><i class="fas fa-envelope"></i> Email</a></p>
-                    <p><a href="https://www.linkedin.com/in/chirag-rastogi-0baa72178/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></p>
+                    <p><a href="mailto:chiragr2@illinois.edu"><i class="fas fa-envelope"></i> Email</a></p>
+                    <p><a href="https://www.linkedin.com/in/chiragrastogi01" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></p>
                 </div>
                 <div class="footer__section">
                     <h3>Social Media</h3>
@@ -158,5 +429,34 @@
     <script src="js/navbar-scroll.js"></script>
     <script src="js/navbar-side-collapse.js"></script>
     <script src="js/theme-toggle.js"></script>
+    <script>
+        // Animation for elements that should fade in
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach(element => {
+                element.classList.add('visible');
+            });
+            
+            // Animation for elements that should animate on scroll
+            const animateElements = document.querySelectorAll('.animate-on-scroll');
+            
+            function checkScroll() {
+                animateElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementTop < windowHeight * 0.8) {
+                        element.classList.add('visible');
+                    }
+                });
+            }
+            
+            // Check elements on initial load
+            checkScroll();
+            
+            // Check elements on scroll
+            window.addEventListener('scroll', checkScroll);
+        });
+    </script>
 </body>
 </html>
