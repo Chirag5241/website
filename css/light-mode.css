@@ -1,47 +1,19 @@
 /* Light Mode Theme Variables */
-:root {
-  /* Dark mode (default) */
-  --color-background: #131313;
-  --color-text: #ffffff;
-  --color-primary: #f7971e;
-  --color-secondary: #000000;
-  --color-accent: #ff0000;
-  --color-gradient-start: #f7771e;
-  --color-gradient-end: #ff4361;
-  --color-text-muted: #aaa;
-
-  --color-card-bg: rgba(255, 255, 255, 0.05);
-  --color-border: rgba(255, 255, 255, 0.1);
-  --color-read-section: rgba(255, 255, 255, 0.03);
-  
-  /* Typography variables */
-  --font-primary: 'Kumbh Sans', sans-serif;
-  --font-secondary: 'ONEDAY', sans-serif;
-  --font-heading: 'grifterbold', serif;
-  --font-serif: Georgia, serif;
-  
-  /* Spacing variables */
-  --spacing-xs: 0.5rem;
-  --spacing-sm: 1rem;
-  --spacing-md: 2rem;
-  --spacing-lg: 4rem;
-  --spacing-xl: 8rem;
-}
 
 /* Light mode theme */
 :root.light-mode {
-  --color-background: #f0f0f0;
+  --color-background: #f8f8f8;
   --color-text: #2e2828;
   --color-primary: #00b4d8;
   --color-secondary: #f8f9fa;
   --color-accent: #0077b6;
   --color-gradient-start: #00b4d8;
   --color-gradient-end: #90e0ef;
-  --color-text-muted: #777
-  
-  --color-card-bg: rgba(0, 0, 0, 0.2);
+  --color-text-muted: #777;
+  --color-card-bg: rgba(255,255,255, 1);
   --color-border: rgba(0, 0, 0, 0.1);
-  --color-read-section: rgba(255,255,255, 1);
+  --color-read-section: rgba(255,255,255, 0.85);
+  --color-tag: rgba(0, 0, 0, 0.06);
 }
 
 /* Transition for smooth theme switching */

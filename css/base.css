@@ -1,7 +1,7 @@
 /* Base CSS - General styling and variables */
 
 :root {
-  /* Color variables */
+  /* Dark mode (default) */
   --color-background: #131313;
   --color-text: #ffffff;
   --color-primary: #f7971e;
@@ -9,6 +9,12 @@
   --color-accent: #ff0000;
   --color-gradient-start: #f7771e;
   --color-gradient-end: #ff4361;
+  --color-text-muted: #aaa;
+
+  --color-card-bg: rgba(255, 255, 255, 0.05);
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-read-section: rgba(255, 255, 255, 0.03);
+  --color-tag: rgba(255, 255, 255, 0.05);
   
   /* Typography variables */
   --font-primary: 'Kumbh Sans', sans-serif;
@@ -23,7 +29,6 @@
   --spacing-lg: 4rem;
   --spacing-xl: 8rem;
 }
-
 @font-face {
   font-family: "ONEDAY";
   src: url("../OnedayFF/ONEDAY.otf") format("opentype");

@@ -1,11 +1,5 @@
 /* LessWrong-inspired design enhancements */
 
-/* :root {
-  --color-card-bg: rgba(255, 255, 255, 0.05);
-  --color-border: rgba(255, 255, 255, 0.1);
-  --color-read-section: rgba(255, 255, 255, 0.03);
-} */
-
 /* LessWrong-inspired card design */
 .card {
   background: var(--color-card-bg);
@@ -123,7 +117,8 @@ blockquote {
 .tag {
   display: inline-block;
   padding: 4px 10px;
-  background: var(--color-card-bg);
+  background: var(--color-tag);
+  color:var(--color-text-muted);
 
   border-radius: 4px;
   margin-right: 8px;
