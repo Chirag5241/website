@@ -24,15 +24,27 @@
 }
 
 .research__content h2 {
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   color: var(--color-primary);
   margin-bottom: var(--spacing-sm);
+  font-weight: 500;
+  line-height: 1.4;
+  font-family: var(--font-primary);
 }
 
 .research__content p {
-  font-size: 1.1rem;
-  line-height: 1.6;
+  font-size: 1rem;
+  line-height: 1.7;
   margin-bottom: var(--spacing-sm);
+  font-weight: 400;
+  font-family: var(--font-primary);
+  color: var(--color-text);
+}
+
+.research__content em {
+  font-style: normal;
+  color: var(--color-primary);
+  font-weight: 500;
 }
 
 .research__content a {

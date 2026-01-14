@@ -34,12 +34,14 @@ footer {
 
 .footer__section p {
   margin-bottom: var(--spacing-xs);
+  font-family: var(--font-primary);
 }
 
 .footer__section a {
   color: var(--color-text);
   text-decoration: none;
   transition: color 0.3s ease;
+  font-family: var(--font-primary);
 }
 
 .footer__section a:hover {

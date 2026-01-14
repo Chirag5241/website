@@ -3,24 +3,28 @@
 :root {
   /* Dark mode (default) */
   --color-background: #131313;
-  --color-text: #ffffff;
+  --color-text: #e3f3ff;
   --color-primary: #f7971e;
   --color-secondary: #000000;
   --color-accent: #ff0000;
   --color-gradient-start: #f7771e;
   --color-gradient-end: #ff4361;
-  --color-text-muted: #aaa;
+  --color-text-muted: #a8c4d8;
 
   --color-card-bg: rgba(255, 255, 255, 0.05);
   --color-border: rgba(255, 255, 255, 0.1);
   --color-read-section: rgba(255, 255, 255, 0.03);
   --color-tag: rgba(255, 255, 255, 0.05);
+  --color-shadow: rgba(0, 0, 0, 0.1);
+  --color-shadow-hover: rgba(0, 0, 0, 0.2);
+  --color-primary-subtle: rgba(247, 151, 30, 0.15);
+  --color-primary-border: rgba(247, 151, 30, 0.2);
   
   /* Typography variables */
-  --font-primary: 'Kumbh Sans', sans-serif;
+  --font-primary: 'Outfit', 'Kumbh Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-secondary: 'ONEDAY', sans-serif;
-  --font-heading: 'grifterbold', serif;
-  --font-serif: Georgia, serif;
+  --font-heading: 'grifterbold', 'Outfit', sans-serif;
+  --font-serif: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
   
   /* Spacing variables */
   --spacing-xs: 0.5rem;

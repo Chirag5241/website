@@ -9,11 +9,15 @@
   --color-accent: #0077b6;
   --color-gradient-start: #00b4d8;
   --color-gradient-end: #90e0ef;
-  --color-text-muted: #777;
-  --color-card-bg: rgba(255,255,255, 1);
+  --color-text-muted: #5a6a7a;
+  --color-card-bg: rgba(255, 255, 255, 1);
   --color-border: rgba(0, 0, 0, 0.1);
-  --color-read-section: rgba(255,255,255, 0.85);
+  --color-read-section: rgba(255, 255, 255, 0.85);
   --color-tag: rgba(0, 0, 0, 0.06);
+  --color-shadow: rgba(0, 0, 0, 0.08);
+  --color-shadow-hover: rgba(0, 0, 0, 0.15);
+  --color-primary-subtle: rgba(0, 180, 216, 0.1);
+  --color-primary-border: rgba(0, 180, 216, 0.2);
 }
 
 /* Transition for smooth theme switching */
@@ -27,7 +31,9 @@ body {
 }
 
 .light-mode .hero__heading,
-.light-mode .main__content h1 {
+.light-mode .hero__description,
+.light-mode .main__content h1,
+.light-mode .main__content p {
   color: var(--color-text);
 }
 

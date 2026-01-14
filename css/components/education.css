@@ -27,13 +27,13 @@
     border-radius: 8px;
     padding: 30px;
     margin-bottom: 30px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px var(--color-shadow);
     transition: all 0.3s ease;
   }
   
   .education__card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 16px var(--color-shadow-hover);
   }
   
   .education__school {
@@ -52,18 +52,21 @@
     font-size: 1rem;
     color: var(--color-text-muted);
     margin-bottom: 15px;
+    font-family: var(--font-primary);
   }
   
   .education__gpa {
     font-size: 1rem;
     color: var(--color-text);
     margin-bottom: 15px;
+    font-family: var(--font-primary);
   }
   
   .education__honors {
     font-size: 1rem;
     color: var(--color-text);
     margin-bottom: 15px;
+    font-family: var(--font-primary);
   }
   
   .education__courses {
@@ -89,6 +92,7 @@
     padding: 5px 12px;
     border-radius: 20px;
     font-size: 0.9rem;
+    font-family: var(--font-primary);
   }
   
   /* Mobile Responsive */

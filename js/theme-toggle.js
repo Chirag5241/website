@@ -8,11 +8,15 @@ const initThemeToggle = () => {
   const themeToggle = document.getElementById('theme-toggle');
   const rootElement = document.documentElement;
   
-  // Check for saved theme preference or use default (dark mode)
+  // Check for saved theme preference or use default (light mode)
   const savedTheme = localStorage.getItem('theme');
   
-  // Apply saved theme if it exists
-  if (savedTheme === 'light') {
+  // Apply saved theme or default to light mode
+  if (savedTheme === 'dark') {
+    rootElement.classList.remove('light-mode');
+    themeToggle.checked = false;
+  } else {
+    // Default to light mode
     rootElement.classList.add('light-mode');
     themeToggle.checked = true;
   }

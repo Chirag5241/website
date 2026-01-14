@@ -1,6 +1,6 @@
 /* Skills Section Styles */
 .skills {
-    background: rgba var(--color-background);
+    background: var(--color-background);
     padding: var(--spacing-lg) var(--spacing-sm);
   }
   
@@ -32,13 +32,13 @@
     background-color: var(--color-read-section);
     border-radius: 8px;
     padding: 25px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px var(--color-shadow);
     transition: all 0.3s ease;
   }
   
   .skills__category:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 16px var(--color-shadow-hover);
   }
   
   .skills__category-title {
@@ -55,14 +55,17 @@
     justify-content: center;
   }
   
-  .skills__item {
-    background-color: var(--color-primary-light);
-    color: var(--color-text);
-    padding: 8px 15px;
-    border-radius: 20px;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-  }
+.skills__item {
+  background-color: var(--color-primary-subtle);
+  color: var(--color-text);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 1px solid var(--color-primary-border);
+  font-family: var(--font-primary);
+}
   
   .skills__item:hover {
     background-color: var(--color-primary);
