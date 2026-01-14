@@ -48,11 +48,11 @@
 
 /* Desktop/Mobile image visibility */
 .main__img--desktop {
-  display: block;
+  display: block !important;
 }
 
 .main__img--mobile {
-  display: none;
+  display: none !important;
 }
 
 .main__img--card {
