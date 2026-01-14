@@ -72,8 +72,10 @@
         </div>
     </nav>
 
-    <!-- About Section (now first) -->
-    <section class="main" id="home">
+    <!-- About Section (now first, with stars background) -->
+    <section class="hero main" id="home">
+        <canvas id="stars-canvas"></canvas>
+        <div id="stars-background"></div>
         <div class="main__container">
             <!-- Desktop image: shown on left on desktop, hidden on mobile -->
             <div class="main__img--container main__img--desktop">
@@ -82,7 +84,7 @@
                 </a>
             </div>
             <div class="main__content">
-                <h1 class="hero__heading fade-in">About me</h1>
+                <h1 class="hero__heading fade-in">Chirag Rastogi</h1>
                 <!-- Mobile image: hidden on desktop, shown below title on mobile -->
                 <div class="main__img--container main__img--mobile">
                     <a href="https://www.linkedin.com/in/chiragrastogi01" target="_blank">
@@ -93,7 +95,7 @@
                     I am a Software Engineer at Qualcomm, developing modem data software and leading IP Accelerator driver features for Linux. I hold a B.S. in Computer Engineering from the University of Illinois at Urbana-Champaign.
                 </p>
                 <p class="hero__description fade-in">
-                    My research focuses on interpretable AI and strategic reasoning. I've published work on causal probing in language models, multimodal fusion for autonomous navigation, and self-supervised texture segmentation—spanning venues from IJCNLP-AACL to IEEE Robotics and Automation Letters.
+                    My research focuses on interpretable AI and strategic reasoning. I've published work on causal probing in language models, multimodal fusion for autonomous navigation, and self-supervised texture segmentation, spanning venues from IJCNLP-AACL to IEEE Robotics and Automation Letters.
                 </p>
                 <p class="hero__description fade-in">
                     From kernel development to machine learning pipelines, I build systems that bridge low-level performance engineering with high-level intelligent decision-making.
@@ -103,21 +105,11 @@
         </div>
     </section>
 
-    <!-- Hero Section (now second, with stars background) --> 
-    <section class="hero" id="research-intro">
-        <canvas id="stars-canvas"></canvas>
-        <div id="stars-background"></div>
+    <!-- Research Question Section (now second, no background) --> 
+    <section class="research-intro" id="research-intro">
         <div class="hero__container">
             <h1 class="hero__heading fade-in">Can we reliably curb escalation risk in competing models without sacrificing strategic effectiveness?</h1>
             <p class="hero__description fade-in">I am building interpretable, controllable best-response models to study cooperative, deceptive, exploitative, and escalatory behavior. I aim to isolate interpretable escalation signals and intervene to stop spirals. I hope to apply this to negotiation and wargaming at a time when great-power dynamics increasingly recast dangerous crises as "windows of opportunity"</p>
-            <!-- <div class="hero__buttons">
-                <a href="https://www.linkedin.com/in/chiragrastogi01" target="_blank" class="main__btn btn-hover-effect">
-                    <i class="fab fa-linkedin"></i> LinkedIn
-                </a>
-                <a href="https://scholar.google.com/citations?user=svPLe9EAAAAJ&hl=en" target="_blank" class="main__btn btn-hover-effect">
-                    <i class="fas fa-graduation-cap"></i> Google Scholar
-                </a>
-            </div> -->
         </div>
     </section>
 

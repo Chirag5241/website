@@ -76,6 +76,20 @@
   text-decoration: none;
 }
 
+/* Research Intro Section (no background) */
+.research-intro {
+  background: var(--color-background);
+  padding: var(--spacing-lg) var(--spacing-sm);
+  position: relative;
+  color: var(--color-text);
+  font-family: var(--font-primary);
+}
+
+.research-intro .hero__container {
+  height: auto;
+  padding: var(--spacing-lg) 30px;
+}
+
 /* Mobile Responsive */
 @media screen and (max-width: 768px) {
   .hero__container {

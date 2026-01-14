@@ -5,6 +5,20 @@
   padding-top: 100px; /* Account for fixed navbar when this section is first */
 }
 
+/* When main section has hero background */
+.hero.main {
+  height: 100vh;
+  padding: 0 var(--spacing-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero.main .main__container {
+  position: relative;
+  z-index: 2;
+}
+
 .main__container {
   display: grid;
   grid-template-columns: 1fr 1fr;
