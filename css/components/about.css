@@ -84,11 +84,11 @@
 
   /* Hide desktop image, show mobile image */
   .main__img--desktop {
-    display: none;
+    display: none !important;
   }
 
   .main__img--mobile {
-    display: block;
+    display: block !important;
     margin-bottom: var(--spacing-md);
   }
 
