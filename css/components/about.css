@@ -2,6 +2,7 @@
 .main {
   background: var(--color-background);
   padding: var(--spacing-lg) var(--spacing-sm);
+  padding-top: 100px; /* Account for fixed navbar when this section is first */
 }
 
 .main__container {
