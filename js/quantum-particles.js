@@ -144,9 +144,9 @@ class QuantumField {
     this.cam = { x: 0, y: 0, z: 0 };
 
     this.cfg = {
-      count: mobile ? 100 : 150,
-      minParticles: mobile ? 100 : 150,
-      maxParticles: mobile ? 1000 : 1000,
+      count: mobile ? 70 : 150,
+      minParticles: mobile ? 70 : 150,
+      maxParticles: mobile ? 300 : 1000, // cap lower on phones to keep the reaction smooth
 
       // Depth planes (world units ahead of the camera)
       near: 46,

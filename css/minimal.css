@@ -502,6 +502,12 @@
 /* ---------- Mobile ---------- */
 
 @media screen and (max-width: 640px) {
+  /* Tighten the vertical rhythm on phones — 5.5rem between sections leaves
+     big dead gaps (most noticeably right after the hero photo). */
+  .section {
+    --section-gap: 3rem;
+  }
+
   .hero__inner {
     flex-direction: column;
     align-items: flex-start;
