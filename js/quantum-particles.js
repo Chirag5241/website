@@ -144,9 +144,9 @@ class QuantumField {
     this.cam = { x: 0, y: 0, z: 0 };
 
     this.cfg = {
-      count: mobile ? 75 : 150,
-      minParticles: mobile ? 75 : 100,
-      maxParticles: mobile ? 200 : 300,
+      count: mobile ? 100 : 150,
+      minParticles: mobile ? 100 : 150,
+      maxParticles: mobile ? 1000 : 1000,
 
       // Depth planes (world units ahead of the camera)
       near: 46,
@@ -159,7 +159,7 @@ class QuantumField {
       // Camera: steady forward march + a gentle horizontal sway. The downward
       // motion is applied per-particle (see downSpeed) instead of as a flat
       // camera descent, so its strength can fall off with depth.
-      forwardSpeed: 2,
+      forwardSpeed: 2.5,
       driftAmpX: 1,
       driftFreqX: 0.0055,
 
@@ -167,12 +167,12 @@ class QuantumField {
       // Scaled by depth on a logarithmic curve — ~0 in the far background,
       // rising to the full value up close. downCurve shapes the falloff
       // (higher = the effect stays near 0 deeper into the background).
-      downSpeed: 10,
-      downCurve: 50,
+      downSpeed: 5,
+      downCurve: 60,
 
       // Neutron motion (world units / frame) — primarily horizontal
       speedMin: 0.3,
-      speedMax: 1.7,
+      speedMax: 2,
 
       // Neutron world radius (mass proxy)
       rMin: 2.2,
@@ -188,14 +188,21 @@ class QuantumField {
       maxStreak: 46,
 
       // Fission / chain reaction
-      collisionRadius: 20,
+      collisionRadius: 22,
       cell: 44, // spatial-grid cell size (~2 * collisionRadius)
       childShrink: 0.7,
       childCooldown: 12, // frames a fresh fragment is collision-immune (so it can fly clear)
       sparkCount: 0, // transient throwaway sparks per fission (0 = none, just the fragments)
+      // Probability a collision actually fissions (ejects new neutrons) rather
+      // than being a non-productive absorption. Set to the U-235 thermal-neutron
+      // fission probability: 1/(1+alpha) with capture/fission ratio alpha ~= 0.169.
+      fissionProbability: 0.855,
+      // Neutrons released per fission — U-235 thermal multiplicity distribution
+      // (Terrell). P(k) for k = 0..6 neutrons; mean nu ~= 2.43.
+      neutronMultiplicity: [0.033, 0.174, 0.335, 0.303, 0.123, 0.028, 0.004],
       // Keep-alive: if no fission has happened in this window, force one so the
       // reaction never fully dies. Lower = more aggressive.
-      keepAliveMs: 1100
+      keepAliveMs: 2000
     };
 
     this.particles = [];
@@ -223,8 +230,9 @@ class QuantumField {
     const dir = Math.random() < 0.5 ? -1 : 1;
     const sp = rand(cfg.speedMin, cfg.speedMax);
     return {
-      x: cam.x + rand(-hx, hx) * 1.15,
-      y: cam.y + rand(-hy, hy) * 1.15,
+      // Spawn strictly inside the visible frustum (no off-screen overscan)
+      x: cam.x + rand(-hx, hx),
+      y: cam.y + rand(-hy, hy),
       z: cam.z + depth,
       vx: dir * sp, // moving left or right
       vy: rand(-0.12, 0.12) * sp,
@@ -251,8 +259,9 @@ class QuantumField {
     const { hx, hy } = this.frustumHalf(depth);
     const dir = Math.random() < 0.5 ? -1 : 1;
     const sp = rand(cfg.speedMin, cfg.speedMax);
-    p.x = cam.x + rand(-hx, hx) * 1.15;
-    p.y = cam.y + rand(-hy, hy) * 1.15;
+    // Spawn strictly inside the visible frustum (no off-screen overscan)
+    p.x = cam.x + rand(-hx, hx);
+    p.y = cam.y + rand(-hy, hy);
     p.z = cam.z + depth;
     p.vx = dir * sp;
     p.vy = rand(-0.12, 0.12) * sp;
@@ -421,6 +430,18 @@ class QuantumField {
     this.lastFission = performance.now();
   }
 
+  // Sample how many neutrons a fission releases, from the configured
+  // multiplicity distribution (defaults to U-235 thermal, mean nu ~= 2.43).
+  sampleNeutronYield() {
+    const dist = this.cfg.neutronMultiplicity;
+    let r = Math.random();
+    for (let k = 0; k < dist.length; k++) {
+      r -= dist[k];
+      if (r < 0) return k;
+    }
+    return dist.length - 1;
+  }
+
   // Consume two neutrons; emit a flash + spark burst and smaller fragments.
   fission(p, q) {
     const cfg = this.cfg;
@@ -438,6 +459,10 @@ class QuantumField {
     const colorIdx = Math.random() < 0.5 ? p.colorIdx : q.colorIdx;
     this.spawnBurst(sx, sy, vis, colorIdx);
 
+    // Not every collision fissions — some are non-productive absorptions that
+    // eject no new neutrons (the two colliders are still consumed either way).
+    if (Math.random() >= cfg.fissionProbability) return;
+
     // Conserve the colliders' momentum (mass-weighted) so fragments keep
     // travelling across the screen along the original direction of motion.
     const mt = p.r + q.r;
@@ -445,10 +470,11 @@ class QuantumField {
     const bvy = (p.vy * p.r + q.vy * q.r) / mt;
     const bvz = (p.vz * p.r + q.vz * q.r) / mt;
 
-    // Eject smaller fragment neutrons (at least 3) to carry the chain forward
+    // Eject fragment neutrons — count drawn from the U-235 multiplicity
+    // distribution (mean nu ~= 2.43) — to carry the chain forward
     if (this.particles.length >= cfg.maxParticles) return;
     const childR = Math.max(p.r, q.r) * cfg.childShrink;
-    const n = 3 + (Math.random() < 0.4 ? 1 : 0);
+    const n = this.sampleNeutronYield();
     const r = childR > cfg.minR ? childR : this.cfg.rMin;
     for (let i = 0; i < n; i++) {
       if (this.particles.length >= cfg.maxParticles) break;
