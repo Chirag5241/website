@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (scrollTop > lastScrollTop && scrollTop > 100) {
       // Scrolling down and not at the top
       if (!isCollapsed) {
-        navbar.style.transform = 'translateY(-80px)';
+        navbar.style.transform = 'translateY(-60px)';
         navbar.style.transition = 'transform 0.3s ease-in-out';
         isCollapsed = true;
       }

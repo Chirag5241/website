@@ -2,22 +2,22 @@
 
 /* Light mode theme */
 :root.light-mode {
-  --color-background: #f8f8f8;
-  --color-text: #2e2828;
-  --color-primary: #00b4d8;
-  --color-secondary: #f8f9fa;
-  --color-accent: #0077b6;
-  --color-gradient-start: #00b4d8;
-  --color-gradient-end: #90e0ef;
-  --color-text-muted: #5a6a7a;
+  --color-background: #fafaf8;
+  --color-text: #1a1a1a;
+  --color-primary: #6b5b3e;
+  --color-secondary: #f5f5f0;
+  --color-accent: #6b5b3e;
+  --color-gradient-start: #6b5b3e;
+  --color-gradient-end: #8a7a5a;
+  --color-text-muted: #666666;
   --color-card-bg: rgba(255, 255, 255, 1);
-  --color-border: rgba(0, 0, 0, 0.1);
-  --color-read-section: rgba(255, 255, 255, 0.85);
-  --color-tag: rgba(0, 0, 0, 0.06);
-  --color-shadow: rgba(0, 0, 0, 0.08);
-  --color-shadow-hover: rgba(0, 0, 0, 0.15);
-  --color-primary-subtle: rgba(0, 180, 216, 0.1);
-  --color-primary-border: rgba(0, 180, 216, 0.2);
+  --color-border: rgba(0, 0, 0, 0.08);
+  --color-read-section: rgba(255, 255, 255, 0.9);
+  --color-tag: rgba(0, 0, 0, 0.05);
+  --color-shadow: rgba(0, 0, 0, 0.06);
+  --color-shadow-hover: rgba(0, 0, 0, 0.12);
+  --color-primary-subtle: rgba(107, 91, 62, 0.08);
+  --color-primary-border: rgba(107, 91, 62, 0.15);
 }
 
 /* Transition for smooth theme switching */

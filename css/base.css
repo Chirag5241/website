@@ -2,29 +2,29 @@
 
 :root {
   /* Dark mode (default) */
-  --color-background: #131313;
-  --color-text: #e3f3ff;
-  --color-primary: #f7971e;
+  --color-background: #0f0f0f;
+  --color-text: #f0f0f0;
+  --color-primary: #f0a030;
   --color-secondary: #000000;
-  --color-accent: #ff0000;
-  --color-gradient-start: #f7771e;
-  --color-gradient-end: #ff4361;
-  --color-text-muted: #a8c4d8;
+  --color-accent: #f0a030;
+  --color-gradient-start: #f0a030;
+  --color-gradient-end: #f5c060;
+  --color-text-muted: #a0a0a0;
 
-  --color-card-bg: rgba(255, 255, 255, 0.05);
-  --color-border: rgba(255, 255, 255, 0.1);
+  --color-card-bg: rgba(255, 255, 255, 0.04);
+  --color-border: rgba(255, 255, 255, 0.08);
   --color-read-section: rgba(255, 255, 255, 0.03);
-  --color-tag: rgba(255, 255, 255, 0.05);
-  --color-shadow: rgba(0, 0, 0, 0.1);
-  --color-shadow-hover: rgba(0, 0, 0, 0.2);
-  --color-primary-subtle: rgba(247, 151, 30, 0.15);
-  --color-primary-border: rgba(247, 151, 30, 0.2);
-  
+  --color-tag: rgba(255, 255, 255, 0.06);
+  --color-shadow: rgba(0, 0, 0, 0.15);
+  --color-shadow-hover: rgba(0, 0, 0, 0.25);
+  --color-primary-subtle: rgba(240, 160, 48, 0.12);
+  --color-primary-border: rgba(240, 160, 48, 0.2);
+
   /* Typography variables */
-  --font-primary: 'Outfit', 'Kumbh Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-secondary: 'ONEDAY', sans-serif;
-  --font-heading: 'grifterbold', 'Outfit', sans-serif;
-  --font-serif: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-secondary: 'Space Grotesk', sans-serif;
+  --font-heading: 'Space Grotesk', 'Inter', sans-serif;
+  --font-serif: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   
   /* Spacing variables */
   --spacing-xs: 0.5rem;
@@ -53,7 +53,7 @@
 
 html,
 body {
-  padding-top: 40px;
+  padding-top: 0;
   overscroll-behavior: auto;
   background: var(--color-background);
   color: var(--color-text);
@@ -67,6 +67,8 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   margin-bottom: var(--spacing-sm);
   line-height: 1.2;
+  font-weight: 500;
+  letter-spacing: -0.02em;
 }
 
 p {

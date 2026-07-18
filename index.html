@@ -7,458 +7,250 @@
     <meta name="description" content="Chirag Rastogi - Software Engineer at Qualcomm and Computer Engineering graduate from the University of Illinois at Urbana Champaign">
     <meta name="keywords" content="Chirag Rastogi, Software Engineer, Qualcomm, Computer Engineer, Researcher, University of Illinois">
     <meta name="author" content="Chirag Rastogi">
-    <title>Chirag's Website</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/components/navbar.css">
-    <link rel="stylesheet" href="css/components/hero.css">
-    <link rel="stylesheet" href="css/components/about.css">
-    <link rel="stylesheet" href="css/components/research.css">
-    <link rel="stylesheet" href="css/components/experience.css">
-    <link rel="stylesheet" href="css/components/education.css">
-    <link rel="stylesheet" href="css/components/skills.css">
-    <link rel="stylesheet" href="css/components/projects.css">
-    <link rel="stylesheet" href="css/components/footer.css">
+    <title>Chirag Rastogi</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/light-mode.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/theme-toggle.css">
+    <link rel="stylesheet" href="css/minimal.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="js/modernizr.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Navbar Section -->
-    <nav class="navbar">
-        <div class="navbar__container"> 
-            <div class="navbar__toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-            <ul class="navbar__menu">
-                <li class="navbar__item">
-                    <a href="#home" class="navbar__links" id="home-page">Home</a>
-                </li>
-                <!-- <li class="navbar__item">
-                    <a href="#about" class="navbar__links" id="about-page">About</a>
-                </li> -->
-                <li class="navbar__item">
-                    <a href="#research" class="navbar__links" id="research-page">Research</a>
-                </li>
-                <li class="navbar__item">
-                    <a href="#experience" class="navbar__links" id="experience-page">Experience</a>
-                </li>
-                <!-- <li class="navbar__item">
-                    <a href="#education" class="navbar__links" id="education-page">Education</a>
-                </li> -->
-                <li class="navbar__item">
-                    <a href="#projects" class="navbar__links" id="projects-page">Projects</a>
-                </li>
-                <!-- <li class="navbar__item">
-                    <a href="#skills" class="navbar__links" id="skills-page">Skills</a>
-                </li> -->
-                <li class="navbar__item">
-                    <a href="blog/index.html" class="navbar__links" id="blog-page">Blog</a>
-                </li>
-            </ul>
-            <div class="theme-toggle">
-                <label class="theme-toggle__label">
-                    <input type="checkbox" class="theme-toggle__input" id="theme-toggle">
-                    <span class="theme-toggle__slider">
-                        <i class="fas fa-sun theme-toggle__icon theme-toggle__icon--sun"></i>
-                        <i class="fas fa-moon theme-toggle__icon theme-toggle__icon--moon"></i>
-                    </span>
-                </label>
-            </div>
-        </div>
-    </nav>
+    <!-- Theme toggle (fixed, top right) -->
+    <div class="theme-toggle theme-toggle--fixed">
+        <label class="theme-toggle__label">
+            <input type="checkbox" class="theme-toggle__input" id="theme-toggle">
+            <span class="theme-toggle__slider">
+                <i class="fas fa-sun theme-toggle__icon theme-toggle__icon--sun"></i>
+                <i class="fas fa-moon theme-toggle__icon theme-toggle__icon--moon"></i>
+            </span>
+        </label>
+    </div>
 
-    <!-- About Section (now first, with stars background) -->
-    <section class="hero main" id="home">
+    <!-- Floating top nav: appears only after scrolling past the hero photo -->
+    <div class="topnav" id="topnav">
+        <nav class="topnav__links">
+            <a href="#home">Home</a>
+            <a href="#research">Research</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#geopolitics">Geopolitics</a>
+            <a href="#writing">Writing</a>
+        </nav>
+    </div>
+
+    <!-- Hero: the one creative element — animated stars over the watercolor background -->
+    <header class="hero" id="home">
         <canvas id="stars-canvas"></canvas>
         <div id="stars-background"></div>
-        <div class="main__container">
-            <!-- Desktop image: shown on left on desktop, hidden on mobile -->
-            <div class="main__img--container main__img--desktop">
-                <a href="https://www.linkedin.com/in/chiragrastogi01" target="_blank">
-                    <div class="main__img--card fade-in"><img src="./images/headshot_happy.png" alt="Chirag Rastogi"></div>
-                </a>
+        <div class="hero__inner fade-in">
+            <div class="hero__text">
+                <h1 class="hero__name">Chirag Rastogi</h1>
+                <p class="hero__tagline">Software engineer at Qualcomm<br>Interpretable AI &amp; strategic reasoning</p>
+                <nav class="hero__nav">
+                    <a href="#research">Research</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#geopolitics">Geopolitics</a>
+                    <a href="#writing">Writing</a>
+                </nav>
             </div>
-            <div class="main__content">
-                <h1 class="hero__heading fade-in">Chirag Rastogi</h1>
-                <!-- Mobile image: hidden on desktop, shown below title on mobile -->
-                <div class="main__img--container main__img--mobile">
-                    <a href="https://www.linkedin.com/in/chiragrastogi01" target="_blank">
-                        <div class="main__img--card fade-in"><img src="./images/headshot_happy.png" alt="Chirag Rastogi"></div>
+            <img class="hero__photo" src="./images/chirag_beach_crop.jpg" alt="Chirag Rastogi">
+        </div>
+    </header>
+
+    <main class="page">
+
+        <!-- About -->
+        <section class="section" id="about">
+            <p class="about__text">
+                I am a Software Engineer at Qualcomm, developing modem data software and leading IP Accelerator
+                driver features for Linux. I hold a B.S. in Computer Engineering from the University of Illinois
+                at Urbana-Champaign.
+            </p>
+            <p class="about__text">
+                My research focuses on interpretable AI and strategic reasoning &mdash; from causal probing in
+                language models to multimodal fusion for autonomous navigation. I build systems that bridge
+                low-level performance engineering with high-level intelligent decision-making.
+            </p>
+            <p class="about__links">
+                <a href="mailto:chiragr2@illinois.edu">Email</a>
+                <a href="https://www.linkedin.com/in/chiragrastogi01" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://scholar.google.com/citations?user=svPLe9EAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+            </p>
+        </section>
+
+        <!-- Research -->
+        <section class="section" id="research">
+            <h2 class="section__heading">Research</h2>
+            <p class="section__note">
+                I am building interpretable, controllable best-response models to study cooperative, deceptive,
+                exploitative, and escalatory behavior &mdash; aiming to isolate escalation signals and intervene to
+                stop spirals in negotiation and wargaming.
+            </p>
+
+            <ul class="pubs">
+                <li class="pub animate-on-scroll">
+                    <span class="pub__title">How Reliable are Causal Probing Interventions?</span>
+                    <span class="pub__authors">Canby, M., Davies, A., Rastogi, C., &amp; Hockenmaier, J.</span>
+                    <span class="pub__venue"><em>IJCNLP-AACL 2025</em> &middot; earlier version at NeurIPS 2024 IAI Workshop &middot; <a href="#">coming soon</a></span>
+                </li>
+                <li class="pub animate-on-scroll">
+                    <span class="pub__title">Texture Oriented, Self-Supervised One-shot Drivable Area Segmentation for Indoor Robot Navigation</span>
+                    <span class="pub__authors">Chen, Y., Rastogi, C., Zhou, Z., &amp; Norris, W. R.</span>
+                    <span class="pub__venue"><em>IEEE Transactions on Intelligent Transportation Systems</em> (T-ITS 2022) &middot; <a href="https://drive.google.com/file/d/1pjSyrbMkpu_7CM1OoDOAOTIpQyDv8EWo/view?usp=sharing" target="_blank" rel="noopener">paper</a></span>
+                </li>
+                <li class="pub animate-on-scroll">
+                    <span class="pub__title">A CNN Based Vision-Proprioception Fusion Method for Robust UGV Terrain Classification</span>
+                    <span class="pub__authors">Chen, Y., Rastogi, C., &amp; Norris, W. R.</span>
+                    <span class="pub__venue"><em>IEEE Robotics and Automation Letters</em> (IROS/RAL 2021) &middot; <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9507312" target="_blank" rel="noopener">paper</a></span>
+                </li>
+                <li class="pub animate-on-scroll">
+                    <span class="pub__title">Comparison of Dynamic and Kinematic Model Driven Extended Kalman Filters for the Localization of Autonomous Underwater Vehicles</span>
+                    <span class="pub__authors">Balasubramanian, S., Rajput, A., Hascaryo, R. W., Rastogi, C., &amp; Norris, W. R.</span>
+                    <span class="pub__venue"><em>arXiv preprint</em> &middot; <a href="https://arxiv.org/pdf/2105.12309.pdf" target="_blank" rel="noopener">paper</a></span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Experience -->
+        <section class="section" id="experience">
+            <h2 class="section__heading">Experience</h2>
+            <ul class="jobs">
+                <li class="job animate-on-scroll">
+                    <span class="job__period">2023 &mdash; present</span>
+                    <div class="job__body">
+                        <span class="job__role">Software Engineer, <span class="job__org">Qualcomm</span></span>
+                        <span class="job__desc">Linux Datapath team &mdash; IP Accelerator driver development, crypto offloading for tunnelling protocols, 5G data rate optimization. Led pre-silicon verification on FPGA emulators.</span>
+                    </div>
+                </li>
+                <li class="job animate-on-scroll">
+                    <span class="job__period">2021 &mdash; 2023</span>
+                    <div class="job__body">
+                        <span class="job__role">Undergraduate Researcher, <span class="job__org">IBM-Illinois Centre</span></span>
+                        <span class="job__desc">Multimodal contrastive learning on video, caption, and sound. Built Information Forests using Graph Transformers for discussion-level search.</span>
+                    </div>
+                </li>
+                <li class="job animate-on-scroll">
+                    <span class="job__period">2020 &mdash; 2021</span>
+                    <div class="job__body">
+                        <span class="job__role">Software Engineering Intern, <span class="job__org">Caterpillar</span></span>
+                        <span class="job__desc">Data Innovation Lab &mdash; reduced pipeline runtimes by 99%, migrated to AWS/Snowflake cutting costs by 66%. Won 2020 CIO Award.</span>
+                    </div>
+                </li>
+                <li class="job animate-on-scroll">
+                    <span class="job__period">2019 &mdash; 2023</span>
+                    <div class="job__body">
+                        <span class="job__role">Undergraduate Researcher, <span class="job__org">AUVSL Lab, UIUC</span></span>
+                        <span class="job__desc">Generative networks for semantic segmentation, real-time obstacle detection with OCTOMAP, one-shot texture segmentation for autonomous navigation.</span>
+                    </div>
+                </li>
+            </ul>
+            <p class="section__footnote">
+                B.S. Computer Engineering, University of Illinois at Urbana-Champaign, 2023 &middot; James Scholar, Dean's List.
+            </p>
+        </section>
+
+        <!-- Projects -->
+        <section class="section" id="projects">
+            <h2 class="section__heading">Projects</h2>
+            <ul class="items">
+                <li class="item animate-on-scroll">
+                    <span class="item__title">MOMENT</span>
+                    <span class="item__desc">Event database and app for multiple universities, serving 1,200+ users and integrated with the official UIUC app. Built with ROKMETRO under Dr. Sanjay Patel.</span>
+                </li>
+                <li class="item animate-on-scroll">
+                    <span class="item__title">Early Wildfire Detection using 5G Massive IoT</span>
+                    <span class="item__desc">3rd place at QHACK (Qualcomm) &mdash; two-tiered edge server architecture on AWS enabling high-frequency data collection from millions of sensors while minimizing storage costs.</span>
+                </li>
+                <li class="item animate-on-scroll">
+                    <span class="item__title">AIR</span>
+                    <span class="item__desc">Best financial hack at HackIllinois, presented by Capital One &mdash; tracks fingers to create and sign usable checks in the air, using Google Cloud Vision and Checkbook.io.</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Geopolitics -->
+        <section class="section" id="geopolitics">
+            <h2 class="section__heading">Geopolitics</h2>
+            <p class="section__note">
+                An open-source intelligence project tracking global military operations and great-power dynamics.
+                Choose a view:
+            </p>
+            <ul class="items">
+                <li class="item animate-on-scroll">
+                    <a class="item__link" href="https://chiragr5241.github.io/Geopolitics/" target="_blank" rel="noopener">
+                        <span class="item__title">Story Tracker <span class="item__arrow">&rarr;</span></span>
+                        <span class="item__desc">The six main stories, followed by the rest of the news.</span>
                     </a>
-                </div>
-                <p class="hero__description fade-in">
-                    I am a Software Engineer at Qualcomm, developing modem data software and leading IP Accelerator driver features for Linux. I hold a B.S. in Computer Engineering from the University of Illinois at Urbana-Champaign.
-                </p>
-                <p class="hero__description fade-in">
-                    My research focuses on interpretable AI and strategic reasoning. I've published work on causal probing in language models, multimodal fusion for autonomous navigation, and self-supervised texture segmentation, spanning venues from IJCNLP-AACL to IEEE Robotics and Automation Letters.
-                </p>
-                <p class="hero__description fade-in">
-                    From kernel development to machine learning pipelines, I build systems that bridge low-level performance engineering with high-level intelligent decision-making.
-                </p>
-                <button class="main__btn btn-hover-effect"><a href="https://scholar.google.com/citations?user=svPLe9EAAAAJ&hl=en" target="_blank">Google Scholar</a></button>     
-            </div>
-        </div>
-    </section>
+                </li>
+                <li class="item animate-on-scroll">
+                    <a class="item__link" href="https://chiragr5241.github.io/Geopolitics/map.html" target="_blank" rel="noopener">
+                        <span class="item__title">Operations Map <span class="item__arrow">&rarr;</span></span>
+                        <span class="item__desc">Global military operations 2023&ndash;2026 plotted on an interactive map.</span>
+                    </a>
+                </li>
+                <li class="item animate-on-scroll">
+                    <a class="item__link" href="https://chiragr5241.github.io/Geopolitics/feed.html" target="_blank" rel="noopener">
+                        <span class="item__title">Intel Feed <span class="item__arrow">&rarr;</span></span>
+                        <span class="item__desc">The full stream of open-source, unclassified incident reports.</span>
+                    </a>
+                </li>
+            </ul>
+        </section>
 
-    <!-- Research Question Section (now second, no background) --> 
-    <section class="research-intro" id="research-intro">
-        <div class="hero__container">
-            <h1 class="hero__heading fade-in">Can we reliably curb escalation risk in competing models without sacrificing strategic effectiveness?</h1>
-            <p class="hero__description fade-in">I am building interpretable, controllable best-response models to study cooperative, deceptive, exploitative, and escalatory behavior. I aim to isolate interpretable escalation signals and intervene to stop spirals. I hope to apply this to negotiation and wargaming at a time when great-power dynamics increasingly recast dangerous crises as "windows of opportunity"</p>
-        </div>
-    </section>
+        <!-- Writing -->
+        <section class="section" id="writing">
+            <h2 class="section__heading">Writing</h2>
+            <ul class="items">
+                <li class="item animate-on-scroll">
+                    <a class="item__link" href="blog/index.html">
+                        <span class="item__title">Blog <span class="item__arrow">&rarr;</span></span>
+                        <span class="item__desc">Notes on engineering, research, and things I'm thinking about.</span>
+                    </a>
+                </li>
+                <li class="item animate-on-scroll">
+                    <a class="item__link" href="https://chiragr5241.github.io/one_piecewise_analysis/" target="_blank" rel="noopener">
+                        <span class="item__title">One Piecewise Analysis <span class="item__arrow">&rarr;</span></span>
+                        <span class="item__desc">Analytical deep dives into One Piece.</span>
+                    </a>
+                </li>
+            </ul>
+        </section>
 
-    <!-- Research Section -->
-    <section class="research" id="research">
-        <div class="research__content">
-            <h1>Research & Publications</h1>
-            <table>
-                <tbody>
-                    <tr class="animate-on-scroll">
-                        <td style="width:25%;vertical-align:middle;">
-                            <img src="./images/Causal_probing.png" alt="Causal Probing Methods" width="300">
-                        </td>
-                        <td style="width:75%;vertical-align:middle;">
-                            <h2>How Reliable are Causal Probing Interventions?</h2>
-                            <p>
-                                Canby, M., Davies, A., Rastogi, C., & Hockenmaier, J.
-                                <br>
-                                <em>International Joint Conference on Natural Language Processing</em> (IJCNLP-AACL 2025)
-                                <br>
-                                Earlier version at NeurIPS 2024 Workshop on Interventions, Abstractions, and Interpretability (IAI)
-                                <br>
-                                <a href="#" target="_blank">[coming soon]</a>
-                            </p>
-                        </td>
-                    </tr>
-                    
-                    <tr class="animate-on-scroll">
-                        <td style="width:25%;vertical-align:middle;">
-                            <img src="./images/SelfSupervised_texture.png" alt="Self-Supervised Texture Oriented Segmentation" width="200">
-                        </td>
-                        <td style="width:75%;vertical-align:middle;">
-                            <h2>Texture Oriented, Self-Supervised One-shot Drivable Area Segmentation for Indoor Robot Navigation</h2>
-                            <p>
-                                Yu Chen, Chirag Rastogi, Zheyu Zhou, and William R. Norris
-                                <br>
-                                <em>IEEE Transactions on Intelligent Transportation Systems</em> (T-ITS 2022)
-                                <br>
-                                <a href="https://drive.google.com/file/d/1pjSyrbMkpu_7CM1OoDOAOTIpQyDv8EWo/view?usp=sharing" target="_blank">[paper]</a>
-                            </p>
-                        </td>
-                    </tr>
+        <!-- Footer -->
+        <footer class="footer">
+            <p>
+                &copy; 2026 Chirag Rastogi &middot;
+                <a href="mailto:chiragr2@illinois.edu">Email</a> &middot;
+                <a href="https://www.linkedin.com/in/chiragrastogi01" target="_blank" rel="noopener">LinkedIn</a> &middot;
+                <a href="https://scholar.google.com/citations?user=svPLe9EAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+            </p>
+        </footer>
 
-                    <tr class="animate-on-scroll">
-                        <td style="width:25%;vertical-align:middle;">
-                            <img src="./images/CNN_proprioception.png" alt="CNN Based Vision-Proprioception" width="200">
-                        </td>
-                        <td style="width:75%;vertical-align:middle;">
-                            <h2>A CNN Based Vision-Proprioception Fusion Method for Robust UGV Terrain Classification</h2>
-                            <p>
-                                Yu Chen, Chirag Rastogi, and William R. Norris
-                                <br>
-                                <em>IEEE Robotics and automation letters</em> (IROS 2021/RAL 2021)
-                                <br>
-                                <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9507312" target="_blank">[paper]</a>
-                            </p>
-                        </td>
-                    </tr>
-
-                    <tr class="animate-on-scroll">
-                        <td style="width:25%;vertical-align:middle;">
-                            <img src="./images/Submarine.png" alt="Autonomous Underwater Vehicles" height="160">
-                        </td>
-                        <td style="width:75%;vertical-align:middle;">
-                            <h2>Comparison of Dynamic and Kinematic Model Driven Extended Kalman Filters (EKF) for the Localization of Autonomous Underwater Vehicles</h2>
-                            <p>
-                                Sharan Balasubramanian, Ayush Rajput, Rodra W. Hascaryo2, Chirag Rastogi, and William R. Norris
-                                <br>
-                                <a href="https://arxiv.org/pdf/2105.12309.pdf" target="_blank">[paper]</a>
-                            </p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section class="experience" id="experience">
-        <div class="experience__container">
-            <h1 class="experience__heading">Professional Experience</h1>
-            <div class="experience__timeline">
-                <!-- Qualcomm -->
-                <div class="experience__item left animate-on-scroll">
-                    <div class="experience__content">
-                        <h2 class="experience__title">Software Engineer</h2>
-                        <h3 class="experience__company">Qualcomm, Linux Datapath Team</h3>
-                        <p class="experience__period">July 2023 - Present</p>
-                        <p class="experience__location">California, USA</p>
-                        <div class="experience__description">
-                            <ul>
-                                <li>Led development of IP Accelerator driver features across teams, implementing Modem data offloading pipelines</li>
-                                <li>Architected and developing crypto offloading solution for a tunnelling protocol, improving TCP throughput by ~10%</li>
-                                <li>Reduced storage cost by >80%, improved on-chip data rates for 5G, and optimized stack runtimes for the IP Acceleration team using Socket buffer recycling</li>
-                                <li>Led pre-silicon upgrade and verification using FPGA emulators to ensure code compatibility and system stability</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- IBM-Illinois -->
-                <div class="experience__item right animate-on-scroll">
-                    <div class="experience__content">
-                        <h2 class="experience__title">Undergraduate Researcher</h2>
-                        <h3 class="experience__company">IBM-Illinois Centre for Cognitive Computing Systems Research</h3>
-                        <p class="experience__period">August 2021 - May 2023</p>
-                        <p class="experience__location">Illinois, USA</p>
-                        <div class="experience__description">
-                            <ul>
-                                <li>Constructed models for Multimodal Contrastive Learning on Video, Caption, and Sound using Adaptive masking</li>
-                                <li>Developed Information Forests using Graph Transformers to connect discussion threads across the internet for discussion-level search; now used to teach Text and Information Networks</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Caterpillar -->
-                <div class="experience__item left animate-on-scroll">
-                    <div class="experience__content">
-                        <h2 class="experience__title">Corporate Software Engineering Intern</h2>
-                        <h3 class="experience__company">Caterpillar, Data Innovation Lab</h3>
-                        <p class="experience__period">June 2020 - December 2021</p>
-                        <p class="experience__location">Illinois, USA</p>
-                        <div class="experience__description">
-                            <ul>
-                                <li>Reduced runtime by >99% for weekly analyses and improved statistical processes by building pipelines to obtain data requested by different business partners and product groups</li>
-                                <li>Minimized costs by ~66% while increasing scalability by migrating scripts onto the AWS data pipeline, building tables on the cloud data warehouse Snowflake, and using Azure DevOps for version control, testing, and deployment</li>
-                                <li>Published financial and global machine data forecasts on the production database and website, won 2020 CIO award</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- AUVSL -->
-                <div class="experience__item right animate-on-scroll">
-                    <div class="experience__content">
-                        <h2 class="experience__title">Undergraduate Researcher</h2>
-                        <h3 class="experience__company">Autonomous and Unmanned Vehicle Systems Laboratory, UIUC</h3>
-                        <p class="experience__period">October 2019 - May 2023</p>
-                        <p class="experience__location">Illinois, USA</p>
-                        <div class="experience__description">
-                            <ul>
-                                <li>Assisted Dr. Norris in developing generative networks using diffusion models for robust semantic segmentation</li>
-                                <li>Built a system to create a local map on OCTOMAP for real-time obstacle detection, terrain masking, and segmentation</li>
-                                <li>Implemented One-shot texture retrieval with Superpixel segmentation for a much higher accuracy in real-time systems</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Education Section -->
-    <section class="education" id="education">
-        <div class="education__container">
-            <h1 class="education__heading">Education</h1>
-            <div class="education__card animate-on-scroll">
-                <h2 class="education__school">University of Illinois at Urbana-Champaign</h2>
-                <h3 class="education__degree">Bachelor of Science in Computer Engineering</h3>
-                <p class="education__period">Graduated: May 2023</p>
-                <p class="education__gpa">GPA: 3.74/4.0</p>
-                <p class="education__honors">James Scholar and Dean's List</p>
-                <div class="education__courses">
-                    <h4 class="education__courses-title">Relevant Coursework:</h4>
-                    <div class="education__courses-list">
-                        <span class="education__course">CS 512: Data Mining Principles</span>
-                        <span class="education__course">Social and Information Networks</span>
-                        <span class="education__course">Text Information Systems</span>
-                        <span class="education__course">Antisocial Computing</span>
-                        <span class="education__course">Reinforcement Learning</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section class="projects" id="projects">
-        <div class="projects__container">
-            <h1 class="projects__heading">Projects</h1>
-            <div class="projects__grid">
-                <!-- Project 1 -->
-                <div class="project__card animate-on-scroll">
-                    <div class="project__content">
-                        <h2 class="project__title">MOMENT</h2>
-                        <h3 class="project__organization">with ROKMETRO (under Dr. Sanjay Patel)</h3>
-                        <p class="project__description">
-                            Created an event database and app for multiple universities, serving 1200+ users and integrated it with the official UIUC app.
-                        </p>
-                        <div class="project__tags">
-                            <span class="project__tag">Mobile App</span>
-                            <span class="project__tag">Database</span>
-                            <span class="project__tag">User Experience</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 2 -->
-                <div class="project__card animate-on-scroll">
-                    <div class="project__content">
-                        <h2 class="project__title">Early Wildfire Detection using 5G Massive IoT</h2>
-                        <h3 class="project__organization">QHACK, Qualcomm</h3>
-                        <p class="project__description">
-                            Led a team of 7 that came 3rd and created a 2-tiered Edge Server Architecture using AWS and Random Forest Classifier that allowed high frequency data collection from millions of sensors while minimizing storage costs.
-                        </p>
-                        <div class="project__tags">
-                            <span class="project__tag">IoT</span>
-                            <span class="project__tag">5G</span>
-                            <span class="project__tag">AWS</span>
-                            <span class="project__tag">Machine Learning</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 3 -->
-                <div class="project__card animate-on-scroll">
-                    <div class="project__content">
-                        <h2 class="project__title">AIR</h2>
-                        <h3 class="project__organization">HackIllinois, University of Illinois</h3>
-                        <p class="project__description">
-                            Won best financial hack, presented by Capital One, for designing and developing a program that tracks fingers to create and sign usable checks in the air, using Google Cloud Vision and Checkbook.io APIs.
-                        </p>
-                        <div class="project__tags">
-                            <span class="project__tag">Computer Vision</span>
-                            <span class="project__tag">Google Cloud</span>
-                            <span class="project__tag">Financial Tech</span>
-                            <span class="project__tag">API Integration</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section class="skills" id="skills">
-        <div class="skills__container">
-            <h1 class="skills__heading">Skills</h1>
-            <div class="skills__categories">
-                <!-- Programming Languages -->
-                <div class="skills__category animate-on-scroll">
-                    <h2 class="skills__category-title">Programming Languages</h2>
-                    <div class="skills__list">
-                        <span class="skills__item">Python</span>
-                        <span class="skills__item">C</span>
-                        <span class="skills__item">C++</span>
-                        <span class="skills__item">SQL</span>
-                        <span class="skills__item">x86</span>
-                        <span class="skills__item">R</span>
-                        <span class="skills__item">LC3</span>
-                        <span class="skills__item">Cypher</span>
-                        <span class="skills__item">HTML</span>
-                        <span class="skills__item">CSS</span>
-                        <span class="skills__item">JavaScript</span>
-                        <span class="skills__item">React Native</span>
-                        <span class="skills__item">System Verilog</span>
-                    </div>
-                </div>
-                
-                <!-- Technologies & Frameworks -->
-                <div class="skills__category animate-on-scroll">
-                    <h2 class="skills__category-title">Technologies & Frameworks</h2>
-                    <div class="skills__list">
-                        <span class="skills__item">CUDA</span>
-                        <span class="skills__item">TensorFlow</span>
-                        <span class="skills__item">PyTorch</span>
-                        <span class="skills__item">Keras</span>
-                        <span class="skills__item">OpenCV</span>
-                        <span class="skills__item">MetaPy</span>
-                        <span class="skills__item">Scikit-learn</span>
-                        <span class="skills__item">ROS</span>
-                        <span class="skills__item">Jenkins</span>
-                        <span class="skills__item">WebGPU</span>
-                    </div>
-                </div>
-                
-                <!-- Cloud & Databases -->
-                <div class="skills__category animate-on-scroll">
-                    <h2 class="skills__category-title">Cloud & Databases</h2>
-                    <div class="skills__list">
-                        <span class="skills__item">AWS EC2</span>
-                        <span class="skills__item">AWS S3</span>
-                        <span class="skills__item">AWS Lambda</span>
-                        <span class="skills__item">AWS API Gateway</span>
-                        <span class="skills__item">AWS ECS</span>
-                        <span class="skills__item">AWS Glue</span>
-                        <span class="skills__item">Neo4j</span>
-                        <span class="skills__item">MySQL</span>
-                        <span class="skills__item">Snowflake</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer Section -->
-    <footer>
-        <div class="footer__container">
-            <div class="footer__content">
-                <div class="footer__section">
-                    <h3>Contact Me</h3>
-                    <p><a href="mailto:chiragr2@illinois.edu"><i class="fas fa-envelope"></i> Email</a></p>
-                    <p><a href="https://www.linkedin.com/in/chiragrastogi01" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></p>
-                </div>
-                <div class="footer__section">
-                    <h3>Social Media</h3>
-                    <p><a href="https://scholar.google.com/citations?user=svPLe9EAAAAJ&hl=en" target="_blank"><i class="fas fa-graduation-cap"></i> Google Scholar</a></p>
-                </div>
-            </div>
-            <div class="footer__bottom">
-                <p>&copy; 2025 Chirag Rastogi. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    </main>
 
     <!-- Scripts -->
-    <script src="js/jquery-2.1.1.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/stars.js"></script>
-    <script src="js/navbar-scroll.js"></script>
-    <script src="js/navbar-side-collapse.js"></script>
+    <script src="js/quantum-particles.js"></script>
     <script src="js/theme-toggle.js"></script>
+    <script src="js/floating-nav.js"></script>
     <script>
-        // Animation for elements that should fade in
+        // Fade-in on load, animate on scroll
         document.addEventListener('DOMContentLoaded', function() {
-            const fadeElements = document.querySelectorAll('.fade-in');
-            fadeElements.forEach(element => {
-                element.classList.add('visible');
-            });
-            
-            // Animation for elements that should animate on scroll
+            document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
+
             const animateElements = document.querySelectorAll('.animate-on-scroll');
-            
             function checkScroll() {
                 animateElements.forEach(element => {
-                    const elementTop = element.getBoundingClientRect().top;
-                    const windowHeight = window.innerHeight;
-                    
-                    if (elementTop < windowHeight * 0.8) {
+                    if (element.getBoundingClientRect().top < window.innerHeight * 0.85) {
                         element.classList.add('visible');
                     }
                 });
             }
-            
-            // Check elements on initial load
             checkScroll();
-            
-            // Check elements on scroll
             window.addEventListener('scroll', checkScroll);
         });
     </script>

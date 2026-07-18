@@ -3,11 +3,11 @@
 .navbar {
   font-family: var(--font-primary);
   background: var(--color-background);
-  height: 80px;
+  height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.2rem;
+  font-size: 0.875rem;
   position: fixed;
   top: 0;
   left: 0;
@@ -15,6 +15,7 @@
   z-index: 999;
   transition: transform 0.5s ease-in-out;
   width: 100%;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .navbar__container {
@@ -45,7 +46,7 @@
   justify-content: center;
   align-items: center;
   margin-right: 1.5rem;
-  height: 80px;
+  height: 60px;
 }
 
 .navbar__item:last-child {
@@ -81,7 +82,7 @@
 }
 
 .navbar__links.highlight {
-  border-bottom: 4px solid var(--color-primary);
+  color: var(--color-primary);
 }
 
 .navbar__btn {

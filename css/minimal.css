@@ -1,0 +1,477 @@
+/* Minimal layout — clean single-column design.
+   The hero keeps the animated stars/watercolor background as the one creative element. */
+
+/* ---------- Theme toggle (fixed top right) ---------- */
+
+.theme-toggle--fixed {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 110;
+  margin-left: 0;
+}
+
+/* ---------- Floating top nav (hidden until scrolled past the hero photo) ---------- */
+
+.topnav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  padding: 14px var(--spacing-md);
+  padding-right: 90px; /* keep clear of the fixed theme toggle */
+  background: rgba(15, 15, 15, 0.45);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  transform: translateY(-100%);
+  transition: transform 0.35s ease;
+}
+
+.light-mode .topnav {
+  background: rgba(250, 250, 248, 0.55);
+}
+
+.topnav--visible {
+  transform: translateY(0);
+}
+
+.topnav__links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.1rem;
+}
+
+.topnav__links a {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text);
+  opacity: 0.85;
+  border-bottom: 1px solid transparent;
+  transition: opacity 0.2s ease, border-color 0.2s ease;
+}
+
+.topnav__links a:hover {
+  opacity: 1;
+  border-bottom-color: var(--color-text);
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  position: relative;
+  overflow: visible;
+  padding: var(--spacing-lg) var(--spacing-md) 0;
+}
+
+/* Layer stack: watercolor image (0) -> scrim (1) -> particle canvas (2, set inline)
+   -> fade gradient (3) -> content (4) */
+.hero > #stars-background {
+  z-index: 0;
+}
+
+/* Darkening scrim so the embers pop against the watercolor (dark mode only) */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 8, 5, 0.3);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.light-mode .hero::before {
+  background: transparent;
+}
+
+/* Fade the creative background into the plain page background */
+.hero::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 90px;
+  background: linear-gradient(to bottom, transparent, var(--color-background));
+  z-index: 3;
+  pointer-events: none;
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 4;
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  padding-top: var(--spacing-lg);
+}
+
+.hero__text {
+  padding-bottom: var(--spacing-lg);
+}
+
+.hero__photo {
+  width: 216px;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.28);
+  margin-bottom: -48px;
+  flex-shrink: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .hero__photo {
+    margin-bottom: -32px;
+  }
+}
+
+.hero__name {
+  font-size: 3rem;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  color: var(--color-text);
+  margin-bottom: var(--spacing-xs);
+}
+
+.hero__tagline {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  opacity: 0.85;
+  margin-bottom: var(--spacing-md);
+}
+
+.hero__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs) 1.1rem;
+}
+
+.hero__nav a {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text);
+  opacity: 0.8;
+  border-bottom: 1px solid transparent;
+  transition: opacity 0.2s ease, border-color 0.2s ease;
+}
+
+.hero__nav a:hover {
+  opacity: 1;
+  border-bottom-color: var(--color-text);
+}
+
+/* Legibility over the watercolor image in both themes */
+.light-mode .hero__name,
+.light-mode .hero__tagline,
+.light-mode .hero__nav a {
+  text-shadow: 0 1px 12px rgba(255, 255, 255, 0.5);
+}
+
+:root:not(.light-mode) .hero__name,
+:root:not(.light-mode) .hero__tagline,
+:root:not(.light-mode) .hero__nav a {
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.6);
+}
+
+/* ---------- Page & sections ---------- */
+
+.page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.section {
+  padding: var(--spacing-lg) 0 0;
+}
+
+.section__heading {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: var(--spacing-md);
+  font-family: var(--font-primary);
+}
+
+.section__note {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--color-text-muted);
+  margin-bottom: var(--spacing-md);
+}
+
+.section__footnote {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin-top: var(--spacing-md);
+  margin-bottom: 0;
+}
+
+/* ---------- About ---------- */
+
+.about__text {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--color-text);
+  margin-bottom: var(--spacing-sm);
+}
+
+.about__links {
+  display: flex;
+  gap: var(--spacing-md);
+  margin: var(--spacing-sm) 0 0;
+}
+
+.about__links a {
+  font-size: 0.875rem;
+  color: var(--color-primary);
+}
+
+.about__links a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Publications ---------- */
+
+.pubs {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.pub {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.pub__title {
+  font-size: 0.975rem;
+  font-weight: 500;
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  letter-spacing: -0.01em;
+  line-height: 1.45;
+}
+
+.pub__authors {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.pub__venue {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.pub__venue a {
+  color: var(--color-primary);
+}
+
+.pub__venue a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Experience ---------- */
+
+.jobs {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.job {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: var(--spacing-md);
+}
+
+.job__period {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  padding-top: 2px;
+  white-space: nowrap;
+}
+
+.job__body {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.job__role {
+  font-size: 0.975rem;
+  font-weight: 500;
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  letter-spacing: -0.01em;
+}
+
+.job__org {
+  color: var(--color-primary);
+}
+
+.job__desc {
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Generic item lists (projects, geopolitics, writing) ---------- */
+
+.items {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.item__link {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  color: inherit;
+}
+
+.item__title {
+  font-size: 0.975rem;
+  font-weight: 500;
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  letter-spacing: -0.01em;
+}
+
+.item__arrow {
+  color: var(--color-primary);
+  font-weight: 400;
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.item__link:hover .item__arrow {
+  transform: translateX(4px);
+}
+
+.item__link:hover .item__title {
+  color: var(--color-primary);
+}
+
+.item__desc {
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Footer ---------- */
+
+.footer {
+  padding: var(--spacing-xl) 0 var(--spacing-lg);
+  margin-top: var(--spacing-lg);
+}
+
+.footer p {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.footer a {
+  color: var(--color-text-muted);
+}
+
+.footer a:hover {
+  color: var(--color-primary);
+}
+
+/* ---------- Animations ---------- */
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  animation: none;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- Mobile ---------- */
+
+@media screen and (max-width: 640px) {
+  .hero__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+  }
+
+  .hero__text {
+    padding-bottom: 0;
+  }
+
+  .hero__photo {
+    width: 160px;
+    margin-bottom: -32px;
+  }
+
+  .hero__name {
+    font-size: 2rem;
+  }
+
+  .hero__tagline {
+    font-size: 0.875rem;
+  }
+
+  .job {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+
+  .topnav {
+    padding: 12px var(--spacing-sm);
+    padding-right: 70px;
+  }
+
+  .topnav__links {
+    gap: 0.7rem;
+  }
+
+  .topnav__links a {
+    font-size: 0.75rem;
+  }
+
+  /* Drop Home on small screens; the name at top serves the same purpose */
+  .topnav__links a[href="#home"] {
+    display: none;
+  }
+}

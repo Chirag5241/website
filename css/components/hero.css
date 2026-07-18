@@ -25,13 +25,13 @@
 }
 
 .hero__heading {
-  font-size: 3.5rem;
+  font-size: 3rem;
   margin-bottom: var(--spacing-md);
   color: var(--color-text);
-  font-family: var(--font-primary);
+  font-family: var(--font-heading);
   font-weight: 500;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
 }
 
 .hero__heading span {
@@ -44,50 +44,78 @@
 }
 
 .hero__description {
-  font-size: 1.25rem;
-  max-width: 800px;
+  font-size: 1.1rem;
+  max-width: 680px;
   margin: 0 auto var(--spacing-md) auto;
-  color: var(--color-text);
-  line-height: 1.7;
+  color: var(--color-text-muted);
+  line-height: 1.75;
   font-weight: 400;
-  letter-spacing: 0.01em;
+  letter-spacing: 0em;
   font-style: normal;
   font-family: var(--font-primary);
 }
 
 .main__btn {
-  font-size: 1.2rem;
-  background: linear-gradient(to right, var(--color-gradient-start), var(--color-gradient-end));
-  padding: 14px 32px;
-  border: none;
-  border-radius: 4px;
+  font-size: 0.875rem;
+  background: transparent;
+  padding: 10px 24px;
+  border: 1px solid var(--color-border);
+  border-radius: 3px;
   color: var(--color-text);
   margin-top: var(--spacing-md);
   cursor: pointer;
   position: relative;
-  transition: all 0.35s;
+  transition: border-color 0.2s, color 0.2s;
   outline: none;
+  font-family: var(--font-primary);
+  letter-spacing: 0.04em;
+}
+
+.main__btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
 }
 
 .main__btn a {
   position: relative;
   z-index: 2;
-  color: var(--color-text);
+  color: inherit;
   text-decoration: none;
 }
 
-/* Research Intro Section (no background) */
+/* Research Intro Section */
 .research-intro {
   background: var(--color-background);
-  padding: var(--spacing-lg) var(--spacing-sm);
+  padding: var(--spacing-xl) var(--spacing-sm);
   position: relative;
   color: var(--color-text);
   font-family: var(--font-primary);
+  border-top: 1px solid var(--color-border);
 }
 
 .research-intro .hero__container {
   height: auto;
-  padding: var(--spacing-lg) 30px;
+  max-width: 900px;
+  padding: 0 var(--spacing-md);
+  text-align: left;
+  align-items: flex-start;
+}
+
+.research-intro .hero__heading {
+  font-size: 1.6rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.4;
+  color: var(--color-text);
+  margin-bottom: var(--spacing-md);
+}
+
+.research-intro .hero__description {
+  font-size: 0.95rem;
+  max-width: 680px;
+  margin: 0;
+  color: var(--color-text-muted);
+  line-height: 1.8;
 }
 
 /* Mobile Responsive */
