@@ -1,7 +1,10 @@
 /**
- * Quantum particle animation — inspired by the quantum-mechanics visuals
- * in Oppenheimer (2023): slow-churning clouds of glowing embers orbiting
- * invisible nuclei, shimmering dust, and rare cascading spark bursts.
+ * Nuclear chain-reaction field — a pseudo-3D volume of neutrons streaking
+ * horizontally through space while the camera flies (mostly) straight forward,
+ * so the particles rush past the viewer. When two neutrons collide they undergo
+ * fission: both are consumed, a flash + spark burst fires, and smaller fragment
+ * neutrons are ejected — sustaining a chain reaction that sits somewhere between
+ * a steady simmer and an aggressive cascade.
  *
  * Dark mode: warm embers (white-hot cores -> amber -> deep red).
  * Light mode: cool quantum shimmer (white / pale teal / deep teal).
@@ -35,10 +38,12 @@ class QuantumField {
         colors: ['#ffb347', '#f0a030', '#e06010', '#c03000'],
         intensity: 1
       },
+      // Cherenkov radiation — the electric blue glow of a reactor pool:
+      // near-white core falling off through vivid blue to a violet-blue edge.
       light: {
-        core: '#ffffff',
-        colors: ['#e4dcff', '#b4a4f0', '#9678e0', '#7a5cd0'],
-        intensity: 0.65
+        core: '#a9d6ff',
+        colors: ['#7ab8ff', '#3d93ff', '#1f6fe8', '#2b4fd4'],
+        intensity: 0.85
       }
     };
     this.sprites = { dark: [], light: [] };
@@ -114,146 +119,384 @@ class QuantumField {
     this.canvas.width = this.w * this.dpr;
     this.canvas.height = this.h * this.dpr;
     this.ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
+    // Focal length: larger = narrower field of view. Scale with width so the
+    // apparent FOV stays consistent across screen sizes.
+    this.f = Math.max(this.w, 480) * 0.5;
   }
+
+  /* ---------- helpers ---------- */
+
+  clamp(v, lo, hi) {
+    return v < lo ? lo : v > hi ? hi : v;
+  }
+
+  // World half-extents of the view frustum at a given depth (world units).
+  frustumHalf(depth) {
+    return { hx: (this.w / 2) * depth / this.f, hy: (this.h / 2) * depth / this.f };
+  }
+
+  /* ---------- population ---------- */
 
   populate() {
     const mobile = this.w < 768;
-    const rand = (a, b) => a + Math.random() * (b - a);
 
-    // Wandering nuclei the ember clouds orbit around
-    const nucleusCount = mobile ? 3 : 4;
-    this.nuclei = [];
-    for (let i = 0; i < nucleusCount; i++) {
-      this.nuclei.push({
-        x: this.w * ((i + 0.5) / nucleusCount) + rand(-90, 90),
-        y: rand(this.h * 0.15, this.h * 0.85),
-        vx: 0,
-        vy: 0
-      });
-    }
+    // Virtual camera flying (mostly) straight forward through the field.
+    this.cam = { x: 0, y: 0, z: 0 };
 
-    // Orbital ember particles
-    const orbitalCount = mobile ? 70 : 140;
-    this.orbitals = [];
-    for (let i = 0; i < orbitalCount; i++) {
-      this.orbitals.push({
-        n: i % nucleusCount,
-        angle: rand(0, Math.PI * 2),
-        angSpeed: rand(0.002, 0.011) * (Math.random() < 0.5 ? -1 : 1),
-        baseR: rand(24, mobile ? 160 : 270),
-        rAmp: rand(4, 26),
-        rPhase: rand(0, Math.PI * 2),
-        rSpeed: rand(0.004, 0.012),
-        tilt: rand(0.45, 1),
-        size: rand(1.2, 3.4),
-        colorIdx: (Math.random() * 4) | 0,
-        pulse: rand(0, Math.PI * 2),
-        pulseSpeed: rand(0.008, 0.03),
-        alpha: rand(0.35, 0.85),
-        px: 0,
-        py: 0
-      });
-    }
+    this.cfg = {
+      count: mobile ? 75 : 150,
+      minParticles: mobile ? 75 : 100,
+      maxParticles: mobile ? 200 : 300,
 
-    // Free-floating dust for depth
-    const dustCount = mobile ? 32 : 64;
-    this.dust = [];
-    for (let i = 0; i < dustCount; i++) {
-      this.dust.push({
-        x: rand(0, this.w),
-        y: rand(0, this.h),
-        vx: rand(-0.12, 0.12),
-        vy: rand(-0.08, 0.08),
-        size: rand(0.6, 1.6),
-        colorIdx: (Math.random() * 4) | 0,
-        pulse: rand(0, Math.PI * 2),
-        pulseSpeed: rand(0.005, 0.02),
-        alpha: rand(0.12, 0.35)
-      });
+      // Depth planes (world units ahead of the camera)
+      near: 46,
+      far: 1450,
+      nearFade: 70, // short fog-in so neutrons rush right up to the "face" before vanishing
+      farFade: 420, // fog-out distance before the far plane
+      backBright: 0.3, // brightness multiplier at the far plane (0 = black in back, 1 = no dimming)
+      foreBright: 1.2, // brightness multiplier at the near plane (>1 = extra bright up front)
+
+      // Camera: steady forward march + a gentle horizontal sway. The downward
+      // motion is applied per-particle (see downSpeed) instead of as a flat
+      // camera descent, so its strength can fall off with depth.
+      forwardSpeed: 2,
+      driftAmpX: 1,
+      driftFreqX: 0.0055,
+
+      // Descent: how fast a foreground neutron drifts down (world units/frame).
+      // Scaled by depth on a logarithmic curve — ~0 in the far background,
+      // rising to the full value up close. downCurve shapes the falloff
+      // (higher = the effect stays near 0 deeper into the background).
+      downSpeed: 10,
+      downCurve: 50,
+
+      // Neutron motion (world units / frame) — primarily horizontal
+      speedMin: 0.3,
+      speedMax: 1.7,
+
+      // Neutron world radius (mass proxy)
+      rMin: 2.2,
+      rMax: 5.4,
+      minR: 1.0, // fragments smaller than this respawn as fresh light neutrons
+
+      // Screen-space size guarantee: a neutron's drawn radius never exceeds this
+      maxPx: mobile ? 5 : 6.5,
+
+      // Motion streaks follow each neutron's real on-screen path, so near /
+      // off-centre particles (which sweep fastest) streak the most.
+      streakScale: 2.4,
+      maxStreak: 46,
+
+      // Fission / chain reaction
+      collisionRadius: 20,
+      cell: 44, // spatial-grid cell size (~2 * collisionRadius)
+      childShrink: 0.7,
+      childCooldown: 12, // frames a fresh fragment is collision-immune (so it can fly clear)
+      sparkCount: 0, // transient throwaway sparks per fission (0 = none, just the fragments)
+      // Keep-alive: if no fission has happened in this window, force one so the
+      // reaction never fully dies. Lower = more aggressive.
+      keepAliveMs: 1100
+    };
+
+    this.particles = [];
+    for (let i = 0; i < this.cfg.count; i++) {
+      this.particles.push(this.makeParticle(false));
     }
 
     this.sparks = [];
     this.flashes = [];
-    // First burst arrives early, then every 8–15s
-    this.nextBurst = performance.now() + rand(2500, 4000);
+    this.lastFission = 0;
+  }
+
+  makeParticle(atFar) {
+    const rand = (a, b) => a + Math.random() * (b - a);
+    const cfg = this.cfg;
+    const cam = this.cam;
+    // atFar: born in a thin band at the far plane (the normal case — every
+    // neutron originates in the background and is pulled forward). Otherwise
+    // spread across all depths, used only for the one-time initial seed so the
+    // field isn't empty on load.
+    const depth = atFar
+      ? rand(cfg.far * 0.92, cfg.far)
+      : rand(cfg.near + cfg.nearFade, cfg.far);
+    const { hx, hy } = this.frustumHalf(depth);
+    const dir = Math.random() < 0.5 ? -1 : 1;
+    const sp = rand(cfg.speedMin, cfg.speedMax);
+    return {
+      x: cam.x + rand(-hx, hx) * 1.15,
+      y: cam.y + rand(-hy, hy) * 1.15,
+      z: cam.z + depth,
+      vx: dir * sp, // moving left or right
+      vy: rand(-0.12, 0.12) * sp,
+      vz: rand(-0.05, 0.05) * sp,
+      r: rand(cfg.rMin, cfg.rMax),
+      colorIdx: (Math.random() * 4) | 0,
+      pulse: rand(0, Math.PI * 2),
+      pulseSpeed: rand(0.01, 0.03),
+      alpha: rand(0.5, 0.95),
+      cooldown: 0,
+      psx: null, // previous on-screen position (for path-accurate streaks)
+      psy: 0,
+      alive: true
+    };
+  }
+
+  // Reset an existing particle back onto the far plane (recycling for an
+  // endless field without churning the array).
+  respawnFar(p) {
+    const rand = (a, b) => a + Math.random() * (b - a);
+    const cfg = this.cfg;
+    const cam = this.cam;
+    const depth = rand(cfg.far * 0.92, cfg.far);
+    const { hx, hy } = this.frustumHalf(depth);
+    const dir = Math.random() < 0.5 ? -1 : 1;
+    const sp = rand(cfg.speedMin, cfg.speedMax);
+    p.x = cam.x + rand(-hx, hx) * 1.15;
+    p.y = cam.y + rand(-hy, hy) * 1.15;
+    p.z = cam.z + depth;
+    p.vx = dir * sp;
+    p.vy = rand(-0.12, 0.12) * sp;
+    p.vz = rand(-0.05, 0.05) * sp;
+    p.r = rand(cfg.rMin, cfg.rMax);
+    p.colorIdx = (Math.random() * 4) | 0;
+    p.alpha = rand(0.5, 0.95);
+    p.cooldown = 0;
+    p.psx = null;
+    p.alive = true;
+  }
+
+  // A fission fragment: smaller, and carrying the colliders' momentum (bvx/bvy/
+  // bvz) so it keeps streaking across the screen instead of scattering randomly.
+  // A modest explosion "kick" is layered on top for spread.
+  makeFragment(x, y, z, r, bvx, bvy, bvz) {
+    const rand = (a, b) => a + Math.random() * (b - a);
+    const cfg = this.cfg;
+    const ang = rand(0, Math.PI * 2);
+    const kick = rand(cfg.speedMin, cfg.speedMax) * 0.6;
+    return {
+      x,
+      y,
+      z,
+      vx: bvx + Math.cos(ang) * kick,
+      vy: bvy + Math.sin(ang) * kick * 0.5,
+      vz: bvz + rand(-0.15, 0.15) * kick,
+      r,
+      colorIdx: (Math.random() * 4) | 0,
+      pulse: rand(0, Math.PI * 2),
+      pulseSpeed: rand(0.012, 0.032),
+      alpha: rand(0.65, 1),
+      cooldown: cfg.childCooldown,
+      psx: null,
+      psy: 0,
+      alive: true
+    };
   }
 
   /* ---------- simulation ---------- */
 
-  burst() {
-    const rand = (a, b) => a + Math.random() * (b - a);
-    const n = this.nuclei[(Math.random() * this.nuclei.length) | 0];
-    const count = 24 + ((Math.random() * 16) | 0);
-    for (let i = 0; i < count; i++) {
-      const ang = rand(0, Math.PI * 2);
-      const speed = rand(0.8, 3.6);
-      this.sparks.push({
-        x: n.x,
-        y: n.y,
-        vx: Math.cos(ang) * speed,
-        vy: Math.sin(ang) * speed * 0.75,
-        life: rand(60, 130),
-        maxLife: 130,
-        size: rand(0.8, 2.2),
-        colorIdx: (Math.random() * 4) | 0
-      });
-    }
-    this.flashes.push({ x: n.x, y: n.y, life: 34, maxLife: 34, colorIdx: 1 });
-  }
-
   step(now) {
     this.frame++;
+    const cfg = this.cfg;
+    const cam = this.cam;
 
-    // Nuclei wander slowly, softly bouncing off the band edges
-    for (const n of this.nuclei) {
-      n.vx += (Math.random() - 0.5) * 0.006;
-      n.vy += (Math.random() - 0.5) * 0.004;
-      n.vx *= 0.99;
-      n.vy *= 0.99;
-      n.x += n.vx;
-      n.y += n.vy;
-      if (n.x < this.w * 0.05 || n.x > this.w * 0.95) n.vx *= -1;
-      if (n.y < this.h * 0.1 || n.y > this.h * 0.9) n.vy *= -1;
-    }
+    // Camera: constant forward march + a subtle sideways sway. The downward
+    // flow is applied per-particle below (depth-weighted), not to the camera.
+    cam.z += cfg.forwardSpeed;
+    cam.x = cfg.driftAmpX * Math.sin(this.frame * cfg.driftFreqX);
 
-    for (const p of this.orbitals) {
-      const n = this.nuclei[p.n];
-      p.px = n.x + Math.cos(p.angle) * (p.baseR + Math.sin(p.rPhase) * p.rAmp);
-      p.py = n.y + Math.sin(p.angle) * (p.baseR + Math.sin(p.rPhase) * p.rAmp) * p.tilt;
-      p.angle += p.angSpeed;
-      p.rPhase += p.rSpeed;
+    // Advance neutrons + recycle any that pass the camera or leave the frustum
+    for (const p of this.particles) {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.z += p.vz;
       p.pulse += p.pulseSpeed;
+      if (p.cooldown > 0) p.cooldown--;
+
+      const depth = p.z - cam.z;
+      if (depth < cfg.near || depth > cfg.far * 1.05) {
+        this.respawnFar(p);
+        continue;
+      }
+      // Depth-weighted descent: ~0 in the far background, rising to the full
+      // downSpeed in the foreground along a logarithmic falloff with depth.
+      const dt = this.clamp((depth - cfg.near) / (cfg.far - cfg.near), 0, 1);
+      const downK = 1 - Math.log1p(cfg.downCurve * dt) / Math.log1p(cfg.downCurve);
+      p.y += cfg.downSpeed * downK;
+
+      const { hx, hy } = this.frustumHalf(depth);
+      // Anything pulled off the sides or dragged off the bottom by the descent
+      // is recycled to the far plane, so every neutron again originates in the
+      // background and is drawn forward.
+      if (Math.abs(p.x - cam.x) > hx * 1.9 || Math.abs(p.y - cam.y) > hy * 1.7) {
+        this.respawnFar(p);
+      }
     }
 
-    for (const d of this.dust) {
-      d.x += d.vx;
-      d.y += d.vy;
-      d.pulse += d.pulseSpeed;
-      if (d.x < -10) d.x = this.w + 10;
-      if (d.x > this.w + 10) d.x = -10;
-      if (d.y < -10) d.y = this.h + 10;
-      if (d.y > this.h + 10) d.y = -10;
+    this.detectCollisions();
+
+    // Keep the chain reaction alive if it has gone quiet
+    if (now && now - this.lastFission > cfg.keepAliveMs) {
+      this.forceFission();
+      this.lastFission = now;
     }
 
+    // Advance 2D explosion sparks (screen space)
     for (let i = this.sparks.length - 1; i >= 0; i--) {
       const s = this.sparks[i];
       s.x += s.vx;
       s.y += s.vy;
       s.vx *= 0.965;
       s.vy *= 0.965;
-      s.vy += 0.004; // faint gravity, like falling embers
+      s.vy += 0.006;
       s.life--;
       if (s.life <= 0) this.sparks.splice(i, 1);
     }
-
     for (let i = this.flashes.length - 1; i >= 0; i--) {
       if (--this.flashes[i].life <= 0) this.flashes.splice(i, 1);
     }
 
-    if (now && now > this.nextBurst) {
-      this.burst();
-      this.nextBurst = now + 8000 + Math.random() * 7000;
+    // Refill toward the target population if fly-offs outpaced fissions
+    while (this.particles.length < cfg.minParticles) {
+      this.particles.push(this.makeParticle(true));
     }
+  }
+
+  detectCollisions() {
+    const cfg = this.cfg;
+    const cell = cfg.cell;
+    const parts = this.particles;
+    const grid = new Map();
+    const key = (a, b, c) => a + ',' + b + ',' + c;
+
+    for (let i = 0; i < parts.length; i++) {
+      const p = parts[i];
+      if (p.cooldown > 0) continue; // fresh fragments don't collide yet
+      const k = key(
+        Math.floor(p.x / cell),
+        Math.floor(p.y / cell),
+        Math.floor(p.z / cell)
+      );
+      let arr = grid.get(k);
+      if (!arr) grid.set(k, (arr = []));
+      arr.push(i);
+    }
+
+    const r2 = cfg.collisionRadius * cfg.collisionRadius;
+    const pairs = [];
+    for (let i = 0; i < parts.length; i++) {
+      const p = parts[i];
+      if (!p.alive || p.cooldown > 0) continue;
+      const cx = Math.floor(p.x / cell);
+      const cy = Math.floor(p.y / cell);
+      const cz = Math.floor(p.z / cell);
+      let hit = false;
+      for (let dx = -1; dx <= 1 && !hit; dx++) {
+        for (let dy = -1; dy <= 1 && !hit; dy++) {
+          for (let dz = -1; dz <= 1 && !hit; dz++) {
+            const arr = grid.get(key(cx + dx, cy + dy, cz + dz));
+            if (!arr) continue;
+            for (const j of arr) {
+              if (j <= i) continue;
+              const q = parts[j];
+              if (!q.alive) continue;
+              const ddx = p.x - q.x;
+              const ddy = p.y - q.y;
+              const ddz = p.z - q.z;
+              if (ddx * ddx + ddy * ddy + ddz * ddz < r2) {
+                p.alive = false;
+                q.alive = false;
+                pairs.push([p, q]);
+                hit = true;
+                break;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    if (!pairs.length) return;
+    for (const [p, q] of pairs) this.fission(p, q);
+    this.particles = this.particles.filter((p) => p.alive);
+    this.lastFission = performance.now();
+  }
+
+  // Consume two neutrons; emit a flash + spark burst and smaller fragments.
+  fission(p, q) {
+    const cfg = this.cfg;
+    const cam = this.cam;
+    const x = (p.x + q.x) / 2;
+    const y = (p.y + q.y) / 2;
+    const z = (p.z + q.z) / 2;
+    const depth = z - cam.z;
+    if (depth < cfg.near) return; // behind the camera; skip visuals
+
+    const scale = this.f / depth;
+    const sx = this.w / 2 + (x - cam.x) * scale;
+    const sy = this.h / 2 + (y - cam.y) * scale;
+    const vis = this.clamp(scale, 0.3, 1.3); // depth-scaled explosion size
+    const colorIdx = Math.random() < 0.5 ? p.colorIdx : q.colorIdx;
+    this.spawnBurst(sx, sy, vis, colorIdx);
+
+    // Conserve the colliders' momentum (mass-weighted) so fragments keep
+    // travelling across the screen along the original direction of motion.
+    const mt = p.r + q.r;
+    const bvx = (p.vx * p.r + q.vx * q.r) / mt;
+    const bvy = (p.vy * p.r + q.vy * q.r) / mt;
+    const bvz = (p.vz * p.r + q.vz * q.r) / mt;
+
+    // Eject smaller fragment neutrons (at least 3) to carry the chain forward
+    if (this.particles.length >= cfg.maxParticles) return;
+    const childR = Math.max(p.r, q.r) * cfg.childShrink;
+    const n = 3 + (Math.random() < 0.4 ? 1 : 0);
+    const r = childR > cfg.minR ? childR : this.cfg.rMin;
+    for (let i = 0; i < n; i++) {
+      if (this.particles.length >= cfg.maxParticles) break;
+      this.particles.push(this.makeFragment(x, y, z, r, bvx, bvy, bvz));
+    }
+  }
+
+  // Force a fission near the densest available point so the reaction persists.
+  forceFission() {
+    const parts = this.particles;
+    const eligible = parts.filter((p) => p.alive && p.cooldown <= 0);
+    if (eligible.length < 2) return;
+    const p = eligible[(Math.random() * eligible.length) | 0];
+    let best = null;
+    let bestD = Infinity;
+    for (const q of eligible) {
+      if (q === p) continue;
+      const d = (p.x - q.x) ** 2 + (p.y - q.y) ** 2 + (p.z - q.z) ** 2;
+      if (d < bestD) {
+        bestD = d;
+        best = q;
+      }
+    }
+    if (!best) return;
+    p.alive = false;
+    best.alive = false;
+    this.fission(p, best);
+    this.particles = this.particles.filter((x) => x.alive);
+  }
+
+  spawnBurst(sx, sy, vis, colorIdx) {
+    const rand = (a, b) => a + Math.random() * (b - a);
+    const count = this.cfg.sparkCount;
+    for (let i = 0; i < count; i++) {
+      const ang = rand(0, Math.PI * 2);
+      const speed = rand(0.6, 2.2) * vis;
+      this.sparks.push({
+        x: sx,
+        y: sy,
+        vx: Math.cos(ang) * speed,
+        vy: Math.sin(ang) * speed * 0.85,
+        life: rand(32, 72),
+        maxLife: 72,
+        size: rand(0.5, 1.4),
+        colorIdx: (Math.random() * 4) | 0
+      });
+    }
+    this.flashes.push({ x: sx, y: sy, life: 22, maxLife: 22, colorIdx, vis });
   }
 
   /* ---------- drawing ---------- */
@@ -263,44 +506,65 @@ class QuantumField {
     const palette = this.palettes[theme];
     const sprites = this.sprites[theme];
     const ctx = this.ctx;
+    const cfg = this.cfg;
+    const cam = this.cam;
 
     ctx.clearRect(0, 0, this.w, this.h);
-    ctx.globalCompositeOperation = 'lighter';
+    // Additive blending makes embers bloom against the dark backdrop, but on a
+    // pale backdrop it just washes toward white — so light mode paints normally
+    // and lets the saturated Cherenkov blue read against the watercolor.
+    ctx.globalCompositeOperation = theme === 'light' ? 'source-over' : 'lighter';
     ctx.lineCap = 'round';
 
-    // Orbital embers with a short motion streak along the orbit
-    for (const p of this.orbitals) {
-      const shimmer = 0.6 + 0.4 * Math.sin(p.pulse);
-      const a = p.alpha * shimmer * palette.intensity;
-      const r = p.baseR + Math.sin(p.rPhase) * p.rAmp;
-      const speed = Math.abs(p.angSpeed) * r;
+    // Neutrons: perspective-projected, depth-faded, size-clamped
+    for (const p of this.particles) {
+      const depth = p.z - cam.z;
+      if (depth < cfg.near || depth > cfg.far) { p.psx = null; continue; }
+      const scale = this.f / depth;
+      const sx = this.w / 2 + (p.x - cam.x) * scale;
+      const sy = this.h / 2 + (p.y - cam.y) * scale;
+      if (sx < -40 || sx > this.w + 40 || sy < -40 || sy > this.h + 40) { p.psx = null; continue; }
 
-      if (speed > 0.25) {
-        const tx = -Math.sin(p.angle) * Math.sign(p.angSpeed);
-        const ty = Math.cos(p.angle) * Math.sign(p.angSpeed) * p.tilt;
-        const len = Math.min(speed * 9, 16);
-        ctx.strokeStyle = this.rgba(palette.colors[p.colorIdx], a * 0.35);
-        ctx.lineWidth = p.size * 0.7;
-        ctx.beginPath();
-        ctx.moveTo(p.px - tx * len, p.py - ty * len);
-        ctx.lineTo(p.px, p.py);
-        ctx.stroke();
+      const fadeNear = this.clamp((depth - cfg.near) / cfg.nearFade, 0, 1);
+      const fadeFar = this.clamp((cfg.far - depth) / cfg.farFade, 0, 1);
+      // Depth brightness: dark in the far background, brighter toward the front
+      // (foreBright can exceed 1 to make close neutrons pop; alpha is clamped).
+      const dt = this.clamp((depth - cfg.near) / (cfg.far - cfg.near), 0, 1);
+      const depthBright = cfg.backBright + (cfg.foreBright - cfg.backBright) * (1 - dt);
+      const shimmer = 0.6 + 0.4 * Math.sin(p.pulse);
+      const a = Math.min(p.alpha * shimmer * fadeNear * fadeFar * depthBright * palette.intensity, 1);
+      if (a <= 0.01) { p.psx = sx; p.psy = sy; continue; }
+
+      const drawR = Math.min(p.r * scale, cfg.maxPx);
+
+      // Streak along the neutron's real on-screen path (camera forward + descent
+      // + drift + own motion). Under perspective, particles that are close or
+      // off-centre travel farther per frame, so they streak the most — the
+      // non-linear, curving rush the eye reads as fast forward-and-down motion.
+      if (p.psx !== null) {
+        const dxp = sx - p.psx;
+        const dyp = sy - p.psy;
+        const dist = Math.hypot(dxp, dyp);
+        if (dist > 0.5) {
+          const len = Math.min(dist * cfg.streakScale, cfg.maxStreak);
+          const ux = dxp / dist;
+          const uy = dyp / dist;
+          ctx.strokeStyle = this.rgba(palette.colors[p.colorIdx], a * 0.5);
+          ctx.lineWidth = drawR * 0.9;
+          ctx.beginPath();
+          ctx.moveTo(sx - ux * len, sy - uy * len);
+          ctx.lineTo(sx, sy);
+          ctx.stroke();
+        }
       }
 
-      const s = p.size * (2.6 + shimmer);
       ctx.globalAlpha = a;
-      ctx.drawImage(sprites[p.colorIdx], p.px - s * 2, p.py - s * 2, s * 4, s * 4);
+      ctx.drawImage(sprites[p.colorIdx], sx - drawR * 2, sy - drawR * 2, drawR * 4, drawR * 4);
+      p.psx = sx;
+      p.psy = sy;
     }
 
-    // Dust motes
-    for (const d of this.dust) {
-      const a = d.alpha * (0.55 + 0.45 * Math.sin(d.pulse)) * palette.intensity;
-      const s = d.size * 3;
-      ctx.globalAlpha = a;
-      ctx.drawImage(sprites[d.colorIdx], d.x - s * 2, d.y - s * 2, s * 4, s * 4);
-    }
-
-    // Burst sparks with velocity streaks
+    // Fission sparks (screen space) with velocity streaks
     for (const s of this.sparks) {
       const t = s.life / s.maxLife;
       const a = Math.min(1, t * 1.6) * palette.intensity;
@@ -310,16 +574,16 @@ class QuantumField {
       ctx.moveTo(s.x - s.vx * 5, s.y - s.vy * 5);
       ctx.lineTo(s.x, s.y);
       ctx.stroke();
-      const sz = s.size * 3;
+      const sz = Math.min(s.size * 3, 6);
       ctx.globalAlpha = a;
       ctx.drawImage(sprites[s.colorIdx], s.x - sz * 2, s.y - sz * 2, sz * 4, sz * 4);
     }
 
-    // Core flash at burst origin
+    // Core flash at each fission origin
     for (const f of this.flashes) {
       const t = f.life / f.maxLife;
-      const sz = (1 - t * 0.4) * 60;
-      ctx.globalAlpha = t * t * 0.85 * palette.intensity;
+      const sz = Math.min((1 - t * 0.4) * 30 * (f.vis || 1), 48);
+      ctx.globalAlpha = t * t * 0.6 * palette.intensity;
       ctx.drawImage(sprites[f.colorIdx], f.x - sz, f.y - sz, sz * 2, sz * 2);
     }
 

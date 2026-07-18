@@ -62,9 +62,20 @@
 /* ---------- Hero ---------- */
 
 .hero {
+  --hero-height: 500px; /* single knob for the top section's size */
   position: relative;
   overflow: visible;
+  min-height: var(--hero-height);
+  display: flex;
+  align-items: center;
   padding: var(--spacing-lg) var(--spacing-md) 0;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 768px) {
+  .hero {
+    --hero-height: 460px;
+  }
 }
 
 /* Layer stack: watercolor image (0) -> scrim (1) -> particle canvas (2, set inline)
@@ -78,7 +89,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(10, 8, 5, 0.3);
+  /* background: rgba(10, 8, 5, 0); */
   z-index: 1;
   pointer-events: none;
 }
@@ -87,6 +98,12 @@
   background: transparent;
 }
 
+/* 
+:root:not(.light-mode) .hero > #stars-background {
+  opacity: 0.92;
+  filter: brightness(1.) saturate(1.0);
+} */
+
 /* Fade the creative background into the plain page background */
 .hero::after {
   content: '';
@@ -94,7 +111,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  height: 90px;
+  height: 400px;
   background: linear-gradient(to bottom, transparent, var(--color-background));
   z-index: 3;
   pointer-events: none;
@@ -168,6 +185,36 @@
   border-bottom-color: var(--color-text);
 }
 
+/* Easter egg under the nav — a whisper pointing at the fission animation.
+   Brightens on hover to reward anyone who notices it. */
+.hero__hint {
+  margin: var(--spacing-sm) 0 0;
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  font-style: italic;
+  color: var(--color-text);
+  opacity: 0.32;
+  transition: opacity 0.3s ease;
+  cursor: default;
+}
+
+.hero__hint:hover {
+  opacity: 0.75;
+}
+
+/* Swap the wording with the theme: embers in dark, Cherenkov blue in light */
+.hero__hint--light {
+  display: none;
+}
+
+.light-mode .hero__hint--dark {
+  display: none;
+}
+
+.light-mode .hero__hint--light {
+  display: inline;
+}
+
 /* Legibility over the watercolor image in both themes */
 .light-mode .hero__name,
 .light-mode .hero__tagline,
@@ -190,17 +237,43 @@
 }
 
 .section {
-  padding: var(--spacing-lg) 0 0;
+  /* Single knob for space between sections. Applied both above and below the
+     divider line, so the visible gap is roughly 2x this value. */
+  --section-gap: 5.5rem;
+  padding: var(--section-gap) 0 0;
+  margin-top: var(--section-gap);
+  border-top: 1px solid var(--color-border);
+}
+
+/* The intro (About) flows straight from the hero — no rule above it */
+#about {
+  border-top: none;
+  margin-top: 0;
 }
 
 .section__heading {
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
   margin-bottom: var(--spacing-md);
-  font-family: var(--font-primary);
+  font-family: var(--font-heading);
+}
+
+/* Small accent underline to anchor each section.
+   Follows each theme's particle palette: amber embers in dark, teal in light. */
+.section__heading::after {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 2px;
+  background: #f0a030;
+  border-radius: 1px;
+  margin-top: 10px;
+}
+
+.light-mode .section__heading::after {
+  background: #2e86ff;
 }
 
 .section__note {
