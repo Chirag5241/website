@@ -509,8 +509,9 @@
   }
 
   .hero__inner {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: column-reverse; /* photo above the name */
+    align-items: center;
+    text-align: center;
     gap: var(--spacing-md);
   }
 
@@ -518,9 +519,13 @@
     padding-bottom: 0;
   }
 
+  .hero__nav {
+    justify-content: center;
+  }
+
   .hero__photo {
     width: 160px;
-    margin-bottom: -32px;
+    margin-bottom: 0;
   }
 
   .hero__name {
