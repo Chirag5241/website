@@ -62,7 +62,7 @@
 /* ---------- Hero ---------- */
 
 .hero {
-  --hero-height: 500px; /* single knob for the top section's size */
+  --hero-height: 400px; /* single knob for the top section's size */
   position: relative;
   overflow: visible;
   min-height: var(--hero-height);
@@ -78,31 +78,11 @@
   }
 }
 
-/* Layer stack: watercolor image (0) -> scrim (1) -> particle canvas (2, set inline)
+/* Layer stack: watercolor image (0) -> particle canvas (2, set inline)
    -> fade gradient (3) -> content (4) */
 .hero > #stars-background {
   z-index: 0;
 }
-
-/* Darkening scrim so the embers pop against the watercolor (dark mode only) */
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  /* background: rgba(10, 8, 5, 0); */
-  z-index: 1;
-  pointer-events: none;
-}
-
-.light-mode .hero::before {
-  background: transparent;
-}
-
-/* 
-:root:not(.light-mode) .hero > #stars-background {
-  opacity: 0.92;
-  filter: brightness(1.) saturate(1.0);
-} */
 
 /* Fade the creative background into the plain page background */
 .hero::after {
@@ -157,14 +137,6 @@
   margin-bottom: var(--spacing-xs);
 }
 
-.hero__tagline {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: var(--color-text);
-  opacity: 0.85;
-  margin-bottom: var(--spacing-md);
-}
-
 .hero__nav {
   display: flex;
   flex-wrap: wrap;
@@ -217,13 +189,11 @@
 
 /* Legibility over the watercolor image in both themes */
 .light-mode .hero__name,
-.light-mode .hero__tagline,
 .light-mode .hero__nav a {
   text-shadow: 0 1px 12px rgba(255, 255, 255, 0.5);
 }
 
 :root:not(.light-mode) .hero__name,
-:root:not(.light-mode) .hero__tagline,
 :root:not(.light-mode) .hero__nav a {
   text-shadow: 0 1px 12px rgba(0, 0, 0, 0.6);
 }
@@ -245,10 +215,13 @@
   border-top: 1px solid var(--color-border);
 }
 
-/* The intro (About) flows straight from the hero — no rule above it */
+/* The intro (About) flows straight from the hero — no rule above it.
+   Tighter top padding pulls the intro copy up toward the hero without
+   moving the hero photo. */
 #about {
   border-top: none;
   margin-top: 0;
+  padding-top: 0;
 }
 
 .section__heading {
@@ -480,7 +453,6 @@
   opacity: 0;
   transform: translateY(8px);
   transition: opacity 0.7s ease, transform 0.7s ease;
-  animation: none;
 }
 
 .fade-in.visible {
@@ -505,7 +477,7 @@
   /* Tighten the vertical rhythm on phones — 5.5rem between sections leaves
      big dead gaps (most noticeably right after the hero photo). */
   .section {
-    --section-gap: 3rem;
+    --section-gap: 2rem;
   }
 
   .hero__inner {
@@ -530,10 +502,6 @@
 
   .hero__name {
     font-size: 2rem;
-  }
-
-  .hero__tagline {
-    font-size: 0.875rem;
   }
 
   .job {

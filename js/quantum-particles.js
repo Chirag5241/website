@@ -92,7 +92,7 @@ class QuantumField {
   }
 
   makeSprite(coreHex, colorHex) {
-    const size = 64;
+    const size = 15;
     const c = document.createElement('canvas');
     c.width = c.height = size;
     const g = c.getContext('2d');
@@ -144,9 +144,9 @@ class QuantumField {
     this.cam = { x: 0, y: 0, z: 0 };
 
     this.cfg = {
-      count: mobile ? 70 : 150,
-      minParticles: mobile ? 70 : 150,
-      maxParticles: mobile ? 300 : 1000, // cap lower on phones to keep the reaction smooth
+      count: mobile ? 40 : 50,
+      minParticles: mobile ? 200 : 300,
+      maxParticles: mobile ? 1000 : 1000, // cap lower on phones to keep the reaction smooth
 
       // Depth planes (world units ahead of the camera)
       near: 46,
@@ -159,7 +159,7 @@ class QuantumField {
       // Camera: steady forward march + a gentle horizontal sway. The downward
       // motion is applied per-particle (see downSpeed) instead of as a flat
       // camera descent, so its strength can fall off with depth.
-      forwardSpeed: 2.5,
+      forwardSpeed: 4,
       driftAmpX: 1,
       driftFreqX: 0.0055,
 
@@ -172,7 +172,7 @@ class QuantumField {
 
       // Neutron motion (world units / frame) — primarily horizontal
       speedMin: 0.3,
-      speedMax: 2,
+      speedMax: 1,
 
       // Neutron world radius (mass proxy)
       rMin: 2.2,
@@ -202,7 +202,7 @@ class QuantumField {
       neutronMultiplicity: [0.033, 0.174, 0.335, 0.303, 0.123, 0.028, 0.004],
       // Keep-alive: if no fission has happened in this window, force one so the
       // reaction never fully dies. Lower = more aggressive.
-      keepAliveMs: 2000
+      keepAliveMs: 1000
     };
 
     this.particles = [];
@@ -263,7 +263,7 @@ class QuantumField {
     p.x = cam.x + rand(-hx, hx);
     p.y = cam.y + rand(-hy, hy);
     p.z = cam.z + depth;
-    p.vx = dir * sp;
+    p.vx = 0.4*dir * sp;
     p.vy = rand(-0.12, 0.12) * sp;
     p.vz = rand(-0.05, 0.05) * sp;
     p.r = rand(cfg.rMin, cfg.rMax);
@@ -518,7 +518,7 @@ class QuantumField {
         vy: Math.sin(ang) * speed * 0.85,
         life: rand(32, 72),
         maxLife: 72,
-        size: rand(0.5, 1.4),
+        size: rand(0.5, 0.6),
         colorIdx: (Math.random() * 4) | 0
       });
     }
