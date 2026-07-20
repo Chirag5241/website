@@ -216,12 +216,12 @@
 }
 
 /* The intro (About) flows straight from the hero — no rule above it.
-   Tighter top padding pulls the intro copy up toward the hero without
-   moving the hero photo. */
+   The top padding matches the hero photo's -48px overhang so the intro
+   copy hugs the hero without running underneath the photo. */
 #about {
   border-top: none;
   margin-top: 0;
-  padding-top: 0;
+  padding-top: 48px;
 }
 
 .section__heading {
@@ -489,6 +489,11 @@
 
   .hero__text {
     padding-bottom: 0;
+  }
+
+  /* No photo overhang on phones (it sits above the name), so no clearance needed */
+  #about {
+    padding-top: 0;
   }
 
   .hero__nav {
