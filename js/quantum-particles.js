@@ -145,7 +145,7 @@ class QuantumField {
 
     this.cfg = {
       count: mobile ? 40 : 50,
-      minParticles: mobile ? 200 : 300,
+      minParticles: mobile ? 300 : 300,
       maxParticles: mobile ? 1000 : 1000, // cap lower on phones to keep the reaction smooth
 
       // Depth planes (world units ahead of the camera)
@@ -188,7 +188,7 @@ class QuantumField {
       maxStreak: 46,
 
       // Fission / chain reaction
-      collisionRadius: 22,
+      collisionRadius: 30,
       cell: 44, // spatial-grid cell size (~2 * collisionRadius)
       childShrink: 0.7,
       childCooldown: 12, // frames a fresh fragment is collision-immune (so it can fly clear)
@@ -202,7 +202,7 @@ class QuantumField {
       neutronMultiplicity: [0.033, 0.174, 0.335, 0.303, 0.123, 0.028, 0.004],
       // Keep-alive: if no fission has happened in this window, force one so the
       // reaction never fully dies. Lower = more aggressive.
-      keepAliveMs: 1000
+      keepAliveMs: 500
     };
 
     this.particles = [];
@@ -263,7 +263,7 @@ class QuantumField {
     p.x = cam.x + rand(-hx, hx);
     p.y = cam.y + rand(-hy, hy);
     p.z = cam.z + depth;
-    p.vx = 0.4*dir * sp;
+    p.vx = 0.7*dir * sp;
     p.vy = rand(-0.12, 0.12) * sp;
     p.vz = rand(-0.05, 0.05) * sp;
     p.r = rand(cfg.rMin, cfg.rMax);
