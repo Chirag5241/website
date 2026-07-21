@@ -144,10 +144,16 @@ class QuantumField {
     this.cam = { x: 0, y: 0, z: 0 };
 
     this.cfg = {
-      count: mobile ? 40 : 50,
-      minParticles: mobile ? 300 : 300,
+      count: mobile ? 250 : 250,
+      minParticles: mobile ? 250 : 150,
       maxParticles: mobile ? 1000 : 1000, // cap lower on phones to keep the reaction smooth
 
+      // Fraction of the frustum half-extent (from centre) that new / recycled
+      // neutrons spawn within. 1 = the whole screen (spawn everywhere); smaller
+      // values make the reaction emanate from a small central box and fan out
+      // as the camera pulls them forward. Desktop starts them tight in the
+      // centre; mobile keeps the full spread so the small screen stays filled.
+      spawnSpread: mobile ? 1 : 1.3,
       // Depth planes (world units ahead of the camera)
       near: 46,
       far: 1450,
@@ -202,7 +208,7 @@ class QuantumField {
       neutronMultiplicity: [0.033, 0.174, 0.335, 0.303, 0.123, 0.028, 0.004],
       // Keep-alive: if no fission has happened in this window, force one so the
       // reaction never fully dies. Lower = more aggressive.
-      keepAliveMs: 500
+      keepAliveMs: mobile ? 400 : 4000
     };
 
     this.particles = [];
@@ -230,9 +236,11 @@ class QuantumField {
     const dir = Math.random() < 0.5 ? -1 : 1;
     const sp = rand(cfg.speedMin, cfg.speedMax);
     return {
-      // Spawn strictly inside the visible frustum (no off-screen overscan)
-      x: cam.x + rand(-hx, hx),
-      y: cam.y + rand(-hy, hy),
+      // Spawn strictly inside the visible frustum (no off-screen overscan),
+      // confined to the central spawn box (spawnSpread) so the reaction can
+      // emanate from the centre on wide screens.
+      x: cam.x + rand(-hx, hx) * cfg.spawnSpread,
+      y: cam.y + rand(-hy, hy) * cfg.spawnSpread,
       z: cam.z + depth,
       vx: dir * sp, // moving left or right
       vy: rand(-0.12, 0.12) * sp,
@@ -259,9 +267,10 @@ class QuantumField {
     const { hx, hy } = this.frustumHalf(depth);
     const dir = Math.random() < 0.5 ? -1 : 1;
     const sp = rand(cfg.speedMin, cfg.speedMax);
-    // Spawn strictly inside the visible frustum (no off-screen overscan)
-    p.x = cam.x + rand(-hx, hx);
-    p.y = cam.y + rand(-hy, hy);
+    // Spawn strictly inside the visible frustum (no off-screen overscan),
+    // confined to the central spawn box (spawnSpread).
+    p.x = cam.x + rand(-hx, hx) * cfg.spawnSpread;
+    p.y = cam.y + rand(-hy, hy) * cfg.spawnSpread;
     p.z = cam.z + depth;
     p.vx = 0.7*dir * sp;
     p.vy = rand(-0.12, 0.12) * sp;
