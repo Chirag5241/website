@@ -291,6 +291,9 @@
 }
 
 .mask {
+  /* Lifted so the heading's letters paint over the brush rule, not under it. */
+  position: relative;
+  z-index: 1;
   display: inline-block;
   overflow: hidden;
   padding-bottom: 0.1em;
