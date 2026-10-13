@@ -1,5 +1,18 @@
-/* Minimal layout — clean single-column design.
-   The hero keeps the animated stars/watercolor background as the one creative element. */
+/* Minimal layout — editorial single-column design.
+   Large serif display type over an Inter body, hand-drawn accent underlines,
+   and full-bleed rule-separated rows. The hero keeps the animated
+   stars/watercolor background as the one creative element. */
+
+/* ---------- Layout scale ----------
+   --measure is the reading width for prose; --page is the outer column. */
+:root {
+  --page-width: 1024px;
+  --measure: 60rem;
+  /* Minimum breathing room between text and the viewport edge. The hero and
+     the page body share it so their left edges line up exactly. */
+  --gutter: 2rem;
+  --font-display: 'Fraunces', 'Space Grotesk', Georgia, serif;
+}
 
 /* ---------- Theme toggle (fixed top right) ---------- */
 
@@ -42,39 +55,63 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 1.1rem;
+  gap: 1.6rem;
 }
 
 .topnav__links a {
-  font-size: 0.875rem;
+  position: relative;
+  font-size: 0.8rem;
   font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--color-text);
-  opacity: 0.85;
-  border-bottom: 1px solid transparent;
-  transition: opacity 0.2s ease, border-color 0.2s ease;
+  opacity: 0.7;
+  transition: opacity 0.2s ease, color 0.2s ease;
 }
 
-.topnav__links a:hover {
+/* Underline wipes in from the left on hover — the same gesture as the
+   section headings, scaled down. */
+.topnav__links a::after,
+.hero__nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 1.5px;
+  background: var(--color-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.topnav__links a:hover,
+.hero__nav a:hover {
   opacity: 1;
-  border-bottom-color: var(--color-text);
+  color: var(--color-primary);
+}
+
+.topnav__links a:hover::after,
+.hero__nav a:hover::after {
+  transform: scaleX(1);
 }
 
 /* ---------- Hero ---------- */
 
 .hero {
-  --hero-height: 400px; /* single knob for the top section's size */
+  --hero-height: 600px; /* single knob for the top section's size */
   position: relative;
   overflow: visible;
   min-height: var(--hero-height);
   display: flex;
   align-items: center;
-  padding: var(--spacing-lg) var(--spacing-md) 0;
+  padding: var(--spacing-lg) 0 0;
   box-sizing: border-box;
 }
 
 @media screen and (max-width: 768px) {
   .hero {
-    --hero-height: 460px;
+    --hero-height: 520px;
   }
 }
 
@@ -100,68 +137,77 @@
 .hero__inner {
   position: relative;
   z-index: 4;
-  max-width: 720px;
+  box-sizing: border-box;
+  max-width: var(--page-width);
+  width: 100%;
   margin: 0 auto;
+  padding: var(--spacing-lg) var(--gutter) 0;
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: flex-start;
   gap: var(--spacing-md);
-  padding-top: var(--spacing-lg);
 }
 
+/* max-content lets the nav lay out at its natural single-line width, which is
+   what the name is then measured against. Without it the column and the nav
+   would size from each other. */
 .hero__text {
-  padding-bottom: var(--spacing-lg);
+  width: max-content;
+  max-width: 100%;
+  min-width: 0;
 }
 
 .hero__photo {
-  width: 216px;
+  width: clamp(110px, 22vw, 280px);
   aspect-ratio: 3 / 4;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 10px;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.28);
-  margin-bottom: -48px;
   flex-shrink: 0;
 }
 
-@media screen and (max-width: 768px) {
-  .hero__photo {
-    margin-bottom: -32px;
-  }
+/* The name is the page's largest voice: one unbroken line of serif with the
+   drawn rule beneath it. Sized to stay on that line beside the photo. */
+.hero__name {
+  position: relative;
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 5.2vw, 4.25rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  white-space: nowrap;
+  margin-bottom: 1.25rem;
 }
 
-.hero__name {
-  font-size: 3rem;
-  font-weight: 500;
-  letter-spacing: -0.03em;
-  color: var(--color-text);
-  margin-bottom: var(--spacing-xs);
+.hero__name-text {
+  position: relative;
+  display: inline-block;
 }
 
 .hero__nav {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--spacing-xs) 1.1rem;
+  gap: var(--spacing-sm) 1.75rem;
 }
 
 .hero__nav a {
-  font-size: 0.875rem;
+  position: relative;
+  font-size: 0.8rem;
   font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--color-text);
-  opacity: 0.8;
-  border-bottom: 1px solid transparent;
-  transition: opacity 0.2s ease, border-color 0.2s ease;
-}
-
-.hero__nav a:hover {
-  opacity: 1;
-  border-bottom-color: var(--color-text);
+  opacity: 0.75;
+  transition: opacity 0.2s ease, color 0.2s ease;
 }
 
 /* Easter egg under the nav — a whisper pointing at the fission animation.
    Brightens on hover to reward anyone who notices it. */
 .hero__hint {
   margin: var(--spacing-sm) 0 0;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   letter-spacing: 0.04em;
   font-style: italic;
   color: var(--color-text);
@@ -201,229 +247,285 @@
 /* ---------- Page & sections ---------- */
 
 .page {
-  max-width: 720px;
+  max-width: var(--page-width);
   margin: 0 auto;
-  padding: 0 var(--spacing-md);
+  padding: 0 var(--gutter);
 }
 
 .section {
-  /* Single knob for space between sections. Applied both above and below the
-     divider line, so the visible gap is roughly 2x this value. */
-  --section-gap: 5.5rem;
-  padding: var(--section-gap) 0 0;
-  margin-top: var(--section-gap);
-  border-top: 1px solid var(--color-border);
+  /* Single knob for space between sections. */
+  --section-gap: 7rem;
+  padding-top: var(--section-gap);
 }
 
-/* The intro (About) flows straight from the hero — no rule above it.
-   The top padding matches the hero photo's -48px overhang so the intro
-   copy hugs the hero without running underneath the photo. */
+/* The intro (About) flows straight from the hero — the top padding matches
+   the hero photo's overhang so the copy hugs the hero without colliding. */
 #about {
-  border-top: none;
-  margin-top: 0;
-  padding-top: 48px;
+  padding-top: var(--spacing-lg);
 }
 
+/* Section headings: big serif, clipped-reveal text, drawn accent underline.
+   The mask/squiggle markup is injected by js/reveal.js. */
 .section__heading {
-  font-size: 1.35rem;
-  font-weight: 600;
+  position: relative;
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 7vw, 4.5rem);
+  font-weight: 400;
+  line-height: 1;
   letter-spacing: -0.02em;
   color: var(--color-text);
-  margin-bottom: var(--spacing-md);
-  font-family: var(--font-heading);
+  margin-bottom: 3.5rem;
 }
 
-/* Small accent underline to anchor each section.
-   Follows each theme's particle palette: amber embers in dark, teal in light. */
-.section__heading::after {
-  content: '';
-  display: block;
-  width: 28px;
-  height: 2px;
-  background: #f0a030;
-  border-radius: 1px;
-  margin-top: 10px;
+/* base.css sets font-family on `*`, so nested spans must opt back in. */
+.hero__name-text,
+.mask,
+.mask__inner {
+  font-family: inherit;
 }
 
-.light-mode .section__heading::after {
-  background: #2e86ff;
+.mask,
+.mask__inner {
+  font-style: inherit;
+}
+
+.mask {
+  display: inline-block;
+  overflow: hidden;
+  padding-bottom: 0.1em;
+  margin-bottom: -0.1em;
+  vertical-align: bottom;
+}
+
+.mask__inner {
+  display: inline-block;
+  transform: translateY(115%);
+  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible .mask__inner {
+  transform: translateY(0);
+}
+
+/* Hand-drawn brush rule. The ink is filled ribbons so the stroke can taper;
+   `pathLength="1"` on the masking nib normalises the draw to 0..1 whatever
+   width the mark ends up at. */
+.squiggle {
+  position: absolute;
+  left: 0;
+  bottom: -0.36em;
+  width: 72%;
+  min-width: 7rem;
+  height: 0.46em;
+  overflow: visible;
+  color: var(--color-primary);
+  pointer-events: none;
+}
+
+.squiggle__nib {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.reveal.visible .squiggle__nib {
+  animation: squiggle-draw 0.8s cubic-bezier(0.4, 0.05, 0.35, 1) 0.15s forwards;
+}
+
+@keyframes squiggle-draw {
+  from { stroke-dashoffset: 1; }
+  to   { stroke-dashoffset: 0; }
 }
 
 .section__note {
-  font-size: 0.95rem;
-  line-height: 1.75;
+  font-size: 1.125rem;
+  line-height: 1.65;
+  max-width: var(--measure);
   color: var(--color-text-muted);
-  margin-bottom: var(--spacing-md);
+  margin-bottom: 3rem;
 }
 
 .section__footnote {
-  font-size: 0.875rem;
+  font-size: 0.95rem;
   color: var(--color-text-muted);
-  margin-top: var(--spacing-md);
+  margin-top: 2rem;
   margin-bottom: 0;
 }
 
 /* ---------- About ---------- */
 
 .about__text {
-  font-size: 1rem;
-  line-height: 1.8;
+  font-size: clamp(1.25rem, 2.2vw, 1.5rem);
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  max-width: var(--measure);
   color: var(--color-text);
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: 1.5rem;
 }
 
 .about__links {
   display: flex;
-  gap: var(--spacing-md);
-  margin: var(--spacing-sm) 0 0;
+  flex-wrap: wrap;
+  gap: 1.75rem;
+  margin: 2.5rem 0 0;
 }
 
 .about__links a {
-  font-size: 0.875rem;
-  color: var(--color-primary);
-}
-
-.about__links a:hover {
-  text-decoration: underline;
-}
-
-/* ---------- Publications ---------- */
-
-.pubs {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-md);
-}
-
-.pub {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-
-.pub__title {
-  font-size: 0.975rem;
+  position: relative;
+  font-size: 0.85rem;
   font-weight: 500;
-  color: var(--color-text);
-  font-family: var(--font-heading);
-  letter-spacing: -0.01em;
-  line-height: 1.45;
-}
-
-.pub__authors {
-  font-size: 0.875rem;
-  color: var(--color-text-muted);
-}
-
-.pub__venue {
-  font-size: 0.875rem;
-  color: var(--color-text-muted);
-}
-
-.pub__venue a {
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--color-primary);
 }
 
-.pub__venue a:hover {
-  text-decoration: underline;
+.about__links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -5px;
+  height: 1.5px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
-/* ---------- Experience ---------- */
-
-.jobs {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-md);
+.about__links a:hover::after {
+  transform: scaleX(1);
 }
 
-.job {
-  display: grid;
-  grid-template-columns: 140px 1fr;
-  gap: var(--spacing-md);
-}
+/* ---------- Rows ----------
+   Publications, jobs and items all share one rule-separated row rhythm so the
+   three lists read as a single system. */
 
-.job__period {
-  font-size: 0.8rem;
-  color: var(--color-text-muted);
-  padding-top: 2px;
-  white-space: nowrap;
-}
-
-.job__body {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-
-.job__role {
-  font-size: 0.975rem;
-  font-weight: 500;
-  color: var(--color-text);
-  font-family: var(--font-heading);
-  letter-spacing: -0.01em;
-}
-
-.job__org {
-  color: var(--color-primary);
-}
-
-.job__desc {
-  font-size: 0.875rem;
-  line-height: 1.7;
-  color: var(--color-text-muted);
-}
-
-/* ---------- Generic item lists (projects, geopolitics, writing) ---------- */
-
+.pubs,
+.jobs,
 .items {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-md);
 }
 
+.pub,
+.job,
 .item {
+  padding: 2rem 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.pub:last-child,
+.job:last-child,
+.item:last-child {
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Shared title treatment: serif, one step down from the section heading. */
+.pub__title,
+.job__role,
+.item__title {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.4vw, 1.6rem);
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: var(--color-text);
+  transition: color 0.2s ease;
+}
+
+/* Shared supporting copy. */
+.pub__authors,
+.pub__venue,
+.job__desc,
+.item__desc {
+  display: block;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  max-width: var(--measure);
+  color: var(--color-text-muted);
+}
+
+/* ---------- Publications ---------- */
+
+.pub__authors {
+  margin-top: 0.6rem;
+}
+
+.pub__venue {
+  margin-top: 0.25rem;
+  font-size: 0.95rem;
+}
+
+.pub__venue a {
+  color: var(--color-primary);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.pub__venue a:hover {
+  border-bottom-color: currentColor;
+}
+
+/* ---------- Experience ---------- */
+
+.job {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  gap: 0.5rem var(--spacing-md);
+}
+
+/* The dates sit in the right margin, quiet and monospaced-feeling. */
+.job__period {
+  grid-column: 2;
+  grid-row: 1;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.job__body {
+  grid-column: 1;
+  grid-row: 1;
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 0.6rem;
+}
+
+.job__org {
+  font-family: inherit;
+  color: var(--color-primary);
+}
+
+/* ---------- Generic item lists (projects, geopolitics) ---------- */
+
+.item__desc {
+  margin-top: 0.6rem;
 }
 
 .item__link {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
+  display: block;
   color: inherit;
 }
 
-.item__title {
-  font-size: 0.975rem;
-  font-weight: 500;
-  color: var(--color-text);
-  font-family: var(--font-heading);
-  letter-spacing: -0.01em;
-}
-
 .item__arrow {
-  color: var(--color-primary);
-  font-weight: 400;
   display: inline-block;
-  transition: transform 0.2s ease;
+  font-family: inherit;
+  color: var(--color-primary);
+  transition: transform 0.25s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 .item__link:hover .item__arrow {
-  transform: translateX(4px);
+  transform: translateX(6px);
 }
 
 .item__link:hover .item__title {
   color: var(--color-primary);
-}
-
-.item__desc {
-  font-size: 0.875rem;
-  line-height: 1.7;
-  color: var(--color-text-muted);
 }
 
 /* ---------- Footer ---------- */
@@ -434,25 +536,29 @@
 }
 
 .footer p {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
   color: var(--color-text-muted);
   margin: 0;
 }
 
 .footer a {
   color: var(--color-text-muted);
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
 }
 
 .footer a:hover {
   color: var(--color-primary);
+  border-bottom-color: currentColor;
 }
 
 /* ---------- Animations ---------- */
 
 .fade-in {
   opacity: 0;
-  transform: translateY(8px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  transform: translateY(10px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 .fade-in.visible {
@@ -460,10 +566,12 @@
   transform: translateY(0);
 }
 
+/* Rows rise into place, staggered by --stagger (set in js/reveal.js). */
 .animate-on-scroll {
   opacity: 0;
-  transform: translateY(12px);
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  transform: translateY(18px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--stagger, 0s),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--stagger, 0s);
 }
 
 .animate-on-scroll.visible {
@@ -471,47 +579,120 @@
   transform: translateY(0);
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .fade-in,
+  .animate-on-scroll,
+  .mask__inner {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .squiggle__nib {
+    stroke-dashoffset: 0;
+    animation: none;
+  }
+}
+
 /* ---------- Mobile ---------- */
 
 @media screen and (max-width: 640px) {
-  /* Tighten the vertical rhythm on phones — 5.5rem between sections leaves
-     big dead gaps (most noticeably right after the hero photo). */
-  .section {
-    --section-gap: 2rem;
+  :root {
+    --gutter: 1.25rem;
   }
 
+  .section {
+    --section-gap: 4rem;
+  }
+
+  .section__heading {
+    margin-bottom: 2.25rem;
+  }
+
+  /* On phones the photo sits on its own, centred, above the name. Only the
+     photo centres — the text stays ranged left. */
   .hero__inner {
-    flex-direction: column-reverse; /* photo above the name */
-    align-items: center;
-    text-align: center;
+    flex-direction: column-reverse;
+    align-items: stretch;
     gap: var(--spacing-md);
   }
 
   .hero__text {
-    padding-bottom: 0;
-  }
-
-  /* No photo overhang on phones (it sits above the name), so no clearance needed */
-  #about {
-    padding-top: 0;
-  }
-
-  .hero__nav {
-    justify-content: center;
+    width: 100%;
   }
 
   .hero__photo {
-    width: 160px;
-    margin-bottom: 0;
+    align-self: center;
+    width: clamp(150px, 46vw, 210px);
   }
 
   .hero__name {
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 7vw, 2.25rem);
+    margin-bottom: 1rem;
   }
 
+  .hero__nav {
+    gap: 0.5rem 1rem;
+  }
+
+  .hero__nav a {
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+  }
+
+  .hero__hint {
+    font-size: 0.65rem;
+  }
+
+  .about__text,
+  .section__note,
+  .pub__authors,
+  .pub__venue,
+  .job__desc,
+  .item__desc {
+    max-width: none;
+  }
+
+  /* On a phone the column is narrow enough that ranged-left text reads as
+     though it were pushed to one side, so everything centres. */
+  .hero__text,
+  .section,
+  .footer {
+    text-align: center;
+  }
+
+  /* Flex rows do not follow text-align, so they are centred on their own axis. */
+  .hero__nav,
+  .about__links {
+    justify-content: center;
+  }
+
+  /* The heading shrink-wraps and is centred by its section; the brush mark is
+     absolutely positioned inside it, so it re-anchors from the left edge to
+     the middle to stay under the centred word. */
+  .squiggle {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* The date sits above a centred role rather than in a right-hand margin. */
+  .job__body {
+    align-items: center;
+  }
+
+  /* Dates drop under the role rather than fighting it for width */
   .job {
     grid-template-columns: 1fr;
-    gap: 2px;
+  }
+
+  .job__period {
+    grid-column: 1;
+    grid-row: 1;
+    margin-bottom: 0.4rem;
+  }
+
+  .job__body {
+    grid-row: 2;
   }
 
   .topnav {
@@ -520,11 +701,12 @@
   }
 
   .topnav__links {
-    gap: 0.7rem;
+    gap: 1rem;
   }
 
   .topnav__links a {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
   }
 
   /* Drop Home on small screens; the name at top serves the same purpose */

@@ -9,14 +9,14 @@
     <meta name="author" content="Chirag Rastogi">
     <title>Chirag Rastogi</title>
     <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/light-mode.css">
+    <link rel="stylesheet" href="css/light-mode.css?v=3">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/theme-toggle.css">
-    <link rel="stylesheet" href="css/minimal.css?v=10">
+    <link rel="stylesheet" href="css/minimal.css?v=26">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Theme toggle (fixed, top right) -->
@@ -46,8 +46,10 @@
         <canvas id="stars-canvas"></canvas>
         <div id="stars-background"></div>
         <div class="hero__inner fade-in">
+            <!-- Name and nav share a column the photo sits against; js/reveal.js
+                 scales the name so it measures the same width as the nav row. -->
             <div class="hero__text">
-                <h1 class="hero__name">Chirag Rastogi</h1>
+                <h1 class="hero__name"><span class="hero__name-text">Chirag Rastogi</span></h1>
                 <nav class="hero__nav">
                     <a href="#research">Research</a>
                     <a href="#experience">Experience</a>
@@ -220,22 +222,6 @@
     <script src="js/quantum-particles.js?v=4"></script>
     <script src="js/theme-toggle.js"></script>
     <script src="js/floating-nav.js"></script>
-    <script>
-        // Fade-in on load, animate on scroll
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
-
-            const animateElements = document.querySelectorAll('.animate-on-scroll');
-            function checkScroll() {
-                animateElements.forEach(element => {
-                    if (element.getBoundingClientRect().top < window.innerHeight * 0.85) {
-                        element.classList.add('visible');
-                    }
-                });
-            }
-            checkScroll();
-            window.addEventListener('scroll', checkScroll);
-        });
-    </script>
+    <script src="js/reveal.js?v=9"></script>
 </body>
 </html>

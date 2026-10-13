@@ -4,11 +4,14 @@
 :root.light-mode {
   --color-background: #fafaf8;
   --color-text: #1a1a1a;
-  --color-primary: #6b5b3e;
+  /* Teal, specified as rgb(113, 201, 225). Note this sits at 1.8:1 against
+     the page background, so anything painted with it reads as a light tint
+     rather than as legible text. */
+  --color-primary: #71c9e1;
   --color-secondary: #f5f5f0;
-  --color-accent: #6b5b3e;
-  --color-gradient-start: #6b5b3e;
-  --color-gradient-end: #8a7a5a;
+  --color-accent: #71c9e1;
+  --color-gradient-start: #71c9e1;
+  --color-gradient-end: #a8dded;
   --color-text-muted: #666666;
   --color-card-bg: rgba(255, 255, 255, 1);
   --color-border: rgba(0, 0, 0, 0.08);
@@ -16,8 +19,8 @@
   --color-tag: rgba(0, 0, 0, 0.05);
   --color-shadow: rgba(0, 0, 0, 0.06);
   --color-shadow-hover: rgba(0, 0, 0, 0.12);
-  --color-primary-subtle: rgba(107, 91, 62, 0.08);
-  --color-primary-border: rgba(107, 91, 62, 0.15);
+  --color-primary-subtle: rgba(113, 201, 225, 0.08);
+  --color-primary-border: rgba(113, 201, 225, 0.15);
 }
 
 /* Transition for smooth theme switching */
