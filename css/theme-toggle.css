@@ -30,7 +30,7 @@
   bottom: 0;
   background: linear-gradient(to right, var(--color-gradient-start), var(--color-gradient-end));
   border-radius: 24px;
-  transition: 0.4s;
+  transition: background 0.4s ease;
   overflow: hidden; /* Add overflow hidden to hide icons when they go behind the slider */
 }
 
@@ -41,14 +41,14 @@
   width: 18px;
   left: 3px;
   bottom: 3px;
-  background-color: white;
+  background-color: var(--color-knob);
   border-radius: 50%;
-  transition: 0.4s;
+  transition: transform 0.4s ease;
   z-index: 2; /* Ensure the slider button is above the icons */
 }
 
 .theme-toggle__input:checked + .theme-toggle__slider {
-  background: linear-gradient(to right, #00b4d8, #90e0ef);
+  background: linear-gradient(to right, var(--color-toggle-checked-start), var(--color-toggle-checked-end));
 }
 
 .theme-toggle__input:checked + .theme-toggle__slider:before {
@@ -73,6 +73,30 @@
 .theme-toggle__icon--moon {
   right: 6px;
   opacity: 1; /* Show moon icon by default (dark mode) */
+}
+
+/* The real checkbox is visually hidden, so its focus ring is drawn on the
+   slider it controls. Instant, like every other ring on the page. */
+.theme-toggle__input:focus-visible + .theme-toggle__slider {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+.theme-toggle__input:active + .theme-toggle__slider {
+  opacity: 0.8;
+}
+
+.theme-toggle__input:disabled + .theme-toggle__slider {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle__slider,
+  .theme-toggle__slider:before,
+  .theme-toggle__icon {
+    transition: none;
+  }
 }
 
 /* Show sun icon and hide moon icon when in light mode */

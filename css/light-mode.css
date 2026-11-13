@@ -1,26 +1,68 @@
 /* Light Mode Theme Variables */
 
 /* Light mode theme */
-:root.light-mode {
-  --color-background: #fafaf8;
-  --color-text: #1a1a1a;
+:root {
+  /* Light palette values. The .light-mode class (set by js/theme-toggle.js)
+     only remaps the live tokens onto these. */
+  --light-background: #fafaf8;
+  --light-text: #1a1a1a;
   /* Teal, specified as rgb(113, 201, 225). Note this sits at 1.8:1 against
      the page background, so anything painted with it reads as a light tint
      rather than as legible text. */
-  --color-primary: #71c9e1;
-  --color-secondary: #f5f5f0;
-  --color-accent: #71c9e1;
-  --color-gradient-start: #71c9e1;
-  --color-gradient-end: #a8dded;
-  --color-text-muted: #666666;
-  --color-card-bg: rgba(255, 255, 255, 1);
-  --color-border: rgba(0, 0, 0, 0.08);
-  --color-read-section: rgba(255, 255, 255, 0.9);
-  --color-tag: rgba(0, 0, 0, 0.05);
-  --color-shadow: rgba(0, 0, 0, 0.06);
-  --color-shadow-hover: rgba(0, 0, 0, 0.12);
-  --color-primary-subtle: rgba(113, 201, 225, 0.08);
-  --color-primary-border: rgba(113, 201, 225, 0.15);
+  --light-primary: #71c9e1;
+  --light-secondary: #f5f5f0;
+  --light-accent: #71c9e1;
+  --light-gradient-start: #71c9e1;
+  --light-gradient-end: #a8dded;
+  --light-text-muted: #666666;
+  --light-card-bg: #fffefb;
+  --light-border: rgba(0, 0, 0, 0.08);
+  --light-read-section: rgba(255, 255, 255, 0.9);
+  --light-tag: rgba(0, 0, 0, 0.05);
+  --light-shadow: rgba(0, 0, 0, 0.06);
+  --light-shadow-hover: rgba(0, 0, 0, 0.12);
+  --light-primary-subtle: rgba(113, 201, 225, 0.08);
+  --light-primary-border: rgba(113, 201, 225, 0.15);
+
+  /* The teal stays for the drawn rules and underlines; text that has to be
+     read in the accent uses this darker ink of the same hue (about 5:1). */
+  --light-link: #1d6a80;
+  --light-focus: #1d6a80;
+  --light-nav-bg: rgba(250, 250, 248, 0.94);
+  --light-knob: #fffefb;
+  --light-hero-halo: rgba(255, 255, 255, 0.5);
+  --light-selection: rgba(113, 201, 225, 0.4);
+  --light-navbar-shadow: rgba(0, 0, 0, 0.1);
+  --light-footer-bg: #f8f9fa;
+  --light-footer-border: #e9ecef;
+}
+
+:root.light-mode {
+  --color-background: var(--light-background);
+  --color-text: var(--light-text);
+  --color-primary: var(--light-primary);
+  --color-secondary: var(--light-secondary);
+  --color-accent: var(--light-accent);
+  --color-gradient-start: var(--light-gradient-start);
+  --color-gradient-end: var(--light-gradient-end);
+  --color-text-muted: var(--light-text-muted);
+  --color-card-bg: var(--light-card-bg);
+  --color-border: var(--light-border);
+  --color-read-section: var(--light-read-section);
+  --color-tag: var(--light-tag);
+  --color-shadow: var(--light-shadow);
+  --color-shadow-hover: var(--light-shadow-hover);
+  --color-primary-subtle: var(--light-primary-subtle);
+  --color-primary-border: var(--light-primary-border);
+  --color-link: var(--light-link);
+  --color-focus: var(--light-focus);
+  --color-nav-bg: var(--light-nav-bg);
+  --color-knob: var(--light-knob);
+  --color-hero-halo: var(--light-hero-halo);
+  --color-selection: var(--light-selection);
+  --color-navbar-shadow: var(--light-navbar-shadow);
+  --color-footer-bg: var(--light-footer-bg);
+  --color-footer-border: var(--light-footer-border);
 }
 
 /* Transition for smooth theme switching */
@@ -30,7 +72,7 @@ body {
 
 /* Additional light mode adjustments */
 .light-mode .navbar {
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 10px var(--color-navbar-shadow);
 }
 
 .light-mode #stars-background {
@@ -47,8 +89,8 @@ body {
 }
 
 .light-mode .footer {
-  background-color: #f8f9fa;
-  border-top: 1px solid #e9ecef;
+  background-color: var(--color-footer-bg);
+  border-top: 1px solid var(--color-footer-border);
 }
 
 .light-mode .navbar__toggle .bar {
@@ -56,7 +98,7 @@ body {
 }
 
 .light-mode .blog__card {
-  background: rgba(255, 255, 255, 1);
+  background: var(--color-card-bg);
 }
 
 .light-mode .blog__card-date {

@@ -42,13 +42,21 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 0;
+  width: 100%;
   height: 100%;
-  background: linear-gradient(to right, #1d31e9, var(--color-gradient-end));
-  transition: all 0.35s ease;
+  background: linear-gradient(to right, var(--color-hover-wipe), var(--color-gradient-end));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
   z-index: -1; /* Push the hover effect behind the text */
 }
 
 .btn-hover-effect:hover::after {
-  width: 100%;
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-hover-effect::after {
+    transition: none;
+  }
 }

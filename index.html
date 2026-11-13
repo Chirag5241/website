@@ -8,11 +8,13 @@
     <meta name="keywords" content="Chirag Rastogi, Interpretability, AI Safety, Belief State Geometry, In-Context Learning, Researcher, University of Illinois, Simplex, Qualcomm">
     <meta name="author" content="Chirag Rastogi">
     <title>Chirag Rastogi</title>
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/light-mode.css?v=3">
+    <!-- Reveal animations hide content only once this runs, so the page reads with scripts off. -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="stylesheet" href="css/base.css?v=2">
+    <link rel="stylesheet" href="css/light-mode.css?v=4">
     <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="css/theme-toggle.css">
-    <link rel="stylesheet" href="css/minimal.css?v=27">
+    <link rel="stylesheet" href="css/theme-toggle.css?v=2">
+    <link rel="stylesheet" href="css/minimal.css?v=28">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,7 +24,7 @@
     <!-- Theme toggle (fixed, top right) -->
     <div class="theme-toggle theme-toggle--fixed">
         <label class="theme-toggle__label">
-            <input type="checkbox" class="theme-toggle__input" id="theme-toggle">
+            <input type="checkbox" class="theme-toggle__input" id="theme-toggle" aria-label="Light mode">
             <span class="theme-toggle__slider">
                 <i class="fas fa-sun theme-toggle__icon theme-toggle__icon--sun"></i>
                 <i class="fas fa-moon theme-toggle__icon theme-toggle__icon--moon"></i>
@@ -43,7 +45,7 @@
 
     <!-- Hero: the one creative element — animated stars over the watercolor background -->
     <header class="hero" id="home">
-        <canvas id="stars-canvas"></canvas>
+        <canvas id="stars-canvas" aria-hidden="true"></canvas>
         <div id="stars-background"></div>
         <div class="hero__inner fade-in">
             <!-- Name and nav share a column the photo sits against; js/reveal.js
@@ -101,27 +103,27 @@
                 <li class="pub animate-on-scroll">
                     <span class="pub__title">Large Language Models Develop Belief State Geometry In-Context</span>
                     <span class="pub__authors">Rastogi, C.*, Balcells, D.*, Lee, A.*, Riechers, P., Shai, A., &amp; Poncini, X.</span>
-                    <span class="pub__venue"><em>NeurIPS 2026</em> (Poster) &middot; *co-first authors &middot; <a href="https://arxiv.org/pdf/2609.17376" target="_blank" rel="noopener">paper</a></span>
+                    <span class="pub__venue"><em>NeurIPS 2026</em> (Poster), *co-first authors <a href="https://arxiv.org/pdf/2609.17376" target="_blank" rel="noopener">paper</a></span>
                 </li>
                 <li class="pub animate-on-scroll">
                     <span class="pub__title">How Reliable are Causal Probing Interventions?</span>
                     <span class="pub__authors">Canby, M., Davies, A., Rastogi, C., &amp; Hockenmaier, J.</span>
-                    <span class="pub__venue"><em>IJCNLP-AACL 2025</em> &middot; earlier version at NeurIPS 2024 IAI Workshop &middot; <a href="https://arxiv.org/html/2408.15510v1" target="_blank" rel="noopener">paper</a></span>
+                    <span class="pub__venue"><em>IJCNLP-AACL 2025</em>, earlier version at NeurIPS 2024 IAI Workshop <a href="https://arxiv.org/html/2408.15510v1" target="_blank" rel="noopener">paper</a></span>
                 </li>
                 <li class="pub animate-on-scroll">
                     <span class="pub__title">A Self-Supervised Miniature One-Shot Texture Segmentation (MOSTS) Model for Real-Time Indoor Drivable Area Segmentation</span>
                     <span class="pub__authors">Chen, Y., Rastogi, C., Zhou, Z., &amp; Norris, W. R.</span>
-                    <span class="pub__venue"><em>IEEE CASE 2025</em> &middot; <a href="https://arxiv.org/abs/2306.08814" target="_blank" rel="noopener">paper</a></span>
+                    <span class="pub__venue"><em>IEEE CASE 2025</em> <a href="https://arxiv.org/abs/2306.08814" target="_blank" rel="noopener">paper</a></span>
                 </li>
                 <li class="pub animate-on-scroll">
                     <span class="pub__title">A Convolutional Neural Network Based Vision-Proprioception Fusion Method for Robust UGV Terrain Classification</span>
                     <span class="pub__authors">Chen, Y., Rastogi, C., &amp; Norris, W. R.</span>
-                    <span class="pub__venue"><em>IEEE Robotics and Automation Letters</em> &middot; presented at IEEE/RSJ IROS 2021 &middot; <a href="https://ieeexplore.ieee.org/document/9507312" target="_blank" rel="noopener">paper</a></span>
+                    <span class="pub__venue"><em>IEEE Robotics and Automation Letters</em>, presented at IEEE/RSJ IROS 2021 <a href="https://ieeexplore.ieee.org/document/9507312" target="_blank" rel="noopener">paper</a></span>
                 </li>
                 <li class="pub animate-on-scroll">
                     <span class="pub__title">Comparison of Dynamic and Kinematic Model Driven Extended Kalman Filters (EKF) for the Localization of Autonomous Underwater Vehicles</span>
                     <span class="pub__authors">Balasubramanian, S., Rajput, A., Hascaryo, R. W., Rastogi, C., &amp; Norris, W. R.</span>
-                    <span class="pub__venue"><em>arXiv preprint</em> &middot; <a href="https://arxiv.org/abs/2105.12309" target="_blank" rel="noopener">paper</a></span>
+                    <span class="pub__venue"><em>arXiv preprint</em> <a href="https://arxiv.org/abs/2105.12309" target="_blank" rel="noopener">paper</a></span>
                 </li>
             </ul>
         </section>
@@ -131,35 +133,35 @@
             <h2 class="section__heading">Experience</h2>
             <ul class="jobs">
                 <li class="job animate-on-scroll">
-                    <span class="job__period">Jan &mdash; Jul 2026</span>
+                    <span class="job__period">Jan to Jul 2026</span>
                     <div class="job__body">
                         <span class="job__role">Research Fellow (SPAR), <span class="job__org">Simplex AI Safety</span></span>
                         <span class="job__desc">Led a project on in-context learning. Showed LLMs reconstruct their Bayesian belief state in-context, recoverable by linear probes (R&sup2; &gt; 0.998) and causally used for prediction.</span>
                     </div>
                 </li>
                 <li class="job animate-on-scroll">
-                    <span class="job__period">2023 &mdash; 2026</span>
+                    <span class="job__period">2023 to 2026</span>
                     <div class="job__body">
                         <span class="job__role">Embedded Software Engineer, <span class="job__org">Qualcomm</span></span>
                         <span class="job__desc">Wrote Linux kernel software for hardware-accelerated packet processing on 5G modems. Built a crypto hardware-offload path (~10% TCP throughput) and cut buffer memory by over 80%.</span>
                     </div>
                 </li>
                 <li class="job animate-on-scroll">
-                    <span class="job__period">2021 &mdash; 2023</span>
+                    <span class="job__period">2021 to 2023</span>
                     <div class="job__body">
                         <span class="job__role">Undergraduate Researcher, <span class="job__org">IBM-Illinois Centre</span></span>
                         <span class="job__desc">Causal interventions on Transformer representations across GPT-2, Pythia, and Llama, showing common methods overestimate causal significance. Built BM25 plus Transformer semantic search for CS 410.</span>
                     </div>
                 </li>
                 <li class="job animate-on-scroll">
-                    <span class="job__period">2020 &mdash; 2021</span>
+                    <span class="job__period">2020 to 2021</span>
                     <div class="job__body">
                         <span class="job__role">Software Engineering Intern, <span class="job__org">Caterpillar</span></span>
                         <span class="job__desc">Built a machine-utilization forecasting system that guided executive decisions through COVID-19, winning the 2020 CIO Award. Led the Snowflake migration, cutting runtime &gt;99% and cost ~66%.</span>
                     </div>
                 </li>
                 <li class="job animate-on-scroll">
-                    <span class="job__period">2019 &mdash; 2023</span>
+                    <span class="job__period">2019 to 2023</span>
                     <div class="job__body">
                         <span class="job__role">Undergraduate Researcher, <span class="job__org">AUVSL Lab, UIUC</span></span>
                         <span class="job__desc">Self-supervised texture segmentation with Perlin-noise collage masking (85.7 mIoU at 93 FPS), and vision-proprioception fusion for robot terrain identification (96.4% accuracy).</span>
@@ -167,9 +169,9 @@
                 </li>
             </ul>
             <p class="section__footnote">
-                M.S. Computer Science (thesis track), University of Illinois at Urbana-Champaign, expected 2027 &middot; Teaching Assistant, CS 411: Database Systems.
+                M.S. Computer Science (thesis track), University of Illinois at Urbana-Champaign, expected 2027. Teaching Assistant, CS 411: Database Systems.
                 <br>
-                B.S. Computer Engineering, University of Illinois at Urbana-Champaign, 2023 &middot; James Scholar, Dean's List.
+                B.S. Computer Engineering, University of Illinois at Urbana-Champaign, 2023. James Scholar, Dean&rsquo;s List.
             </p>
         </section>
 
@@ -179,13 +181,13 @@
             <ul class="items">
                 <li class="item animate-on-scroll">
                     <a class="item__link" href="https://chiragr5241.github.io/HMM_visualization/">
-                        <span class="item__title">Belief State Geometry <span class="item__arrow">&rarr;</span></span>
-                        <span class="item__desc">Interactive visualization of belief states in hidden Markov models like Mess3, and how their geometry changes as you sweep the model's parameters.</span>
+                        <span class="item__title">Belief State Geometry</span>
+                        <span class="item__desc">Interactive visualization of belief states in hidden Markov models like Mess3, and how their geometry changes as you sweep the model&rsquo;s parameters.</span>
                     </a>
                 </li>
                 <li class="item animate-on-scroll">
                     <a class="item__link" href="https://chirag5241.github.io/AI-Assisted-Decision-Making-Lab/?curve=exponential&amp;u1=1.2&amp;u2=1&amp;h1=0&amp;h2=1.5&amp;p1=0.1&amp;T=80&amp;delta=0.95&amp;seed=0">
-                        <span class="item__title">AI-Assisted Decision Making Lab <span class="item__arrow">&rarr;</span></span>
+                        <span class="item__title">AI-Assisted Decision Making Lab</span>
                         <span class="item__desc">Interactive simulations of a human learning which action is best alongside an algorithm, tracking beliefs, choices and regret round by round as you change the setup.</span>
                     </a>
                 </li>
@@ -195,11 +197,11 @@
                 </li>
                 <li class="item animate-on-scroll">
                     <span class="item__title">Early Wildfire Detection using 5G Massive IoT</span>
-                    <span class="item__desc">3rd place at QHACK (Qualcomm) &mdash; two-tiered edge server architecture on AWS enabling high-frequency data collection from millions of sensors while minimizing storage costs.</span>
+                    <span class="item__desc">3rd place at QHACK (Qualcomm): two-tiered edge server architecture on AWS enabling high-frequency data collection from millions of sensors while minimizing storage costs.</span>
                 </li>
                 <li class="item animate-on-scroll">
                     <span class="item__title">AIR</span>
-                    <span class="item__desc">Best financial hack at HackIllinois, presented by Capital One &mdash; tracks fingers to create and sign usable checks in the air, using Google Cloud Vision and Checkbook.io.</span>
+                    <span class="item__desc">Best financial hack at HackIllinois, presented by Capital One. Tracks fingers to create and sign usable checks in the air, using Google Cloud Vision and Checkbook.io.</span>
                 </li>
             </ul>
         </section>
@@ -214,19 +216,19 @@
             <ul class="items">
                 <li class="item animate-on-scroll">
                     <a class="item__link" href="https://chiragr5241.github.io/Geopolitics/">
-                        <span class="item__title">Story Tracker <span class="item__arrow">&rarr;</span></span>
+                        <span class="item__title">Story Tracker</span>
                         <span class="item__desc">The six main stories, followed by the rest of the news.</span>
                     </a>
                 </li>
                 <li class="item animate-on-scroll">
                     <a class="item__link" href="https://chiragr5241.github.io/Geopolitics/map.html">
-                        <span class="item__title">Operations Map <span class="item__arrow">&rarr;</span></span>
-                        <span class="item__desc">Global military operations 2023&ndash;2026 plotted on an interactive map.</span>
+                        <span class="item__title">Operations Map</span>
+                        <span class="item__desc">Global military operations from 2023 to 2026 plotted on an interactive map.</span>
                     </a>
                 </li>
                 <li class="item animate-on-scroll">
                     <a class="item__link" href="https://chiragr5241.github.io/Geopolitics/feed.html">
-                        <span class="item__title">Intel Feed <span class="item__arrow">&rarr;</span></span>
+                        <span class="item__title">Intel Feed</span>
                         <span class="item__desc">The full stream of open-source, unclassified incident reports.</span>
                     </a>
                 </li>
@@ -236,9 +238,9 @@
         <!-- Footer -->
         <footer class="footer">
             <p>
-                &copy; 2026 Chirag Rastogi &middot;
-                <a href="mailto:chiragr2@illinois.edu">Email</a> &middot;
-                <a href="https://www.linkedin.com/in/chiragrastogi01" target="_blank" rel="noopener">LinkedIn</a> &middot;
+                <span>&copy; 2026 Chirag Rastogi</span>
+                <a href="mailto:chiragr2@illinois.edu">Email</a>
+                <a href="https://www.linkedin.com/in/chiragrastogi01" target="_blank" rel="noopener">LinkedIn</a>
                 <a href="https://scholar.google.com/citations?user=svPLe9EAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
             </p>
         </footer>

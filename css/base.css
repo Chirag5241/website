@@ -5,7 +5,7 @@
   --color-background: #0f0f0f;
   --color-text: #f0f0f0;
   --color-primary: #f0a030;
-  --color-secondary: #000000;
+  --color-secondary: #0a0907;
   --color-accent: #f0a030;
   --color-gradient-start: #f0a030;
   --color-gradient-end: #f5c060;
@@ -19,6 +19,21 @@
   --color-shadow-hover: rgba(0, 0, 0, 0.25);
   --color-primary-subtle: rgba(240, 160, 48, 0.12);
   --color-primary-border: rgba(240, 160, 48, 0.2);
+
+  /* Text-safe accent: links and inline labels. Dark mode can use the amber
+     itself; light mode overrides it with a darker ink (light-mode.css). */
+  --color-link: #f0a030;
+  --color-focus: #f0a030;
+
+  /* Chrome and overlays */
+  --color-nav-bg: rgba(15, 15, 15, 0.92);
+  --color-knob: #f7f3ec;
+  --color-photo-shadow: rgba(0, 0, 0, 0.28);
+  --color-hero-halo: rgba(0, 0, 0, 0.6);
+  --color-selection: rgba(240, 160, 48, 0.35);
+  --color-toggle-checked-start: #00b4d8;
+  --color-toggle-checked-end: #90e0ef;
+  --color-hover-wipe: #1d31e9;
 
   /* Typography variables */
   --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -49,9 +64,22 @@ body {
   background: var(--color-background);
   color: var(--color-text);
   line-height: 1.6;
-  overflow-x: hidden;
+  overflow-x: clip;
   width: 100%;
-  max-width: 100vw; /* Ensure content doesn't exceed viewport width */
+  scrollbar-color: var(--color-text-muted) var(--color-background);
+  caret-color: var(--color-primary);
+}
+
+::selection {
+  background: var(--color-selection);
+  color: var(--color-text);
+}
+
+/* One focus ring for every control, drawn instantly (no transition). */
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+  border-radius: 2px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -60,6 +88,7 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.2;
   font-weight: 500;
   letter-spacing: -0.02em;
+  text-wrap: balance;
 }
 
 p {
@@ -69,7 +98,11 @@ p {
 a {
   color: var(--color-primary);
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+a:active {
+  opacity: 0.6;
 }
 
 img {
